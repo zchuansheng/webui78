@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>validator</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript" src="../../../document/application_js/web-commons.js"></script>
+ 
+<script type="text/javascript">
+	$(document).ready(function(){	
+	$('.grid_nohead').datagrid({hashead:false,trselect:false});////不需要表头，并且不需要行选择的设置
+	var g=$('.grid2').datagrid({trselect:false});//或执行代码 g[0].p.onSelect=onSelectRow;	也可以
+	$('.btn').PicButton( );		
+	function myclick(el){		
+		var currSel=el.attr("checked");
+		var checkObj=$(":text,:checkbox[name!='sel_data']",el.closest("tr"));
+		checkObj.setValidator({empty:!(currSel=='checked'),ischeck:currSel=='checked'});//选中的设置不能为空，未选中可以为空		
+		
+	}
+	$("#sel").check_against2("sel_data",myclick);
+	//先设置对所有元素进行检查
+	$("#form1").setValidator();
+	//对选择的部分元素进行验证，如下代码
+	$("[name='sel_data']").click(function(){myclick($(this));});
+	
+
+		
+});		
+
+function onChecked(){
+	
+ }
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>对有选择的元素进行验证</div>
+<br/>
+
+<form action="" method="post" name="form1" id="form1">
+
+
+<button align="center" class="btn" id ='btn_save' type="button" value="1"  btn_href="../ok.html"  istip="0" >提交</button>&nbsp;
+<br/>
+
+<br/>
+
+		<table  class="grid_nohead" width='80%'    >
+
+     		<tr><td   align="center">操作编号</td>
+            	<td><input class="zcs" type="text" id="batch_no" name="batch_no"   value="123456789012"  v_min="12" v_max="12"   title="操作编号"/></td>
+            	<td>信息名称 </td>
+            	<td><input type='text' name='sect_name' id="sect_name"   value="12" size='30' v_type="text"   v_min="1" v_max="40"   title="信息名称"  /></td>
+   		  </tr>
+   		<tr>
+     					<td  align="center">是否出售</td>
+            	<td><input type="radio" id="sold" value="1" name="sold"  v_min="1"  title="是否出售"  />已经出售&nbsp;&nbsp;&nbsp;&nbsp; 
+         					<input type="radio" id="sold" value="2" name="sold"  v_min="1" 	title="是否出售" />未出售
+         					<input type="radio" id="sold" value="3" name="sold"  v_min="1"  title="是否出售"/>不知道
+		  </td>
+            	<td>信息类型 </td>
+            	<td>
+            		<select name="sect_type" id="sect_type"  v_empty="0" title="信息类型"  >
+				          <option value="">－－请选择信息类型－－</option>
+				          <option value="1" selected>商品房</option>
+				          <option value="2">公房</option>
+				          <option value="3">小城镇</option>
+				          <option value="4">原有住房</option>
+		          </select> 
+		  </td>
+        </tr>
+     		<tr>
+     					<td  align="center">email地址</td>
+            	<td><input type="text" id="sect_code" name="sect_code"   value="zchuansheng@gmail.com"  v_type="email" v_min=3 v_max=50 title="email地址"/></td>
+            	<td>联系人身份 </td>
+            	<td> 
+            		<input type="checkbox" name="link_type" id="link_type" value="0" v_min="1" v_max=3 title="联系人身份" />党员 
+            		<input type="checkbox" name="link_type" id="link_type" value="1" checked />团员
+            		<input type="checkbox" name="link_type" id="link_type" value="2" />学生
+            		<input type="checkbox" name="link_type" id="link_type" value="3" />领导 
+            		<input type="checkbox" name="link_type" id="link_type" value="4" />主席 
+            	</td>
+        </tr>
+   		
+	      <tr> 
+		      <td align="right" >你的描述:</td>
+		      <td colspan="3" valign="top"> <textarea id="sect_remark" name="sect_remark" cols="50" rows="2"  
+              v_type="text" v_min=10 v_max="20"   title="你的描述" >你的描述你的描述你的</textarea> 
+		      </td>
+    	  </tr>
+
+
+
+		</table>
+<br/>
+				<table  class="grid2" width='670' >
+    				<thead>
+    		<tr>
+            	<th > <a href="#" id="sel" class="sel_all" >点击此处反选</a></th>
+            	<th >XXX对象编号</th>
+            	<th >XXX内容</th>
+            	<th >XXX工艺</th>
+            	<th >XXX费用</th>
+            	</tr>
+         </thead>
+     		<tr>
+     					<td width='14%' btn_condition='01'  align="center">1
+     						<input type="checkbox" name="sel_data" id="sel_data" value="1">
+     						<label for="sel_data"></label>
+   						  <input type="hidden" name="batch_no" value="100309000304"/>
+     					</td>
+            	<td width='14%' >100309000304</td>
+            	<td width='29%' ><input type="checkbox" name="whata" v_empty="1" v_min="1"  v_group="what1">电梯
+            		<input type="checkbox" name="whatb" v_empty="1" v_min="1" v_group="what1">信息</td>
+            	<td width='26%' ><input type='text' name ="somedata" value='' v_empty="1" v_min="1" v_max="10" /></td>
+            	<td width='17%' ><input type='text' name ="amt" value='0.00' size ="10" v_type="decimal3" v_empty="1" v_min="1" v_max="10" /></td>
+            	</tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">2
+						    <input type="checkbox" name="sel_data" id="sel_data2"  value="2">      						
+						    <input type="hidden" name="batch_no" value="100309000300"/>
+						  </td>
+            	<td>100309000300</td>
+            	<td><input type="checkbox" name="whata"  v_empty="1" v_min="1" v_group="what2">电梯
+            	    <input type="checkbox" name="whatb"  v_empty="1" v_min="1" v_group="what2">信息</td>
+            	<td><input type='text' name ="somedata" value='' v_empty="1" v_min="1" v_max="10" /></td>
+            	<td><input type='text' name ="amt" value='0.00' size ="10" v_type="decimal2"  v_empty="1" v_min="1" v_max="10" /></td>
+            	</tr>
+    		<tr>
+     					<td  btn_condition='02' align="center">3
+				    		<input type="checkbox" name="sel_data" id="sel_data3" value="3">
+		            <input type="hidden" name="batch_no" value="100309000301"/></td>
+            	<td>100309000301</td>
+                <td><input type="checkbox" name="whata"   v_empty="1" v_min="1" v_group="what3">电梯
+            	    <input type="checkbox" name="whatb"   v_empty="1" v_min="1" v_group="what3">信息</td>
+            	<td><input type='text' name ="somedata" value='' v_empty="1"  v_min="1" v_max="10" /></td>
+            	<td><input type='text' name ="amt" value='0.00' size ="10" v_type="decimal2"  v_empty="1"  v_min="1" v_max="10" /></td>
+            	</tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">4
+				   			<input type="checkbox" name="sel_data" id="sel_data4" value="4">     					  
+		            <input type="hidden" name="batch_no" value="100309000302"/></td>
+            	<td>100309000302</td>
+            	<td><input type="checkbox" name="whata"  v_empty="1"  v_min="1" v_group="what4">电梯
+            	    <input type="checkbox" name="whatb"  v_empty="1" v_min="1"  v_group="what4">信息</td>
+            	<td><input type='text' name ="somedata" value='' v_empty="1"  v_min="1" v_max="10" /></td>
+            	<td ><input type='text' style="text-align:center" name ="amt" value='0.00' size ="10" v_type="decimal2" v_empty="1"  v_min="1" v_max="10" /></td>
+            	</tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">5
+		    				<input type="checkbox" name="sel_data" id="sel_data5" value="5">      						
+           			<input type="hidden" name="batch_no" value="100309000303"/></td>
+            	<td>100309000303</td>
+            	<td><input type="checkbox" name="whata"   v_empty="1" v_min="1" v_group="what5">电梯
+            	    <input type="checkbox" name="whatb"   v_empty="1" v_min="1" v_group="what5">信息</td>
+            	<td><input type='text' name ="somedata" value='' v_empty="1"  v_min="1" v_max="10" /></td>
+            	<td><input type='text' name ="amt" value='0.00' size ="10" v_type="decimal2"  v_empty="1" v_min="1" v_max="10" /></td>
+            	</tr>
+
+		</table>	
+  <br/>
+</form>
+<div id="supportType">
+  <h2>代码示例</h2>
+  <p>点击时，设置部分元素的验证条件<strong>empty是否为空</strong></p>
+  <pre>
+&lt;script type="text/javascript"&gt; 
+$(document).ready(function(){	
+
+	................
+	$('.grid_nohead').datagrid({hashead:false,trselect:false});
+	var g=$('.grid2').datagrid({trselect:false});<br>  ............
+	function myclick(el){		<br>		var currSel=el.attr(&quot;checked&quot;);<br>		var checkObj=$(&quot;:text,:checkbox[name!='sel_data']&quot;,el.closest(&quot;tr&quot;));<br>		checkObj.setValidator({empty:!(currSel=='checked'),ischeck:currSel=='checked'});//选中的设置不能为空，未选中可以为空		<br>	}<br>	$(&quot;#sel&quot;).check_against2(&quot;sel_data&quot;,myclick);<br>	//先设置对所有元素进行检查<br>	$(&quot;#form1&quot;).setValidator();<br>	//对选择的部分元素进行验证，如下代码<br>	$(&quot;[name='sel_data']&quot;).click(function(){myclick($(this));});<br><br>
+
+});		
+&lt;/script&gt; 
+  </pre>
+  <p>对部分验证的表单元素html代码编写如下：</p>
+  <pre>&lt;tr&gt;<br>&lt;td width='14%' btn_condition='01'  align=&quot;center&quot;&gt;1<br>	&lt;input type=&quot;checkbox&quot; name=&quot;sel_data&quot; id=&quot;sel_data&quot; value=&quot;1&quot;&gt;<br>	&lt;label for=&quot;sel_data&quot;&gt;&lt;/label&gt;<br>	&lt;input type=&quot;hidden&quot; name=&quot;batch_no&quot; value=&quot;100309000304&quot;/&gt;<br>&lt;/td&gt;<br>&lt;td width='14%' &gt;100309000304&lt;/td&gt;<br>&lt;td width='29%' &gt;&lt;input type=&quot;checkbox&quot; name=&quot;whata&quot; <strong>v_empty=&quot;1&quot; v_min=&quot;1&quot; </strong><code>v_group=&quot;what1&quot;</code>&gt;电梯
+ &lt;input type=&quot;checkbox&quot; name=&quot;whatb&quot; <strong>v_empty=&quot;1&quot; v_min=&quot;1&quot;</strong> <code>v_group=&quot;what1&quot;</code>&gt;信息&lt;/td&gt;
+&lt;td width='26%' &gt;&lt;input type='text' name =&quot;somedata&quot; value=''<strong> v_empty=&quot;1&quot; v_min=&quot;1&quot;</strong> <strong>v_max=&quot;10&quot;</strong> /&gt;&lt;/td&gt;
+&lt;td width='17%' &gt;&lt;input type='text' name =&quot;amt&quot; value='0.00' size =&quot;10&quot;<strong> v_type=&quot;decimal2&quot; v_empty=&quot;1&quot; v_min=&quot;1&quot; v_max=&quot;10&quot;</strong> /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr &gt;<br>&lt;td  btn_condition='02' align=&quot;center&quot;&gt;2<br>	 &lt;input type=&quot;checkbox&quot; name=&quot;sel_data&quot; id=&quot;sel_data2&quot;  value=&quot;2&quot;&gt; 			<br>	 &lt;input type=&quot;hidden&quot; name=&quot;batch_no&quot; value=&quot;100309000300&quot;/&gt;<br>&lt;/td&gt;<br>&lt;td&gt;100309000300&lt;/td&gt;<br>&lt;td&gt;&lt;input type=&quot;checkbox&quot; name=&quot;whata&quot; <strong> v_empty=&quot;1&quot; v_min=&quot;1&quot;</strong> <code>v_group=&quot;what2&quot;</code>&gt;电梯
+	  &lt;input type=&quot;checkbox&quot; name=&quot;whatb&quot;  <strong>v_empty=&quot;1&quot; v_min=&quot;1&quot;</strong><code> v_group=&quot;what2&quot;</code>&gt;信息&lt;/td&gt;
+&lt;td&gt;&lt;input type='text' name =&quot;somedata&quot; value='' <strong>v_empty=&quot;1&quot; v_min=&quot;1&quot; v_max=&quot;10&quot;</strong> /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;input type='text' name =&quot;amt&quot; value='0.00' size =&quot;10&quot; <strong>v_type=&quot;decimal2&quot;  v_empty=&quot;1&quot; v_min=&quot;1&quot; v_max=&quot;10&quot;</strong> /&gt;&lt;/td&gt;
+&lt;/tr&gt;<br>
+  </pre>
+  <p class="note"><span>注释：</span> 上述代码中用<code><strong>v_group</strong></code>属性实现对每行复选框的分组验证</p>
+  <p></p>
+</div>
+
+</body>
+</html>

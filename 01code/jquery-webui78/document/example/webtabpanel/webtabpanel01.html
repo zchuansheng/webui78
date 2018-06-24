@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>accordionMutil</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+	   	$(".webtab1").webTabpanel({width:500,height:100});
+});
+</script>
+<style type="text/css">
+<!--
+.STYLE1 {color: #0000FF}
+.STYLE2 {color: #0000FF}
+.STYLE3 {color: #CC0000}
+.redfont {
+	color: #FF0000;
+}
+.redfont {
+	color: #FF0000;
+}
+-->
+</style>
+</head>
+  <body >
+<div class="headline"  >
+  <div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+  	  将html数据格式化为多级可折叠菜单的效果</div>
+<table   >
+<tr>
+			<td>						
+				<div class="webtab1"    >
+						   			<div>
+										 	<div>基本信息</div> 
+										 	<div>dfsff的本的啊的时间空间空间发空间撒开发加快放假空间空间里见附件 </div>
+				  </div>
+						   			<div>
+										 	<div >参数设置1</div> 
+										 	<div> dfskfjksfjksfjksadjfkasjfksjfksjfks</div>
+				  </div>
+					   			<div>
+										 	<div actived >参数设置2</div> 
+										 	<div> dfskfjksfjksfjksadjfkasjfksjfksjfks</div>
+				  </div>
+					   			<div>
+										 	<div >参数设置3</div> 
+										 	<div> dfskfjksfjksfjksadjfkasjfksjfksjfks</div>
+				  </div>
+					   			<div>
+										 	<div >参数设置4</div> 
+										 	<div> dfskfjksfjksfjksadjfkasjfksjfksjfks</div>
+				  </div>
+			  </div>
+						
+						
+				<div>
+				
+				
+				  <h2><strong>上述实现效果</strong>的代码示例</h2>
+				  <p><strong>一、HTML代码部分：</strong></p>
+				  <pre><strong>1、TAB组件的HTML代码,必须采用如下div结构：</strong>
+ &lt;div class=&quot;webtab1&quot;    &gt;<strong>//（第一级）div表示要应用tab组件的开始，类名可以任意指定</strong><br>	 	<span class="STYLE2">&lt;div&gt;<strong>//（第二层）div表示第一个选项卡的开始</strong><br>                   <span class="STYLE3">&lt;div&gt;基本信息&lt;/div&gt; <strong>//（第三层）第一个选项卡的标题</strong><br>                   &lt;div&gt;dfsff的本的啊的时间空间空间发空间撒开发加快放假空间空间里见附件 &lt;/div&gt;<strong>//（第三层）第一个选项卡的内容</strong><br></span>	  	&lt;/div&gt;</span><span class="STYLE1"><br></span><span class="STYLE1">	 	&lt;div&gt;<strong>//(第二层）div表示第二个选项卡的开始</strong><br>                   <span class="STYLE3">&lt;div &gt;参数设置1&lt;/div&gt; <strong>//（第三层）第二个选项卡的标题</strong><br>                   &lt;div&gt; dfskfjksfjksfjksadjfkasjfksjfksjfks&lt;/div&gt;<strong>//（第三层）第二个选项卡的内容</strong></span><br>      &lt;/div&gt;</span><br><span class="STYLE1">	 	&lt;div </span><span class="redfont">actived</span><span class="STYLE1"> &gt;<strong>//(第二层）div表示第二个选项卡的开始   </strong></span><span class="redfont">actived  表示此选项卡默认处于激活状态</span><span class="STYLE1"><br>                   <span class="STYLE3">&lt;div &gt;参数设置2&lt;/div&gt; <strong>//（第三层）第二个选项卡的标题</strong><br>                   &lt;div&gt; dfskfjksfjksfjksadjfkasjfksjfksjfks&lt;/div&gt;<strong>//（第三层）第二个选项卡的内容</strong></span><br>      &lt;/div&gt;</span><br><span class="STYLE1">	 	&lt;div&gt;<strong>//(第二层）div表示第二个选项卡的开始</strong><br>                   <span class="STYLE3">&lt;div &gt;参数设置3&lt;/div&gt; <strong>//（第三层）第二个选项卡的标题</strong><br>                   &lt;div&gt; dfskfjksfjksfjksadjfkasjfksjfksjfks&lt;/div&gt;<strong>//（第三层）第二个选项卡的内容</strong></span><br>      &lt;/div&gt;</span><br><span class="STYLE1">	 	&lt;div&gt;<strong>//(第二层）div表示第二个选项卡的开始</strong><br>                   <span class="STYLE3">&lt;div &gt;参数设置4&lt;/div&gt; <strong>//（第三层）第二个选项卡的标题</strong><br>                   &lt;div&gt; dfskfjksfjksfjksadjfkasjfksjfksjfks&lt;/div&gt;<strong>//（第三层）第二个选项卡的内容</strong></span><br>      &lt;/div&gt;</span><br>&lt;/div&gt;<br>
+				  </pre>
+                  <p class="note">&nbsp;</p>
+                  <p><strong>二、javascript代码：对上述html加载组件效果</strong></p>
+                  <pre>&lt;script language=&quot;JavaScript&quot; type=&quot;text/JavaScript&quot;&gt;<br>    	$(document).ready(function(){  <br>	   	$<code>(&quot;.webtab1&quot;).webTabpanel({width:500,height:100});</code><br>});<br>&lt;/script&gt;</pre>
+                  <p><strong></strong></p>
+                  <p class="note">&nbsp;</p>
+                  <p class="note"><span>注释：</span>无</p>
+			  </div>
+				<div>
+
+		 		
+						 		
+					
+			  </div>
+			</td>
+  </tr>
+	</table>
+  	
+  	
+  	
+
+  </body>
+</html>

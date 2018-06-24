@@ -1,0 +1,517 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+				
+				
+	});
+</script>
+<style type="text/css">
+<!--
+.STYLE1 {color: #0000FF}
+.STYLE2 {font-size: 10px}
+.STYLE3 {color: #0000FF; font-size: 10; }
+-->
+</style>
+</head>
+
+<body class="html" id="tags">
+
+<div id="wrapper">
+
+<div id="header">
+<h1>数据表格插件的使用说明</h1>
+</div>
+
+
+<div id="maincontent"  >
+
+<h1>名称：datagrid</h1>
+<div>
+
+<h2>定义与说明</h2>
+<p>datagrid是基于table标签实现的，对table标签定义的表格进行美化，实现需要的数据表格功能。</p>
+<p><strong>一、要使用datagrid，您需要完成以下工作：</strong></p>
+<p>1、编写table标签的html代码</p>
+<p>2、在页面加载完成时，调用JS，完成对table的效果渲染，及参数设置</p>
+<p><strong>二、可以实现的表格效果</strong>（见左边菜单）</p>
+<p>&nbsp;</p>
+<table class="dataintable">
+  <tr>
+    <th width="7%">序号</th>
+    <th width="18%">效果1</th>
+    <th width="41%">适用情况</th>
+    <th width="34%">代码参加</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>表格的一般用法</td>
+    <td><p>一般的数据表格</p></td>
+    <td><p><a href="./datagrid01.html" target="mainframe">一般用法</a></p></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>可以选择行的效果</td>
+    <td><p>需要选中某行数据然后提交表单的数据表格</p></td>
+    <td><p jquery164006352877627948444="21"><a href="./datagrid02.html" target="mainframe">可选择行的例子</a></p></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>固定表头的效果</td>
+    <td><p>数据量较大，且不能使用分页的表格</p></td>
+    <td><p jquery164006352877627948444="22"><a href="datagrid03.html" target="mainframe">固定表头的例子</a></p></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>无表头的效果</td>
+    <td>适用与一般表单样式的数据录入</td>
+    <td><p jquery164006352877627948444="23"><a href="./datagrid04.html" target="mainframe">无表头的表单模式</a></p></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>自定义行列格式</td>
+    <td><p>适用于自定义行列背景颜色的情况</p></td>
+    <td><p jquery164006352877627948444="24"><a href="datagrid05.html" target="mainframe">对行列定义自己的颜色格式</a></p></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>带汇总行的效果</td>
+    <td><p>报表类表格，需要在表格顶部或底部显示汇总信息的情况</p></td>
+    <td><p jquery164006352877627948444="25"><a href="./datagrid06.html" target="mainframe">合并首行或尾行的例子</a></p></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>可增加删除行的效果</td>
+    <td><p>适用于需要动态增加或删除行的数据表格</p></td>
+    <td><p jquery164006352877627948444="26"><a href="./datagrid07.html" target="mainframe">可增加或删除行的例子</a></p></td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>自定义表头的样式</td>
+    <td><p>适用于定义不同的表头样式的情况</p></td>
+    <td><p jquery164006352877627948444="26"><a href="./datagrid08.html" target="mainframe">可自定义表头的样式的例子</a></p></td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>增加自定义行</td>
+    <td><p>适用于需要动态增加或删除行，并且新增行需要自定义修改内容的情况</p></td>
+    <td><p jquery164006352877627948444="26"><a href="./datagrid09.html" target="mainframe">可增加自定义行及自增长列的例子</a></p></td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>可追加页面元素的效果</td>
+    <td><p>适用于需要动态增加或删除或修改页面表单元素的情况。</p></td>
+    <td><p jquery164006352877627948444="26"><a href="datagrid10.html" target="mainframe">可追加页面元素的效果</a></p></td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>可以前端分页的效果</td>
+    <td><p>适用于记录行数比较多（&gt;1000）,需要前端分页显示，最后一次将所有分页内容一次提交后台的情况。</p></td>
+    <td><p jquery164006352877627948444="26"><a href="datagrid11.html" target="mainframe">可前端分页的例子</a></p></td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>可以进行表格嵌套的示例效果</td>
+    <td><p>适用于需要嵌套子表的情况</p></td>
+    <td><p jquery164006352877627948444="26"><a href="datagrid12.html" target="mainframe">表格嵌套的例子</a></p></td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td><p jquery1708239936868718607="74"> 可排序可筛选表格 </p></td>
+    <td>设置表格的某些列为可排序、可数据过滤 </td>
+    <td><a href="datagrid13.html" target="mainframe">可排序可筛选表格</a></td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td><p jquery1708239936868718607="75"> 更换皮肤样式效果表格 </p></td>
+    <td>可以通过样式文件更换表格样式 </td>
+    <td><a href="datagrid14.html" target="mainframe"> 更换皮肤样式效果表格 </a></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>99</td>
+    <td>大数据量页面测试效果</td>
+    <td>适用于大数据量</td>
+    <td><a href="datagrid3000.html" target="mainframe">大数据量页面的例子</a></td>
+  </tr>
+</table>
+<p></p>
+<p>&nbsp;</p>
+<h2>&nbsp;</h2>
+<h2>三、可选的属性</h2>
+<p>此控件可以设置的属性有</p>
+<table id="attr_list"class="dataintable">
+  <tr>
+    <th width="10%">属性</th>
+    <th width="12%">类型</th>
+    <th width="8%">值</th>
+    <th width="36%">描述</th>
+    <th width="34%">设置方式</th>
+  </tr>
+  <tr>
+    <td><p>width</p></td>
+    <td>数值</td>
+    <td><ul>
+      <li>auto(缺省)      </li>
+      <li></li>
+    </ul></td>
+    <td>表格宽度</td>
+    <td><p>通过js方式设置，如：$('.grid&quot;).datagrid({<code>width:500</code>});</p>
+      <p>通过元素属性设置：&lt;table  <code>width=&quot;500px&quot;</code>&gt;</p></td>
+  </tr>
+  <tr>
+    <td><p>height</p></td>
+    <td>数值</td>
+    <td>500</td>
+    <td>表格宽度</td>
+    <td><p>通过js方式设置，如：$('.grid&quot;).datagrid({<code>width:500</code>});</p>
+      <p>通过元素属性设置：&lt;table <code>width=&quot;500px&quot;</code>&gt;</p></td>
+  </tr>
+  <tr>
+    <td>striped</td>
+    <td>boolean</td>
+    <td><ul>
+      <li>true(缺省)      </li>
+      <p>&nbsp;</p>
+    </ul></td>
+    <td><p>是否使用奇偶行条纹。true:使用奇偶行条纹，flase：不使用奇偶行条纹</p></td>
+    <td><p>通过JS设置，如：$('#em_id&quot;).setValidator({<code>min:12</code>});</p>
+      <p>通过元素属性设置： <code>v_min=&quot;12&quot;</code></p></td>
+  </tr>
+  <tr>
+    <td>trselect</td>
+    <td>boolean</td>
+    <td>true(缺省) </td>
+    <td><p>设置表格是否可以选中某行。true:可以选中，flase：不可选中。<strong>trselect：false时defaultSel、onSelect、toolbar均无效</strong></p></td>
+    <td>通过JS设置，如：$('.grid&quot;).datagrid({<code>trselect:false</code>});</td>
+  </tr>
+  <tr>
+    <td>defaultSel</td>
+    <td>boolean</td>
+    <td><ul>
+      <li>true(缺省) </li>
+    </ul></td>
+    <td>是否缺省选择第一行。true:缺省选中第一行，flase：缺省不选中任何行</td>
+    <td><p>通过JS设置，如：$('.grid&quot;).datagrid({<code>defaultSel:false</code>});</p></td>
+  </tr>
+  <tr>
+    <td id="onShowMsg2">onSelect</td>
+    <td>函数对象</td>
+    <td>false(缺省) </td>
+    <td><p>当选中一行时的回调函数，声明onSelect(index,tr);</p>
+      <p>第1个参数是选中的行号，第2个参数是选中的tr标签对应的dom对象</p></td>
+    <td><p>function onSelectRow(index,tr){ ........}</p>
+      <p>......................</p>
+<p>$('.grid&quot;).datagrid({<code>onSelect:onSelectRow</code>});</p></td>
+  </tr>
+  <tr>
+    <td id="onShowMsg3">toolbar</td>
+    <td>BtnToolBar对象</td>
+    <td>null</td>
+    <td>给表格绑定一个按钮工具条，当选中某行时，根据选中的数据，自动更新工具条中按钮的状态</td>
+    <td><p>var bar=$('.btn_toolbar').BtnToolBar();</p>
+      <p>......................</p>
+      <p>$('.grid&quot;).datagrid({<code>toolbar:bar</code>});</p></td>
+  </tr>
+  <tr>
+    <td id="onShowMsg4">fixhead</td>
+    <td>boolean</td>
+    <td>false(缺省) </td>
+    <td>设置表格是否将表头固定，true固定表头，不随滚动条滚动，适用与大数据量且不分页的表格，flase：不固定表头，适用于分页或数据量较少的表格</td>
+    <td>$('.grid&quot;).datagrid({<code>fixhead:true</code>});</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg5">hashead</td>
+    <td>boolean</td>
+    <td>true(缺省) </td>
+    <td>设置是否有表头，true:有表头，flase：无表头</td>
+    <td>$('.grid&quot;).datagrid({<code>hashead:true</code>});</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg6">idCol</td>
+    <td>整数或字符串</td>
+    <td>-1(缺省) </td>
+    <td>序号自动增长的列编号，idCol如果是整数，则整数指定的列，将自动从1顺序标号（注意整列内容将全部清空后，设置为自增长列）。如果为字符串，将自动查找本行内匹配的class，将其text内容设置为自增长的序号。</td>
+    <td><p>$('.grid&quot;).datagrid({<code>idCol:1</code>});或</p>
+      <p>$('.grid&quot;).datagrid({<code>idCol:'idcolClass'</code>});</p></td>
+  </tr>
+  <tr>
+    <td id="onShowMsg9">idStart</td>
+    <td>整数</td>
+    <td>1(缺省) </td>
+    <td>从第idStart行开始编号，与idCol一起使用</td>
+    <td>$('.grid&quot;).datagrid({<code>idCol:1,idStart:3</code>});从第三行开始自动编号</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg7">headclass</td>
+    <td>字符串</td>
+    <td>&quot;gridheadclass&quot;(缺省) </td>
+    <td>用来定义表头的样式名称，已经定义的样式有两个gridheadclass、gridheadclass2</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">thresPage</td>
+    <td>整数</td>
+    <td>1000(缺省)</td>
+    <td>分页阀值,大于等于此数值时将自动执行前端分页</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg10">defSizePage</td>
+    <td>整数</td>
+    <td>15(缺省)</td>
+    <td>前端分页的每页记录数</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg8">page_message</td>
+    <td>字符串</td>
+    <td>存在未显示的数据... ...</td>
+    <td>分页导航信息的文字</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">onAddRow(tr)</td>
+    <td>函数对象</td>
+    <td>空</td>
+    <td>当增加行时，回调函数。tr表示新增的行元素dom对象。</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">colspan</td>
+    <td>数组</td>
+    <td>null</td>
+    <td>要执行相同内容合并的列号数组，从1开始</td>
+    <td>$().datagrid({colspan:[1,9]); //对第1列第9列扫描，相同单元格合并</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">rowspan</td>
+    <td>数组</td>
+    <td>null</td>
+    <td><p>要执行相同内容合并的行号数组</p>
+      <p>从1开始</p></td>
+    <td>$().datagrid({rowspan:[1]}); //对第1行扫描，相同单元格合并</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">sortable</td>
+    <td>boolean</td>
+    <td>false(缺省) </td>
+    <td>表格的各列可以排序，也设置标题行的td此属性，实现对某一列的排序</td>
+    <td><p><span class="STYLE1">1、$().datagrid({sortable:true})</span>;表格所有列都可前端排序 </p>
+      <p>2、<span class="STYLE2">&lt;table&gt;&lt;tr&gt;</span></p>
+      <p class="STYLE2">&lt;td<span class="STYLE1"><strong> sortable</strong></span> &gt; 列标题1&lt;/td&gt;//实现只对第一列排序</p>
+      <p class="STYLE2">&lt;td &gt;列标题2&lt;/td&gt;</p>
+      <p class="STYLE2">&lt;/tr&gt;&lt;/table&gt; </p>
+      <p>&nbsp; </p></td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">filterable</td>
+    <td>boolean</td>
+    <td>false(缺省) </td>
+    <td>表格的各列可以数据过滤也设置标题行的td此属性，实现对某一列的过滤</td>
+    <td><p><span class="STYLE1">1、$().datagrid({filterable:true})</span>;表格所有列都可前端过滤 </p>
+      <p>2、<span class="STYLE2">&lt;table&gt;&lt;tr&gt;</span></p>
+      <p class="STYLE2">&lt;td<span class="STYLE1"><strong> filterable</strong></span> &gt; 列标题1&lt;/td&gt;//实现只对第一列过滤</p>
+      <p class="STYLE2">&lt;td &gt;列标题2&lt;/td&gt;</p>
+      <p class="STYLE2">&lt;/tr&gt;&lt;/table&gt; </p>
+      <p></p></td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h2>&nbsp;</h2>
+<h2>三、可选的方法</h2>
+<table class="dataintable">
+  <tr>
+    <th width="10%">函数名称</th>
+    <th width="30%" >参数列表</th>
+    <th width="20%">适用情况</th>
+    <th width="20%">说明</th>
+    <th width="20%">调用方法</th>
+  </tr>
+  <tr>
+    <td height="59"><p>$.fn.addrow (tr,ipos,ideps)</p></td>
+    <td >&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="middle"><p>$.fn.delrow (idel)</p></td>
+    <td >&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>$.fn.delrow (idel,retentionRows)</td>
+    <td >&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>$.fn.getCurrIndex（）</td>
+    <td >&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>$.fn.addcol (el,op)</td>
+    <td >&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>$.fn.appendElements (el,op)</td>
+    <td >&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>$.fn.gridRowspan(column,idep)</td>
+    <td >column，要合并的列号，idep:可选</td>
+    <td>&nbsp;</td>
+    <td>对连续的内对连续容相同的列执行合并</td>
+    <td>对连续的、内容相同的列进行合并，如果指定了idep参数，则idep列不同时才执行合并</td>
+  </tr>
+  <tr>
+    <td>$.fn.gridColspan(rownum,idep)</td>
+    <td >rownum，要合并的行号，idep:可选</td>
+    <td>&nbsp;</td>
+    <td>对连续的内容相同的行执行合并</td>
+    <td>对连续的、内容相同的行执行合并，如果指定了idep参数，则idep行不同时才执行合并</td>
+  </tr>
+  <tr>
+    <td>$.fn.setGridDisplayRow(where)</td>
+    <td ><span class="STYLE2">缺省的where = {//行筛选条件<br />
+  index : -1,//与text,tohide配合使用<br />
+text: null,<br />
+rowfilter:null,//与index,btn_condition互斥独立使用<br />
+btn_condition:null,//与rowfilter,index互斥独立使用<br />
+tohide:true//与index配合使用<br />
+}; </span></td>
+    <td>设置隐藏或显示符合where条件的数据行</td>
+    <td>&nbsp;</td>
+    <td><span class="STYLE3">$(&quot;#myfilter&quot;).change(function(){
+      <br />
+var selVal =$(this).val();<br />
+if(selVal==&quot;all&quot;) selVal=&quot;&quot;;<br />
+$('.grid1').setGridDisplayRow({btn_condition:selVal});<br />
+});</span></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td >&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="note"><span>注释：</span>无</p>
+<p class="tip"><span>提示：</span>在与datagrid控件一起使用时，请将表单初始化的js放置于datagrid之后完成。</p>
+<h3>详细描述：无</h3>
+<h3>依赖的JS文件及CSS文件</h3>
+<p>&lt;link rel="stylesheet" type="text/css" href="build\webui78\skin\default\webui78.css" &gt;<br>
+&lt;script type="text/javascript" src="../js/webui78.js"&gt;&lt;/script&gt;
+</p>
+</div>
+
+
+<div>
+<h2>实例</h2>
+<h3>html代码写法：</h3>
+<p>&nbsp;</p>
+<pre>&nbsp;
+</pre>
+<p>通过JS设置表格属性 ：</p>
+<p>&nbsp;</p>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt; 
+$(document).ready(function(){	
+。。。。。。
+
+});		
+&lt;/script&gt; 
+</pre>
+<h3 id="set_validator">&nbsp;</h3>
+<p class="note"><span>注释：</span>
+  无</p>
+<p><a href="#">测试</a></p>
+</div>
+
+
+<div>
+<h2>浏览器支持</h2>
+<p>兼容IE6~9、firefox主流浏览器。</p>
+</div>
+
+
+<div>
+<h2>&nbsp;</h2>
+</div>
+
+<div>
+<h2>标准属性</h2>
+<pre>无</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+<div>
+<h2>事件属性</h2>
+<pre>无
+</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+</div>
+
+
+
+
+
+</div><div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

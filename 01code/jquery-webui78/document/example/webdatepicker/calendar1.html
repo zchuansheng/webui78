@@ -1,0 +1,160 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78_config.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+	$('.grid_nohead').datagrid({hashead:false,trselect:false});////不需要表头，并且不需要行选择的设置
+	$('.btn_sbmt').PicButton();//无需设置参数
+	$('.btn').PicButton();
+	$('#finish_date').webDatepicker();
+	$('#date1').webDatepicker();
+	$('#date2').webDatepicker();
+	$('#submit_date').webDatepicker({startyear:1901,endyear:2019});
+	$('#finish_date3').webDatepicker({fmt:"yyyy-mm",upYears:3});
+	$('#finish_date3').setValidator({onErrMsg:'必须是YYYY-MM格式的年月'});
+	$('#selYear').webDatepicker({downYears:3,upYears:3});
+	
+				
+	});
+</script>
+</head>
+
+<body class="html" id="tags">
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+日历使用说明</div>
+<br />
+<div id="wrapper">
+<div>
+<table class="code_table" width="100%"><tr><td>
+<button align="center" class="btn_sbmt"  type="button" value="1"  btn_href="../ok.html"   >页面跳转提交表单</button>&nbsp;
+<button align="center" class="btn"  type="button" value="1"  onclick="javascript:history.back();return false;" >返回</button>
+<form action="" method="post" name="form1" id="form1">
+  
+  <table  class="grid_nohead" width='80%'    >
+
+     		<tr>
+     					<td   align="center">操作编号</td>
+            	<td><input class="zcs" type="text" id="batch_no" name="batch_no"   value="123456789012"  v_type="number" v_min=12 v_max=12 v_onShowMsg="请输入申请编号" title="操作编号"/></td>
+            	<td>信息名称 </td>
+            	<td><input type='text' name='sect_name' id="sect_name"  value ="" size='30' v_type="text" v_empty="1" v_min="1" v_max="40" v_onShowMsg="请输入信息名称11" title="信息名称" /></td>
+   		  </tr>
+    		<tr>
+     					<td  align="center">信息代码</td>
+            	<td><input class="zcs"  type="text" id="sect_code" name="sect_code" value="1234567890"  v_type="number" v_min=10 v_max=10 title="信息代码"/></td>
+            	<td>工作日期 </td>
+            	<td><input type="text" id="finish_date" name="finish_date" v_onShowMsg="请输入预计工作日期" value="2010-01-08" v_type="date" title="工作日期"/></td>
+            </tr>
+    		<tr >
+      					<td  align="center">信息地址</td>
+            	<td  ><input type='text' id='sect_addr' name='sect_addr' value='' title="信息地址" /></td>
+            	<td>交付日期 </td>
+            	<td><input type="text" id="submit_date" name="submit_date" value="" v_type="date" title="日期"/></td>
+            </tr>
+            
+    		<tr>
+     					<td  align="center">日期范围：</td>
+            	<td colspan='3' ><input type="text" id="date1" name="date1" v_onshowmsg="请输入预计工作日期" value="2011-01-08" v_type="date" title="工作日期"/>
+            	  到
+           	      <input type="text" id="date2" name="date2" value="" is_readonly="0" v_type="date" title="日期"/></td>
+        
+        </tr>
+     		<tr>
+     					<td  align="center">选择年月：</td>
+            	<td colspan='3' ><input type="text" id="finish_date3" name="finish_date3" v_regExp="^\d{4}(\-|\/|.)\d{1,2}$"  value="" v_type="custom" v_min="2010-06-01" v_max="2010-08-31" title="出生年月"/>
+            	此处为自定义类型，采用自定义的正则表达式式进行验证</td>
+        
+        </tr>
+     		<tr>
+     					<td  align="center">设置了可选年数：</td>
+            	<td colspan='3' ><input type="text" id="selYear" name="selYear"    v_type="date"  title="出生日期"/></td>
+        
+        </tr>
+	      <tr> 
+		      <td align="right" >你的描述:</td>
+		      <td colspan="3" valign="top"> <textarea id="sect_remark" name="sect_remark" cols="50" rows="2" v_type="text" v_min=10 v_max="20" title="你的描述" >规划许可证规划许可证</textarea> 
+		      </td>
+    	  </tr>
+
+		</table>
+<br/>
+</form>
+</td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="maincontent"  >
+
+
+<div>
+
+<h2>&nbsp;</h2>
+<h2>说明</h2>
+
+<p>&nbsp;</p>
+<h3>依赖的JS文件及CSS文件</h3>
+<p>&lt;link rel="stylesheet" type="text/css" href="build\webui78\skin\default\webui78.css" &gt;<br>
+&lt;script type="text/javascript" src="../js/webui78.js"&gt;&lt;/script&gt;
+</p>
+</div>
+
+
+<div>
+<h2>实例</h2>
+<p>图片按钮的一般用法：初始化</p>
+<pre>
+&lt;script type="text/javascript"&gt; 
+$(document).ready(function(){	
+	$('#form1').setValidator();<br />
+
+//设置可以选择的最小年份和最大年份如下：
+	$('#submit_date').webDatepicker({startyear:1901,endyear:2019});
+
+//设置日期格式为&ldquo;年-月&rdquo;格式，无日期选择，如下:<br />	$('#finish_date3').webDatepicker({fmt:&quot;yyyy-mm&quot;});<br />}  
+
+});		
+&lt;/script&gt; 
+</pre>
+<p>需要显示按钮的地方，需要如下写法</p>
+<pre>&lt;button align=&quot;center&quot; class=&quot;btn_sbmt&quot;  type=&quot;button&quot; value=&quot;1&quot;  btn_href=&quot;../ok.html&quot;   &gt;页面跳转提交表单&lt;/button&gt;</pre>
+<p class="note"><span>注释：</span>
+	上述代码中的class="btn" 中的class名字可以是任意自定义的类名称
+</p>
+<p>&nbsp;</p>
+
+</div>
+
+
+<div>
+<h2>&nbsp;</h2>
+</div>
+<div> </div>
+
+</div>
+
+
+
+
+
+</div><div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

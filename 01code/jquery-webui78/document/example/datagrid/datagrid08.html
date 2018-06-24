@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar();	
+	var g=$('.grid2').datagrid({onAddRow:addRow1,defaultSel:false,idCol:'idcolClass'});
+	$("#btn2").click(function(){
+			//先设定当新增行时需要执行的函数
+			g[0].p.onAddRow=function(tr){
+				$(":checkbox[name='chck']",$(tr)).attr("checked",true);
+			};
+			//调用新增行动作
+			//alert(g.getCurrIndex());
+			g.addrow(null,null,g.getCurrIndex()+1);
+	});
+	$("#btn3").click(function(){
+			//先设定当新增行时需要执行的函数
+			g[0].p.onAddRow=function(tr){
+				$(":text[name='somedata']",$(tr)).attr("value","新增行"+$(tr).index());
+			};
+			//调用新增行动作
+			g.addrow(null,3,3);
+	});
+	$("#btn4").click(function(){
+		//先设定当新增行时需要执行的函数
+			g[0].p.onAddRow=addRow4;
+			g.addrow();
+
+	});
+
+
+
+});
+
+function addRow1(tr){
+	$("td",$(tr)).addClass("redtd");
+}
+function addRow4(tr){
+	$("td",$(tr)).addClass("greentd");
+}
+		
+			
+	
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>可以增加自定义行的表格,</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br />
+		<div><strong>可以增加自定义行的表格,要实现自动排号某个表格列，请设置属性"idCol:列编号"</strong></div>
+		
+<div class="btn_toolbar">
+  <button class="btn" id="btn1" type="button" value="4" onClick="$('.grid2').addrow();"  force > 初始化时指定的增加函数</button>
+  <button class="btn" id="btn2" type="button" value="4"  force > 从最后面增加选中的行</button>
+  <button class="btn" id="btn3"  type="button" value="4"   force > 增加新行时，修改文本框内容 </button>
+  <button class="btn" id="btn4"  type="button" value="4"  force > 增加行(自定义行) </button>
+</div>
+
+<br>
+
+
+				<table  class="grid2" width='670' >
+    				<thead>
+    		<tr>
+            	<th colspan="4"  >表格</th>
+           </tr>
+         </thead>
+     		<tr>
+     					<td width='20%' btn_condition='01'  align="center"><span class="idcolClass">1</span>
+     						<input type="checkbox" name="chck"  >
+     											<input type="hidden" name="batch_no" value="100309000304"/>
+     					</td>
+            	<td width='20%' >100309000304</td>
+            	<td width='30%' >花果山谷 </td>
+            	<td width='30%' >2011-01-07</td>
+         		</tr>
+    		<tr >
+      					<td  btn_condition='02' align="center"><span class="idcolClass">2</span>
+		                  <input type="checkbox" name="chck"  >      						<input type="hidden" name="batch_no" value="100309000300"/></td>
+            	<td>100309000300</td>
+            	<td>花果山谷1 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='02' align="center"><span class="idcolClass">3</span>
+		                  <input type="checkbox" name="chck"  >     						<input type="hidden" name="batch_no" value="100309000301"/></td>
+            	<td>100309000301</td>
+            	<td><input type='text' name ="somedata" value='花果山谷2' /> </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center"><span class="idcolClass">4</span>
+		                  <input type="checkbox" name="chck"  >     						<input type="hidden" name="batch_no" value="100309000302"/></td>
+            	<td>100309000302</td>
+            	<td>花果山谷3 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+      					<td  btn_condition='05' align="center"><span class="idcolClass">5</span>
+		                  <input type="checkbox" name="chck"  >      						<input type="hidden" name="batch_no" value="100309000303"/></td>
+            	<td>100309000303</td>
+            	<td>花果山谷4  </td>
+            	<td>2010-11-12</td>
+            </tr>
+
+		</table>	
+  <h2>示例</h2>
+  <p>JS代码，例如：</p>
+                <pre>
+&lt;script type="text/javascript"&gt; 
+$(document).ready(function(){	
+
+	$('.btn').PicButton();<br>	var bar=$('.btn_toolbar').BtnToolBar();	<br>	var g=$('.grid2').datagrid({<code>onAddRow:addRow1,</code>defaultSel:false,<code>idCol:'idcolClass'</code>});<br>	$(&quot;#btn2&quot;).click(function(){<br>			//先设定当新增行时需要执行的函数<br>			g[0].p.onAddRow=<code>function(tr){<br>				$(&quot;:checkbox[name='chck']&quot;,$(tr)).attr(&quot;checked&quot;,true);<br>			};<br>			//调用新增行动作<br>			g.addrow();<br>	}</code>);
+	$(&quot;#btn3&quot;).click(function(){<br>			//先设定当新增行时需要执行的函数<br>			g[0].p.onAddRow=<code>function(tr){<br>				$(&quot;:text[name='somedata']&quot;,$(tr)).attr(&quot;value&quot;,&quot;新增行&quot;+$(tr).index());<br>			};<br>			//调用新增行动作<br>			g.addrow(3);<br>	}</code>);<br>	$(&quot;#btn4&quot;).click(<code>function(){<br>		//先设定当新增行时需要执行的函数<br>			g[0].p.onAddRow=addRow4;<br>			g.addrow();<br>	}</code>);
+
+});		<code>
+function addRow1(tr){<br>	$(&quot;td&quot;,$(tr)).addClass(&quot;redtd&quot;);<br>}</code><code><br>function addRow4(tr){<br>	$(&quot;td&quot;,$(tr)).addClass(&quot;greentd&quot;);<br>}
+</code>
+&lt;/script&gt; 
+
+                </pre>
+  <br/>
+
+
+</form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+ 
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<link rel="stylesheet" type="text/css" href="../../../skinsPackage/skin-datagrid-w1/skin-datagrid-web.css" />
+
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条
+	var g=$('.grid1').datagrid({striped:false,trselect:false});
+	var g=$('.grid2').datagrid({striped:false,trselect:false,thresPage:3,defSizePage:3 ,page_message:"导航："});
+	var g=$('.grid3').datagrid({striped:false,trselect:false,thresPage:3,defSizePage:5,});
+	 
+	
+	
+});		
+	
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+自定义样式的表格</div>
+ 
+此处演示将datagrid的样式，改为自己需要的样式
+
+<form  name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br />
+ 
+<table border="1"><tr><td>
+		<table  class="grid1"  width="450"    >
+    	  <tr ><td class="thisheadclass">板块名称111111111111</td><td><a href="#">更多>></a></td></tr>
+    	  <tr>
+				<td><a href="http://news.163.com/13/0628/03/92E6494I00014AED.html">深圳昆山等4地将试点分层分类救助困境儿童</a></td> <td>2013-01-31</td> 
+   		 	</tr>
+    		<tr>
+				<td><a href="http://news.163.com/13/0628/06/92EGL51I00014JB6.html">菲律宾总统致信习近平望免除菲籍女毒贩死刑</a</td> 	<td>2013-01-31</td>
+            </tr>
+    		<tr>
+				<td><a href="http://news.163.com/13/0627/20/92DD9K6H00014JB5.html">北上广等43城市外地人可就近办护照</a></td><td>2013-01-31</td>         
+        </tr>
+ 
+			 
+		</table>
+		<hr/>
+
+		<table  class="grid2"  width="450"    >
+    	  <tr ><td class="thisheadclass">板块名称2222222222</td><td><a href="#">更多>></a></td></tr>
+    	  <tr>
+				<td><a href="http://news.163.com/13/0628/03/92E6494I00014AED.html">深圳昆山等4地将试点分层分类救助困境儿童</a></td> <td>2013-01-31</td> 
+   		 	</tr>
+    		<tr>
+				<td><a href="http://news.163.com/13/0628/06/92EGL51I00014JB6.html">菲律宾总统致信习近平望免除菲籍女毒贩死刑</a</td> 	<td>2013-01-31</td>
+            </tr>
+    		<tr>
+				<td><a href="http://news.163.com/13/0627/20/92DD9K6H00014JB5.html">北上广等43城市外地人可就近办护照</a></td><td>2013-01-31</td>         
+        </tr>
+   		<tr>
+				<td><a href="http://news.163.com/13/0627/20/92DD9K6H00014JB5.html">奥巴马:不出动战机拦截斯诺登乘坐航班 </a></td><td>2013-01-31</td>         
+        </tr>
+   		<tr>
+				<td><a href="http://news.163.com/13/0627/20/92DD9K6H00014JB5.html">致时代前行者：致敬每一个奔腾不息的心灵</a></td><td>2013-01-31</td>         
+        </tr>
+   		<tr>
+				<td><a href="http://news.163.com/13/0627/20/92DD9K6H00014JB5.html">最后一个了</a></td><td>2013-01-31</td>         
+        </tr>
+    	
+			 
+		</table>
+		<hr/>
+		<table  class="grid3"  width="450"    >
+    	  <tr ><td class="thisheadclass">板块名称33333333333</td><td><a href="#">更多>></a></td></tr>
+  	  <tr>
+				<td><a href="http://news.163.com/13/0628/03/92E6494I00014AED.html">深圳昆山等4地将试点分层分类救助困境儿童</a></td> <td>2013-01-31</td> 
+   		 	</tr>
+    		<tr>
+				<td><a href="http://news.163.com/13/0628/06/92EGL51I00014JB6.html">菲律宾总统致信习近平望免除菲籍女毒贩死刑</a</td> 	<td>2013-01-31</td>
+            </tr>
+    		<tr>
+				<td><a href="http://news.163.com/13/0627/20/92DD9K6H00014JB5.html">北上广等43城市外地人可就近办护照</a></td><td>2013-01-31</td>         
+        </tr>
+   		<tr>
+				<td><a href="http://news.163.com/13/0627/20/92DD9K6H00014JB5.html">奥巴马:不出动战机拦截斯诺登乘坐航班 </a></td><td>2013-01-31</td>         
+        </tr>
+   		<tr>
+				<td><a href="http://news.163.com/13/0627/20/92DD9K6H00014JB5.html">致时代前行者：致敬每一个奔腾不息的心灵</a></td><td>2013-01-31</td>         
+        </tr>
+   		<tr>
+				<td><a href="http://news.163.com/13/0627/20/92DD9K6H00014JB5.html">最后一个了</a></td><td>2013-01-31</td>         
+        </tr>
+    				 
+		</table>
+		<br>
+</td></tr></table>
+
+</form>
+
+
+ 
+ 
+</body>
+</html>

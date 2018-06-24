@@ -1,0 +1,542 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webtree</title>
+
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/accordionMenu/skin-tree-01.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+function selNode(node){
+	//alert("node="+node.html());
+	
+}
+
+$(document).ready(function(){	
+ 	var tree1=$('#mytree1');
+ 	var tree2=$('#mytree2');
+ 	var tree3=$('#mytree3');
+	tree1.webTree({collapsed:true,expandOne:true,enableIcon:true,enable_selbtn:false,enable_hitbtn:false,
+		icons:{open:'branch-o2',closed:'branch-c2'},onSelect:selNode,onExpand:selNode,onCollapse:selNode});// 
+////所有节点都按照不同级别显示图标
+	tree2.webTree({collapsed:true,expandOne:true,enableIcon:true,enable_selbtn:false,enable_hitbtn:false,
+		icons:{type:'1'},onSelect:selNode,onExpand:selNode,onCollapse:selNode});// 
+////叶子节点图标不随树的层级改变（叶子节点始终显示一种图标）
+	tree3.webTree({collapsed:true,expandOne:true,enableIcon:true,enable_selbtn:false,enable_hitbtn:false,
+		icons:{type:'4'},onSelect:selNode,onExpand:selNode,onCollapse:selNode});// 
+	 
+	$(".btn").PicButton();
+	$("#btn11").click(function(){
+		tree1.addNode($("<li><div>my child node!</div></li><li><div>my child node"+$(".nodeitem",tree1).length+"!</div></li>"),tree1.getSelectedNode());
+		return false;
+	});
+	$("#btn12").click(function(){
+		tree1.addNode($("<li><div>my brother node!</div></li><li><div>my brother node"+$(".nodeitem",tree1).length+"!</div></li>"),tree1.getSelectedNode(),false);
+		return false;
+	});
+	$("#btn21").click(function(){
+		tree2.addNode($("<li><div>my child node!</div></li><li><div>my child node"+$(".nodeitem",tree2).length+"!</div></li>"),tree2.getSelectedNode());
+		return false;
+	});
+	$("#btn22").click(function(){
+		tree2.addNode($("<li><div>my brother node!</div></li><li><div>my brother node"+$(".nodeitem",tree2).length+"!</div></li>"),tree2.getSelectedNode(),false);
+		return false;
+	});
+	$("#btn23").click(function(){
+		tree2.removeNode(tree2.getSelectedNode());
+		return false;
+	});
+ 
+});		
+	
+</script>
+ </head>
+ 
+ <div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+ 无线级折叠风琴效果的树</div>
+<div class="code">
+	
+</div>
+	<button id="btn11" class="btn" >追加孩子节点</button>
+	<button id="btn12" class="btn" >插入兄弟节点</button>
+
+<form  name ="form1">
+	<table class="dataintable" width="80%" height="500">
+    <tr>
+    <td height="40"  width="30%"><strong>icons:{open:'branch-o2',closed:'branch-c2'}</strong><br>节点图标为:展开/关闭2种</td>
+    <td  width="40%"><strong>icons:{type:'1'}</strong><br>根据level的不同层级显示图标</td> 
+    <td  width="30%"><strong>icons:{type:'4'}</strong><br>根据level的不同层级显示图标，但叶子节点图标不随树的层级改变 </td> 
+    </tr>
+		<tr>
+			<td valign="top" >	
+	<div> 
+				<ul id="mytree1"  >	 
+		<li><div>Item 1</div>
+			<ul>
+				<li class="open" ><div>节点Item 1.0</div>
+					<ul>
+						<li><div>Item 1.0.0</div></li>
+					</ul>
+				</li>
+				<li><div><a href="#">Item 1.1</a></div><ul></ul></li>
+				<li><div><a href="#">Item 1.2</a></div>
+					<ul>
+						<li ><div>Item 1.2.0 </div>
+						<ul>
+							<li ><div><a href="#">Item 1.2.0.0</a></div></li>
+							<li><div><a href="#">Item 1.2.0.1</a></div></li>
+							<li><div><a href="#">Item 1.2.0.2</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 1.2.1</a></div>
+						<ul>
+							<li><div><a href="#">Item 1.2.1.0</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 1.2.2</a></div>
+						<ul>
+							<li><div><a href="#">Item 1.2.2.0</a></div></li>
+							<li><div><a href="#">Item 1.2.2.1</a></div></li>
+							<li><div><a href="#">Item 1.2.2.2</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><div><a href="#">Item 2</a></div>
+			<ul>
+				<li><div><span>Item 2.0</span></div>
+					<ul>
+						<li><div><a href="#">Item 2.0.0</a></div>
+						<ul>
+							<li><div><a href="#">Item 2.0.0.0</a></div></li>
+							<li><div><a href="#">Item 2.0.0.1</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+				<li><div><a href="#">Item 2.1</a></div>
+					<ul>
+						<li><div><a href="#">Item 2.1.0</a></div>
+						<ul>
+							<li><div><a href="#">Item 2.1.0.0</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 2.1.1</a></div>
+						<ul>
+							<li><div><a href="#">Item 2.1.1.0</a></div></li>
+							<li><div><a href="#">Item 2.1.1.1</a></div></li>
+							<li><div><a href="#">Item 2.1.1.2</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 2.1.2</a></div>
+						<ul>
+							<li><div><a href="#">Item 2.1.2.0</a></div></li>
+							<li><div><a href="#">Item 2.1.2.1</a></div></li>
+							<li><div><a href="#">Item 2.1.2.2</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><div><a href="#">Item 3</a></div>
+			<ul>
+				<li  ><div><a href="#">Item 3.0</a></div>
+					<ul>
+						<li><div><a href="#">Item 3.0.0</a></div></li>
+						<li><div><a href="#">Item 3.0.1</a></div>
+							<ul>
+								<li><div><a href="#">Item 3.0.1.0</a></div></li>
+								<li><div><a href="#">Item 3.0.1.1</a></div></li>
+							</ul>
+						</li>
+						<li><div><a href="#">Item 3.0.2</a></div>
+							<ul>
+								<li><div><a href="#">Item 3.0.2.0</a></div></li>
+								<li><div><a href="#">Item 3.0.2.1</a></div></li>
+								<li><div><a href="#">Item 3.0.2.2</a></div></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul> 
+	</div>
+			</td>
+			<td valign="top"   >
+				<div>
+			  <ul id="mytree2"  >
+			    <li>
+			      <div>Item 1</div>
+			      <ul>
+			        <li class="open" >
+			          <div>节点Item 1.0</div>
+			          <ul>
+			            <li>
+			              <div>Item 1.0.0</div>
+		                </li>
+			            <li>
+			              <div>Item 1.0.1</div>
+		                </li>
+			            <li>
+			              <div>Item 1.0.2</div>
+		                </li>
+		              </ul>
+		            </li>
+			        <li>
+			          <div><a href="#">Item 1.1</a></div>
+			          <ul>
+		              </ul>
+		            </li>
+			        <li>
+			          <div><a href="#">Item 1.2</a></div>
+			          <ul>
+			            <li >
+			              <div>Item 1.2.0 </div>
+			              <ul>
+			                <li >
+			                  <div><a href="#">Item 1.2.0.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 1.2.0.1</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 1.2.0.2</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 1.2.1</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 1.2.1.0</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 1.2.2</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 1.2.2.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 1.2.2.1</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 1.2.2.2</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+		              </ul>
+		            </li>
+		          </ul>
+		        </li>
+			    <li>
+			      <div><a href="#">Item 2</a></div>
+			      <ul>
+			        <li>
+			          <div><span>Item 2.0</span></div>
+			          <ul>
+			            <li>
+			              <div><a href="#">Item 2.0.0</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 2.0.0.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 2.0.0.1</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+		              </ul>
+		            </li>
+			        <li>
+			          <div><a href="#">Item 2.1</a></div>
+			          <ul>
+			            <li>
+			              <div><a href="#">Item 2.1.0</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 2.1.0.0</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 2.1.1</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 2.1.1.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 2.1.1.1</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 2.1.1.2</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 2.1.2</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 2.1.2.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 2.1.2.1</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 2.1.2.2</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+		              </ul>
+		            </li>
+		          </ul>
+		        </li>
+			    <li>
+			      <div><a href="#">Item 3</a></div>
+			      <ul>
+			        <li  >
+			          <div><a href="#">Item 3.0</a></div>
+			          <ul>
+			            <li>
+			              <div><a href="#">Item 3.0.0</a></div>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 3.0.1</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 3.0.1.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 3.0.1.1</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 3.0.2</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 3.0.2.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 3.0.2.1</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 3.0.2.2</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+		              </ul>
+		            </li>
+		          </ul>
+		        </li>
+		      </ul>
+		    </div>
+		    </td>
+			<td valign="top"   >
+				<div>
+			  <ul id="mytree3"  >
+			    <li>
+			      <div>Item 1</div>
+			      <ul>
+			        <li class="open" >
+			          <div>节点Item 1.0</div>
+			          <ul>
+			            <li>
+			              <div>Item 1.0.0</div>
+		                </li>
+			            <li>
+			              <div>Item 1.0.1</div>
+		                </li>
+			            <li>
+			              <div>Item 1.0.2</div>
+		                </li>
+		              </ul>
+		            </li>
+			        <li>
+			          <div><a href="#">Item 1.1</a></div>
+
+		            </li>
+			        <li>
+			          <div><a href="#">Item 1.2</a></div>
+			          <ul>
+			            <li >
+			              <div>Item 1.2.0 </div>
+			              <ul>
+			                <li >
+			                  <div><a href="#">Item 1.2.0.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 1.2.0.1</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 1.2.0.2</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 1.2.1</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 1.2.1.0</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 1.2.2</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 1.2.2.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 1.2.2.1</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 1.2.2.2</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+		              </ul>
+		            </li>
+		          </ul>
+		        </li>
+			    <li>
+			      <div><a href="#">Item 2</a></div>
+			      <ul>
+			        <li>
+			          <div><span>Item 2.0</span></div>
+			          <ul>
+			            <li>
+			              <div><a href="#">Item 2.0.0</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 2.0.0.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 2.0.0.1</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+		              </ul>
+		            </li>
+			        <li>
+			          <div><a href="#">Item 2.1</a></div>
+			          <ul>
+			            <li>
+			              <div><a href="#">Item 2.1.0</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 2.1.0.0</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 2.1.1</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 2.1.1.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 2.1.1.1</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 2.1.1.2</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 2.1.2</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 2.1.2.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 2.1.2.1</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 2.1.2.2</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+		              </ul>
+		            </li>
+		          </ul>
+		        </li>
+			    <li>
+			      <div><a href="#">Item 3</a></div>
+			      <ul>
+			        <li  >
+			          <div><a href="#">Item 3.0</a></div>
+			          <ul>
+			            <li>
+			              <div><a href="#">Item 3.0.0</a></div>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 3.0.1</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 3.0.1.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 3.0.1.1</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+			            <li>
+			              <div><a href="#">Item 3.0.2</a></div>
+			              <ul>
+			                <li>
+			                  <div><a href="#">Item 3.0.2.0</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 3.0.2.1</a></div>
+		                    </li>
+			                <li>
+			                  <div><a href="#">Item 3.0.2.2</a></div>
+		                    </li>
+		                  </ul>
+		                </li>
+		              </ul>
+		            </li>
+		          </ul>
+		        </li>
+		      <li>
+		      	<div><a href="#">Item 4</a></div>
+		      </li>
+		      </ul>
+		    </div>
+		    </td>			 
+		</tr>
+	</table>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	---------------------------------------------------------------
+	
+	
+	</form>
+
+
+</body>
+</html>
+	
+	

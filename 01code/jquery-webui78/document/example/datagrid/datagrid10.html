@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条
+	var g=$('.grid1').datagrid({toolbar:bar});//或执行代码 g[0].grid.setBar(bar);	也可以
+	//	$.fn.appendElements = function(el,irow,icol,op.linkid,op.clear,op.tohead){		
+
+	$('#btn_add').click(function(){
+		g.appendElements('<input type="checkbox" name="sel_data">',{icol:$('#icol').val(),linkid:1});
+		g.appendElements('<a href="#" id="sel_all">反选111</a>',{icol:$('#icol').val(),linkid:1,clear:true,tohead:true});
+		$('#sel_all').check_against2("sel_data");
+	});
+	$('#btn_add2').click(function(){
+		g.appendElements('<input type="text" name="abc" size="10">',{icol:2,linkid:2,clear:true});
+	});
+	$('#btn3').click(function(){
+		g.appendElements('<input type="checkbox" name="abc">',{irow:$('#irow').val(),icol:$('#icol').val()});
+	});
+	$('#btn4').click(function(){
+		g.appendElements('<input type="input" name="someinput">',{irow:g.getCurrIndex()});
+	});
+	$('#btn5').click(function(){
+		g.appendElements('<select  name="sel_data"><option value="00">编辑</option><option value="01">提交审核</option></select>',
+		{irow:0,icol:4,clear:true,tohead:true});
+	});
+	$('#btn6').click(function(){
+		g.addcol('<input type="text" name="amt" value="" size="10" v_type="decimal2">',{width:100,title:'存款金额'});
+		$('#form1').setValidator();
+	});
+	var grid_fixhead=$('.grid_fixhead').datagrid({fixhead:true});//或执行代码 g[0].grid.setBar(bar);	也可以
+	$('#btn21').click(function(){
+		grid_fixhead.appendElements('<input type="checkbox" name="abc">',{irow:$('#irow').val(),icol:$('#icol').val()});
+	});
+	$('#btn22').click(function(){
+		grid_fixhead.appendElements('<input type="input" name="someinput">',{irow:$('#irow').val(),icol:3});
+	});
+	$('#btn23').click(function(){
+		grid_fixhead.appendElements('<select  name="sel_data"><option value="00">编辑</option><option value="01">提交审核</option></select>',
+		{icol:5,clear:true,tohead:true});
+	});
+	$('#btn24').click(function(){
+		grid_fixhead.addcol('<input type="checkbox" name="abc">',{ipos:2,width:100,title:'存款金额'});
+	});
+	
+
+});		
+	
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+一般的数据表格、工具条的用法</div>
+<div class="code">
+	
+</div>
+<form  id="form1" name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br />
+		<div><strong>演示向表格动态增加元素</strong><br/>
+		</div>
+<div>
+追加位置：行号：<input type="text" name="irow" id="irow" value="0"/>列号：<input type="text" id="icol" name="icol" value="0"/>
+</div>
+<div class="btn_toolbar" >
+	<button class="btn" id ='btn_add' type="button" value="1"    force >在第一列新增复选框</button>
+	<button class="btn"  id="btn_add2" type="button" value="2"    force >将第3列变为可编辑的列</button>	
+	<button class="btn" id="btn3" type="button" value="4" force > 向表格追加复选框 </button>
+	<button class="btn" id="btn4" type="button" value="4" force > 在选中行追加输入框 </button>
+	<button class="btn" id="btn5" type="button" value="4" force > 向表头追加下拉框 </button>
+	<button class="btn" id="btn6" type="button" value="4" force > 新增列 </button>
+	
+	<div class="btn_condition" >
+		<div id='condition_null'>新增,打印</div>
+		<div id='00'>新增,编辑,提交</div>
+		<div id='01'>新增,编辑,打印</div>
+		<div id='02'>新增,提交,打印</div>
+		<div id='03'>新增,提交</div>
+	</div> 
+</div>
+  <button class="btn" id="btn6" type="button" btn_href='./../ok.html' value="4" force > 提交 </button><br>
+
+		<table  class="grid1"  width="100%"   >
+    		<tr>
+            	<td width="11%"  >序号</td>
+            	<td width="24%"  >操作编号</td>
+            	<td width="22%" >信息名称</td>
+            	<td width="22%" >操作员</td>
+            	<td width="21%" >状态</td>
+           </tr>
+     		<tr>
+     					<td   btn_condition='01' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+            	<td>编辑</td>
+         		</tr>
+    		<tr  >
+      					<td  btn_condition='02' align="center">2</td>
+            	<td>100309000300</td>
+            	<td>花果山谷1 </td>
+            	<td>2010-11-12</td>
+            	<td>提交审核</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='02' align="center">3</td>
+            	<td>100309000301</td>
+            	<td>花果山谷2 </td>
+            	<td>2010-11-12</td>
+            	<td>提交审核</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">4</td>
+            	<td>100309000302</td>
+            	<td>花果山谷3 </td>
+            	<td>2010-11-12</td>
+            	<td>撤销</td>
+            </tr>
+    		<tr>
+      					<td  btn_condition='05' align="center">5</td>
+            	<td>100309000303</td>
+            	<td>花果山谷4 </td>
+            	<td>2010-11-12</td>
+            	<td>交易完成</td>
+            </tr>
+
+		</table>
+
+  <p>固定表头的表格</p>
+  <p>	<button class="btn" id="btn21" type="button" value="4" force > 向表格追加复选框 </button>
+	<button class="btn" id="btn22" type="button" value="4" force > 向表格追加输入框 </button>
+	<button class="btn" id="btn23" type="button" value="4" force > 向表格追加下拉框 </button>
+    	<button class="btn" id="btn24" type="button" value="4" force > 新增列 </button>
+    
+    </p>
+  <table  class="grid_fixhead" height="200" width="80%">
+    <tr>
+      <td width="100"  >序号</td>
+      <td width="200"  >操作编号</td>
+      <td width="300" >信息名称</td>
+      <td width="200" >操作员</td>
+      <td width="100" >列 55555</td>
+      <td width="100" >列 666666</td>
+    </tr>
+    <tr>
+      <td  btn_condition='01' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr >
+      <td  btn_condition='02' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='03' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='04' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='05' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='01' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr >
+      <td  btn_condition='02' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='03' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='04' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='05' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='01' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr >
+      <td  btn_condition='02' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='03' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='04' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='05' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='01' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr >
+      <td  btn_condition='02' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='03' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='04' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='05' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='01' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr >
+      <td  btn_condition='02' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='03' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='04' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+    <tr>
+      <td  btn_condition='05' align="center">1</td>
+      <td>100309000304</td>
+      <td>花果山谷 </td>
+      <td>2011-01-07</td>
+      <td>数据5</td>
+      <td>数据6</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+		<p><br>
+  </p>
+</form>
+
+
+
+</body>
+</html>

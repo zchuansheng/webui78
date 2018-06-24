@@ -1,0 +1,6 @@
+{"result":[
+{"id":2,"name":"贰级信息11","url":"./treedata/tree_data2.json","level":"2","isleaf":false,"parent_id":"1" },
+{"id":6,"name":"贰级信息12","url":"./treedata/tree_data6.json","level":"2","isleaf":false,"parent_id":"1" }
+],
+"message":""
+}

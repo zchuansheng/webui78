@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>accordionMutil</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78-webPanel.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+	   	$(".panel").webPanel( );
+});
+</script>
+<style type="text/css">
+<!--
+.STYLE1 {color: #0000FF}
+.STYLE2 {color: #0000FF}
+.STYLE3 {color: #CC0000}
+-->
+</style>
+</head>
+  <body >
+<div class="headline"  >
+  <div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+  	  将html数据格式化为多级可折叠菜单的效果</div>
+<table   >
+<tr>
+			<td>						
+				<div class="panel" title="我的面板">
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				</div>				
+				<br>
+				<br>
+				<br>
+					<div class="panel" title="带工具按钮的面板">
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+ 
+				</div>				
+			<br>
+				<div class="panel" title="我的面板"  style="width:800px;height:500px;"  >
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+				  aaaaaaaaaaaaaaaaaaaaaaaaa<br>
+ 				<div class="panel" title="一级子面板" style="width:600px;height:200px;"  >
+				 bbbbbbbbbbbbbbbbbbbbbb<br>
+				 bbbbbbbbbbbbbbbbbbbbbbb
+				 <br>
+	  			<div class="panel" title="二级子面板" style="width:300px;height:200px;"   >
+				 ccccccccccccccc<br>
+				 ccccccccccccccc
+	 				</div>
+				</div>
+ 				<div class="panel" title="一级子面板" style="width:500px;height:200px;"   >
+ 				 ddddddddddddddd<br>
+				 ddddddddddddddd<br>
+			</div>
+
+			  </div>				
+	 
+			</td>
+		</tr>
+	</table>
+  	
+  	
+  	
+
+  </body>
+</html>

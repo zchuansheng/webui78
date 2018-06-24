@@ -1,0 +1,197 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+				
+				
+	});
+</script>
+<style type="text/css">
+<!--
+.STYLE1 {	color: #0000CC;
+	font-weight: bold;
+	font-size: 14;
+}
+.STYLE2 {	color: #0000CC;
+	font-weight: bold;
+}
+.STYLE4 {color: #FF0000}
+.STYLE6 {color: #FF0000; font-weight: bold; }
+.STYLE7 {
+	color: #0000FF;
+	font-weight: bold;
+}
+.STYLE8 {	color: #CC6600;
+	font-weight: bold;
+}
+.STYLE10 {color: #0000FF}
+.STYLE11 {color: #CC6600; font-weight: bold; font-size: 11px; }
+-->
+</style>
+</head>
+
+<body class="html" id="tags">
+
+<div id="wrapper">
+
+<div id="header">
+<h1>BtnToolBar按钮工具条的使用说明</h1>
+</div>
+
+
+<div id="maincontent"  >
+
+<h1>名称：BtnToolBar</h1>
+<div>
+
+<h2>定义与说明</h2>
+<p>datagrid是基于table标签实现的，对table标签定义的表格进行美化，实现需要的数据表格功能。</p>
+<p><strong>一、要使用BtnToolBar，您需要完成以下工作：</strong></p>
+<p>1、编写div标签的html代码</p>
+<p>（1）如果需要根据选中表格的数据行，自动隐藏或显示按钮，则需要设置<code><strong>class=&quot;btn_condition&quot;</strong></code>显示条件<a href="#btn_conditon">参见代码。</a></p>
+<p>（2）如在按钮工具条中有部分按钮需要不受条件约束，请设置按钮的force属性。<a href="#btn_conditon"></a><a href="#btn_conditon">参见代码。</a></p>
+<p>（3）当表格无选中行时，工具条默认情况不显示任何按钮，如果需要在无选中时，显示工具条件的按钮，</p>
+<p>请在<code><strong>class=&quot;btn_condition&quot;</strong></code>中设置id='condition_null'的div，在id='condition_null'中列出需要显示的按钮<a href="#btn_conditon">,参见代码。</a></p>
+<p>2、在页面加载完成时，调用JS，完成对<strong>BtnToolBar</strong>初始化，及参数设置<a href="#btn_init">参见代码。</a></p>
+<h2>二、可选的属性</h2>
+<table id="attr_list"class="dataintable">
+  <tr>
+    <th width="10%">属性</th>
+    <th width="9%">类型</th>
+    <th width="9%">值</th>
+    <th width="38%">描述</th>
+    <th width="34%">设置方式</th>
+  </tr>
+  <tr>
+    <td><p>hasborder</p></td>
+    <td>boolean</td>
+    <td><ul>
+      <li>false(缺省)      </li>
+      <li></li>
+    </ul></td>
+    <td>是否有边框。true:有边框，flase：无边框</td>
+    <td><p>var bar=$('.btn_toolbar').BtnToolBar({hasborder:true});</p></td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>三、可选的方法</h2>
+<table class="dataintable">
+  <tr>
+    <th width="14%">函数名称</th>
+    <th width="18%" >参数列表</th>
+    <th width="25%">适用情况</th>
+    <th width="9%">说明</th>
+    <th width="34%">调用方法</th>
+  </tr>
+  <tr>
+    <td height="87"><p>refreshbyName</p></td>
+    <td ><p><strong>condition:条件</strong>值，字符串类型，可以是任意字符串值</p>
+        <p>&nbsp;</p></td>
+    <td>按照<strong>condition</strong>条件值的设置要求，重新刷新显示工具条中的按钮</td>
+    <td>&nbsp;</td>
+    <td><p><strong> 1按照固定的条件值刷新工具条，如：</strong></p>
+      <p>var bar=$('.btn_toolbar').BtnToolBar();</p>
+      <p>........ ........</p>
+      <p><span class="STYLE10">bar.refreshbyName('00');</span>//重新刷新条件“00”要求显示的按钮 。 <a href="BtnToolBar2.html">点击此处查看演示效果</a> </p>
+      <p>&nbsp;</p>
+      <p><strong>2.根据下拉框选择的值，刷新工具条如：</strong></p>
+      <p>$(&quot;#select_box&quot;).change(function(){<br />
+&nbsp;&nbsp;&nbsp;<span class="STYLE10">bar2.refreshbyName($(this).val())</span>;<br />
+}); </p>
+      <p><a href="BtnToolBar2.html">点击此处查看演示效果</a></p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="note">&nbsp;</p>
+<p class="note"><span>注释：</span>无</p>
+<p class="tip"><span>提示：</span></p>
+<h3>详细描述：无</h3>
+<h3>依赖的JS文件及CSS文件</h3>
+<p>&lt;link rel="stylesheet" type="text/css" href="build\webui78\skin\default\webui78.css" &gt;<br>
+&lt;script type="text/javascript" src="../js/webui78.js"&gt;&lt;/script&gt;
+</p>
+</div>
+
+
+<div>
+<h2>实例</h2>
+<h3>一般工具条的代码写法：</h3>
+<p><strong>一、HTML代码部分：</strong></p>
+<pre id="btn_conditon" ><strong>1、工具条HTML代码：（负责描述页面所需的按钮、每个按钮的状态控制）</strong>
+<span class="STYLE6">需要说明：条件&lt;div class='btn_condition'&gt;必须是&lt;div class=&quot;btn_toolbar&quot; &gt;的直接下级元素，两者不可并列放置！。<strong>
+（&lt;div class='btn_condition'&gt;部分不是工具条必须的代码，是当需要按照一定条件显示按钮时使用）</strong></span>  
+<span class="STYLE1">&lt;div class=&quot;btn_toolbar&quot;  style=&quot;display:none&quot; &gt;</span><strong>//类名btn_toolbar可以任意其他名称</strong><span class="STYLE1"> 推荐使用 style=&quot;display:none&quot;</span>在未加载完毕时不显示此元素<br />	&lt;button class=&quot;btn&quot; id ='ddd' type=&quot;button&quot; value=&quot;1&quot; onClick=&quot;form1.submit();&quot;  mask &gt;新增&lt;/button&gt;<br />	&lt;button class=&quot;btn&quot; type=&quot;button&quot; value=&quot;2&quot; onClick=&quot;form1.submit();&quot;  mask &gt;编辑&lt;/button&gt;<br />	&lt;button class=&quot;btn&quot; type=&quot;button&quot; value=&quot;3&quot; onClick=&quot;form1.submit();&quot;   &gt;提交&lt;/button&gt;<br />	&lt;button class=&quot;btn&quot; type=&quot;button&quot; value=&quot;4&quot; &gt; 打印 &lt;/button&gt;	<br />    &lt;button class=&quot;btn&quot; type=&quot;button&quot; value=&quot;4&quot; <span class="STYLE7">force</span> &gt; 不受条件控制的按钮 &lt;/button&gt;<br />	<strong>//下面描述了不同条件下要显示的按钮名称，div的id表示条件值，div中的内容表示此条件下要显示的按钮列表，一个条件值显示多个按钮时用逗号分隔</strong>.
+    <strong>//（1）condition_null</strong>，<strong>可以不设置（不是必需选项），表示外部条件为空时，要显示的按钮，一般用于设置“表格没有选择行时或表格没有数据时显示的按钮”</strong>
+    <strong>//（2）div的条件id必须是表格中某一行的引用值，一般通过td的<code>btn_condition</code>属性关联，或自行关联在表格行中的隐藏域或其他输入域
+    //（3）条件div的类名“btn_condition”不能变</strong><br />    <span class="STYLE4">&lt;div class=&quot;<strong>btn_condition</strong>&quot; &gt; </span><strong>（此部分不是工具条必须的代码，是当需要与表格关联显示按钮时是使用）</strong><br />           &lt;div id='<strong><code>condition_null</code></strong>'&gt;<strong><code>新增,打印</code></strong>&lt;/div&gt;<span class="STYLE11">//外部条件值为空时,显示“新增”、“打印”两个按钮 <code>condition_null</code>'是指没有给出显示条件时要显示的按钮，此条件可以不设置</span>
+           &lt;div id='<strong><code>00</code></strong>'&gt;<strong><code>新增,编辑,提交</code></strong>&lt;/div&gt; <span class="STYLE8">//外部条件值为“00”时显示“新增”、“编辑”、“打印”3个按钮 </span><span class="STYLE8">（外部条件值可以是：表格中选择行中td的btn_condition属性 ）</span>
+           &lt;div id='<strong><code>01</code></strong>'&gt;<strong><code>新增,编辑,打印</code></strong>&lt;/div&gt;
+           &lt;div id='<strong><code>02</code></strong>'&gt;<strong><code>新增,提交,打印</code></strong>&lt;/div&gt;<span class="STYLE8">//外部条件值为“02”时显示“新增”、“提交”、“打印”3个按钮 （外部条件值可以是：表格中选择行中td的btn_condition属性 ）</span>
+           &lt;div id='<strong><code>03</code></strong>'&gt;<strong><code>新增,提交</code></strong>&lt;/div&gt;<br />    <span class="STYLE4">&lt;/div&gt; </span><br /><span class="STYLE2">&lt;/div&gt;</span></pre>
+<p class="note">&nbsp;</p>
+<pre>2<strong>、表格的HTML代码（此部分不是工具条必须的代码，是当需要与表格关联显示按钮时使用）：
+	//表格的classm名：grid1可以是任何其他名称
+	//要实现选择不同的数据行能与工具条联动变化，必须设置table的联动条件<code>btn_condition</code>
+</strong>&lt;table  class=&quot;grid1&quot;  width=&quot;100%&quot;    &gt;<br />	&lt;tr&gt;<br />			&lt;td   width=&quot;15%&quot;&gt;序号&lt;/td&gt;<br />			&lt;td   width=&quot;20%&quot; &gt;操作编号&lt;/td&gt;<br />			&lt;td   width=&quot;25%&quot; &gt;信息名称&lt;/td&gt;<br />			&lt;td   width=&quot;20&quot; &gt;操作员&lt;/td&gt;<br />			&lt;td   width=&quot;20%&quot; &gt;状态&lt;/td&gt;<br /> 	&lt;/tr&gt;<br />	&lt;tr&gt;<br />			&lt;td   <code>btn_condition='01'</code> align=&quot;center&quot;&gt;1&lt;/td&gt;<br />			&lt;td&gt;100309000304&lt;/td&gt;<br />			&lt;td&gt;花果山谷 &lt;/td&gt;<br />			&lt;td&gt;2011-01-07&lt;/td&gt;<br />			&lt;td&gt;编辑&lt;/td&gt;<br />	&lt;/tr&gt;<br />	&lt;tr&gt;<br />			&lt;td  <code>btn_condition='02'</code> align=&quot;center&quot;&gt;2&lt;/td&gt;<br />			&lt;td&gt;100309000300&lt;/td&gt;<br />			&lt;td&gt;花果山谷1花果山谷1花果山谷1花果山谷1 &lt;/td&gt;<br />			&lt;td&gt;2010-11-12&lt;/td&gt;<br />			&lt;td&gt;提交审核&lt;/td&gt;<br />	&lt;/tr&gt;<br />	&lt;tr&gt;<br />			&lt;td  <code>btn_condition='02'</code> align=&quot;center&quot;&gt;3&lt;/td&gt;<br />			&lt;td&gt;100309000301&lt;/td&gt;<br />			&lt;td&gt;花果山谷2 &lt;/td&gt;<br />			&lt;td&gt;2010-11-12&lt;/td&gt;<br />			&lt;td&gt;提交审核&lt;/td&gt;<br />	&lt;/tr&gt;<br />	&lt;tr&gt; <br />			&lt;td  <code>btn_condition='03'</code> align=&quot;center&quot;&gt;4&lt;/td&gt;<br />			&lt;td&gt;100309000302&lt;/td&gt;<br />			&lt;td&gt;花果山谷3 &lt;/td&gt;<br />			&lt;td&gt;2010-11-12&lt;/td&gt;<br />			&lt;td&gt;撤销&lt;/td&gt;<br />	&lt;/tr&gt;<br />	&lt;tr&gt;<br />			&lt;td  <code>btn_condition='05'</code> align=&quot;center&quot;&gt;5&lt;/td&gt;<br />			&lt;td&gt;100309000303&lt;/td&gt;<br />			&lt;td&gt;花果山谷4 &lt;/td&gt;<br />			&lt;td&gt;2010-11-12&lt;/td&gt;<br />			&lt;td&gt;交易完成&lt;/td&gt;<br />	&lt;/tr&gt;<br />&lt;/table&gt;</pre>
+<p><strong>二、javascript代码：对上述html加载组件效果</strong></p>
+<pre>$(document).ready(function(){	<br /><code>	$('.btn').PicButton();//美化图片按钮的效果<br />	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条<br />	var g=$('.grid1').datagrid({toolbar:bar});//建立表格与工具条的联动效果<br /></code>});		
+&lt;/script&gt; </pre>
+<p id="btn_init">&nbsp;</p>
+<h3 id="set_validator"><span>注释：</span>
+  无</h3>
+<p><a href="#">测试</a></p>
+</div>
+
+
+<div>
+<h2>浏览器支持</h2>
+<p>兼容IE6~9、firefox主流浏览器。</p>
+</div>
+
+
+<div>
+<h2>&nbsp;</h2>
+</div>
+
+<div>
+<h2>标准属性</h2>
+<pre>无</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+<div>
+<h2>事件属性</h2>
+<pre>无
+</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+</div>
+
+
+
+
+
+</div><div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

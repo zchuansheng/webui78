@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webdialog1</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+var dlg;
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条
+	$('.grid_nohead').datagrid({trselect:false,hashead:false});
+	var g=$('.grid1').datagrid( {width:'90%',trselect:false});//或执行代码 g[0].grid.setBar(bar);	
+  //dlg=$("body").webDialog();
+	$("#btn1").click(function(e ){
+		$.webUtil.openWindow({ismodel:true,width:600,height:400,event:e,applyTo:$(".grid1")});
+
+	});
+	$("#btn2").click(function(e ){
+		$.webUtil.openWindow({event:e,maxWidth:200,maxHeight:200,minWidth:200,minHeight:200});
+	});
+
+	$("#btn4").click(function(e ){
+		$.webUtil.openWindow({title:"我的对话框",opacity:1,width:600,height:400,event:e,content:"我是指定事件，指定标题，指定内容的窗口"});
+	});
+	$("#btn5").click(function(e ){
+		$.webUtil.openWindow({title:"我是模态对话框",ismodel:true,width:600,height:400,event:e,content:"我是模态对话框"});
+	});
+/////////////////////
+
+	$(".testdlg").click(function(e){
+		$.webUtil.openWindow({event:e});	
+	});
+/////////////	
+	$("#form1").setValidator();
+	
+
+});		
+ 	
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+打开窗口</div>
+<div class="code">
+	
+</div>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+aaa<br>
+
+<form  id="form1" name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br />
+		<div><strong>此处演示怎样打开窗口:</strong><br/>	
+	    $.webUtil.openWindow();<br/>
+		</div>
+<div class="btn_toolbar" >
+	<button class="btn" id="btn1" type="button" value="1"    force >显示一个表格的模态对话框</button>
+	<button class="btn" id="btn2" type="button"  value="2"    force >设置最大最小宽高度200的窗口</button>
+	<button class="btn" id="btn4" type="button" value="4" force    > 打开带标题的指定大小的窗口 </button>	
+	<button class="btn" id="btn5" type="button" value="4" force > 模态对话框 </button>
+ </div>
+ 
+		<table  class="grid1"  width="80%"  style="display:none"  >
+    		<tr>
+            	<td   width="15%">序号</td>
+            	<td   width="20%" >操作编号</td>
+            	<td   width="25%" >信息名称</td>
+            	<td   width="20%" >操作员</td>
+            	<td   width="20%" >状态</td>
+           </tr>
+     		<tr>
+     		<td   btn_condition='01' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+           	<td><a  class="testdlg" href="#"  >点击此处也可打开我</a>
+            		        		
+            	</td>
+            	<td>编辑</td>
+         		</tr>
+    		<tr  >
+      					<td  btn_condition='02' align="center">2</td>
+            	<td>100309000300</td>
+            	<td>花果山谷1花果山谷1花果山谷1花果山谷1 </td>
+           	<td><a  class="testdlg" href="#"  >点击此处也可打开我</a>
+            		      		
+            	</td>
+            	<td>提交审核</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='02' align="center">3</td>
+            	<td>100309000301<input type="text" v_type="date" value=""/></td>
+            	<td>花果山谷2 </td>
+           	<td><a  class="testdlg" href="#"  >点击此处也可打开我</a>
+            		        		
+            	</td>
+            	<td>提交审核</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">4</td>
+            	<td>100309000302</td>
+            	<td>花果山谷3 </td>
+            	<td><a  class="testdlg" href="#"  >点击此处也可打开我</a>          		
+            	</td>
+            	<td>撤销</td>
+            </tr>
+    		<tr >
+      					<td  btn_condition='05' align="center">5</td>
+            	<td>100309000303</td>
+            	<td>花果山谷4 </td>
+           	<td><a  class="testdlg" href="#"  >点击此处也可打开我</a>
+            		          		
+            	</td>
+            	<td>交易完成</td>
+            </tr>
+		</table>
+
+		<br>
+ 
+</form>
+
+
+
+</body>
+</html>

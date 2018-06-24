@@ -1,0 +1,193 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+				
+				
+	});
+</script>
+</head>
+
+<body class="html" id="tags">
+
+<div id="wrapper">
+
+<div id="header">
+<h1>webDatepicker日历说明</h1>
+</div>
+
+
+<div id="maincontent"  >
+
+<h1>名称：webDatepicker</h1>
+<div>
+
+<h2>定义与说明</h2>
+
+<p> 调用方法为：</p>
+<p>1、如果输入框设置了v_type=&quot;date&quot;属性，并且调用了setValidator()函数，则无需对日期输入框掉用任何代码。</p>
+<p>2、如果输入框没有设置v_type=&quot;date&quot; 或没有调用setValidator()函数，则需要对输入框调用 $('#finish_date').webDatepicker();</p>
+<p><strong>一、目前支持两种显示格式：</strong></p>
+<p>1、全日历格式（默认的显示格式）。通过fmt设置。</p>
+<p>2、仅显示年月的日历格式。通过fmt设置为&ldquo;yyyy-mm&rdquo;来显示。</p>
+<p><span>注释：</span></p>
+<p class="note"><strong>二、日历组件的设置属性，如下表所示：</strong></p>
+<table id="attr_list"class="dataintable">
+  <tr>
+    <th width="12%">属性</th>
+    <th width="8%">类型</th>
+    <th width="14%">值</th>
+    <th width="23%">描述</th>
+    <th width="43%">设置方式</th>
+  </tr>
+  <tr>
+    <td><p>chosendate</p></td>
+    <td>date</td>
+    <td><ul>
+      <li>today(缺省) </li>
+      <li></li>
+    </ul></td>
+    <td>默认情况下选中的日期</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><p>fmt</p></td>
+    <td>字符串</td>
+    <td><p>&ldquo;yyyy-mm-dd&rdquo; </p>
+      <p>&ldquo;yyyy-mm&rdquo; </p></td>
+    <td><p>日期格式有2种：</p>
+      <p>1.年月日</p>
+      <p>2.年月</p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><s>startdate</s></td>
+    <td><s>date</s></td>
+    <td><ul>
+      <li><s>true(缺省) </s></li>
+      <p>&nbsp;</p>
+    </ul></td>
+    <td><p><s>显示日期范围的起始日期</s></p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><s>enddate</s></td>
+    <td><s>date</s></td>
+    <td><s>true(缺省) </s></td>
+    <td><p><s>显示日期范围的结束日期</s></p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>x</td>
+    <td>数值</td>
+    <td><ul>
+      <li>18(缺省) </li>
+    </ul></td>
+    <td>相对于输入框的显示位置</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg2">y</td>
+    <td>数值</td>
+    <td>18(缺省) </td>
+    <td><p>相对于输入框的显示位置</p></td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td id="onShowMsg3">startyear</td>
+    <td>数值</td>
+    <td>起始年份</td>
+    <td>指定可以选择的最小年份</td>
+    <td>$('#date1').webDatepicker({startyear:1901});</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">endyear</td>
+    <td>数值</td>
+    <td>结束年份</td>
+    <td>指定可以选择的最大年份</td>
+    <td>$('#date1').webDatepicker({startyear:1901,endyear:2019});</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg3">downYears</td>
+    <td>数值</td>
+    <td>当前年之前的年数</td>
+    <td>指定可以显示的年数（显示小于当前年的年数）</td>
+    <td><p>显示当前年左20年，右20年的年份</p>
+      <p>$('#date1').webDatepicker({downYears:20,upYears:20});</p></td>
+  </tr>
+  <tr>
+    <td id="onShowMsg3">upYears</td>
+    <td>数值</td>
+    <td>当前年之后的年数</td>
+    <td>指定可以显示的年数（显示大于当前年的年数）</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="tip"><span>提示：</span>。</p>
+<h3>详细描述</h3>
+<p><strong>无</strong></p>
+<h3>依赖的JS文件及CSS文件</h3>
+<p><br>
+&lt;script type="text/javascript" src="../js/webui78.js"&gt;&lt;/script&gt;
+</p>
+</div>
+
+
+<div>
+<h2>实例</h2>
+<h3>设置方法：</h3>
+<p>&nbsp;</p>
+<pre>
+&lt;script type="text/javascript"&gt;
+function goto(btn){<br />	//some process..........
+//当输入框设置了v_type=&quot;date&quot;属性时，通过调用setValidator()即可,可以不用调用webDatepicker<br />  $('#finish_date').webDatepicker();
+
+//设置可以选择的最小年份和最大年份如下：
+	$('#submit_date').webDatepicker({startyear:1901,endyear:2019});
+
+//设置日期格式为&ldquo;年-月&rdquo;格式，无日期选择，如下:<br />	$('#finish_date3').webDatepicker({fmt:&quot;yyyy-mm&quot;});<br />}  
+&lt;/script&gt; 
+</pre>
+<h3>验证条件的设</h3>
+<p class="note"><span>注释：</span>
+  无</p>
+<p><a href="#">测试</a></p>
+</div>
+
+
+<div>
+<h2>浏览器支持</h2>
+<p>兼容IE6~9、firefox主流浏览器。</p>
+</div>
+
+
+<div>
+<h2>&nbsp;</h2>
+</div>
+<div> </div>
+
+</div>
+
+
+
+
+
+</div><div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

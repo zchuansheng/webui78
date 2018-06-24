@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+
+
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条
+	var g=$('.grid1').datagrid({toolbar:bar,idCol:1});
+	var g=$('.grid2').datagrid({sortable:true,filterable:true});
+	$("#myfilter").change(function(){
+		var selVal =$(this).val();
+		if(selVal=="all") selVal="";
+		$('.grid1').setGridDisplayRow({btn_condition:selVal});
+	});
+});		
+	
+</script>
+<style type="text/css">
+<!--
+.STYLE11 {color: #0000FF}
+.STYLE13 {color: #0000FF; font-weight: bold; }
+-->
+</style>
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+  表格排序与数据过滤
+</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	
+	<p><strong>一、下面表格的第2、3、4列可以排序，第3、5列可以实现数据过滤</strong></p>
+	<p><strong>注：var g=$('.grid1').datagrid({toolbar:bar,idCol:1});    设置idCol选项，可以实现对某列筛选后自动重新编号。<br />
+            </strong>
+	  <input type="hidden" name="sel_batch_no" value=""/>
+    </p>
+	<div></div>
+	<table width="100%">
+<tr><td>
+<div class="btn_toolbar" >
+	<button class="btn" id ='ddd' type="button" value="1" onClick="form1.submit();"  mask >新增</button>
+	<button class="btn" type="button" value="2" onClick="form1.submit();"  mask >编辑</button>
+	<button class="btn" type="button" value="3" onClick="form1.submit();"   >提交</button>
+	<button class="btn" type="button" value="4" > 打印 </button>	
+	<button class="btn" type="button" value="4" force > 不受条件控制的按钮 </button>
+	
+	<div class="btn_condition" >
+		<div id='condition_null'>新增,打印</div>
+		<div id='00'>新增,编辑,提交</div>
+		<div id='01'>新增,编辑,打印</div>
+		<div id='02'>新增,提交,打印</div>
+		<div id='03'>新增,提交</div>
+	</div> 
+</div>
+</td><td align="right">前端自行过滤数据行：
+	<select id="myfilter" name="myfilter">
+	<option value="all">全部</option>
+	<option value="01">编辑</option>
+	<option value="02">提交审核</option>
+	<option value="03">撤销</option>
+	<option value="05">交易完成</option>
+	
+	</select></td>
+</tr>
+</table>
+		<table  class="grid1"  width="100%"    >			 
+    		<tr>
+            	<td   width="15%">序号</td>
+            	<td   sortable width="20%" >操作编号</td>
+            	<td  filterable sortable width="25%" >信息名称</td>
+            	<td  sortable width="20%" >操作日期</td>
+            	<td  filterable width="20%" >状态</td>
+          	</tr> 			 
+     		<tr>     			
+				<td   btn_condition='01' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>张传生</td>
+            	<td>2011-01-07</td>
+            	<td>编辑</td>
+   		 	</tr>
+    		<tr>
+				<td  btn_condition='02' align="center">2</td>
+            	<td>100309000300</td>
+            	<td>安全管理</td>
+            	<td>2010-11-12</td>
+            	<td>提交审核</td>
+            </tr>
+    		<tr>
+				<td  btn_condition='02' align="center">3</td>
+            	<td>100309000301</td>
+            	<td>系统开发 </td>
+            	<td>2010-11-12</td>
+            	<td>提交审核</td>
+            </tr>
+    		<tr> 
+				<td  btn_condition='03' align="center">4</td>
+            	<td>100309000302</td>
+            	<td>安全管理的措施</td>
+            	<td>2010-11-12</td>
+            	<td>撤销</td>
+            </tr>
+    		<tr>
+				<td  btn_condition='05' align="center">5</td>
+            	<td>100309000303</td>
+            	<td>组件功能演示</td>
+            	<td>2010-11-12</td>
+            	<td>交易完成</td>
+            </tr>
+    		<tr>
+				<td  btn_condition='05' align="center">6</td>
+            	<td>100309000303</td>
+            	<td>组件功能演示</td>
+            	<td>2010-11-12</td>
+            	<td>交易完成</td>
+            </tr>
+       
+		</table>
+
+		<br>
+
+
+</form>
+<pre><strong>上述表格的HTML代码：
+	// <code></code>
+</strong>&lt;table  class=&quot;grid1&quot;  width=&quot;100%&quot;    &gt;<br>    		&lt;tr&gt;<br>            	&lt;td   width=&quot;15%&quot;&gt;序号&lt;/td&gt;<br>            	&lt;td  <span class="STYLE13"> sortable</span> width=&quot;20%&quot; &gt;操作编号&lt;/td&gt;<br>            	&lt;td <span class="STYLE11"><strong> filterable sortable</strong></span> width=&quot;25%&quot; &gt;信息名称&lt;/td&gt;<br>            	&lt;td  s<span class="STYLE13">ortable</span> width=&quot;20%&quot; &gt;操作日期&lt;/td&gt;<br>            	&lt;td  <span class="STYLE11"><strong>filterable</strong></span> width=&quot;20%&quot; &gt;状态&lt;/td&gt;<br>         &lt;/tr&gt; 			 <br>         &lt;tr&gt;     			<br>				&lt;td   btn_condition='01' align=&quot;center&quot;&gt;1&lt;/td&gt;<br>            	&lt;td&gt;100309000304&lt;/td&gt;<br>            	&lt;td&gt;张传生&lt;/td&gt;<br>            	&lt;td&gt;2011-01-07&lt;/td&gt;<br>            	&lt;td&gt;编辑&lt;/td&gt;<br>          &lt;/tr&gt;
+         。。。。。。。。。。。。。。。<br><br>&lt;/table&gt;</pre>
+<p><br>
+  
+  <strong>二、下面表格通过<span class="STYLE11">$('.grid2').datagrid({sortable:true,filterable:true});</span>实现所有列的排序和数据过滤 <br />
+  </strong>
+  <strong>注：此表不设置idCol选项， 筛选后不自动重新编号。</strong></p>
+<table  class="grid2"  width="100%"    >
+ 
+    <tr>
+      <td   width="15%">序号</td>
+      <td     width="20%" >操作编号</td>
+      <td    width="25%" >信息名称</td>
+      <td    width="20%" >操作日期</td>
+      <td    width="20%" >状态</td>
+    </tr>
+ 
+ 
+    <tr>
+      <td   btn_condition='01' align="center">1</td>
+      <td>100309000304</td>
+      <td>张传生</td>
+      <td>2011-01-07</td>
+      <td>编辑</td>
+    </tr>
+    <tr>
+      <td  btn_condition='02' align="center">2</td>
+      <td>100309000300</td>
+      <td>安全管理</td>
+      <td>2010-11-12</td>
+      <td>提交审核</td>
+    </tr>
+    <tr>
+      <td  btn_condition='02' align="center">3</td>
+      <td>100309000301</td>
+      <td>系统开发 </td>
+      <td>2010-11-12</td>
+      <td>提交审核</td>
+    </tr>
+    <tr>
+      <td  btn_condition='03' align="center">4</td>
+      <td>100309000302</td>
+      <td>安全管理的措施</td>
+      <td>2010-11-12</td>
+      <td>撤销</td>
+    </tr>
+    <tr>
+      <td  btn_condition='05' align="center">5</td>
+      <td>100309000303</td>
+      <td>组件功能演示</td>
+      <td>2010-11-12</td>
+      <td>交易完成</td>
+    </tr>
+    <tr>
+      <td  btn_condition='05' align="center">6</td>
+      <td>100309000303</td>
+      <td>组件功能演示</td>
+      <td>2010-11-12</td>
+      <td>交易完成</td>
+    </tr>
+   
+</table>
+<h2>&nbsp;</h2>
+<p class="note">&nbsp;</p>
+<p class="note"><span>注释：</span>无</p>
+</body>
+</html>

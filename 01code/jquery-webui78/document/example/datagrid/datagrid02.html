@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+function onSelectRow(index,el){
+		var tr=$(el);
+		alert('您选择的行号index='+index+',第2列的内容=='+$('td:eq(1)',tr).html());
+		$("input[name='batch_no']",tr).val();//取选择行的申请编号,（如果您的行中有这样的标签<input type='hidden' name='batch_no' />）
+		$('td:eq(1)',tr).html();//取得第2列的html内容
+		$("input[name='sel_batch_no']").val($('td:eq(1)',tr).html());//选择时，将选择的数据给form的隐藏域。
+		//或这样写document.form1.sel_batch_no.value=$("input[name='batch_no']",tr).val();//选择时，将选择的数据给form的隐藏域。
+		//如果tr中不使用隐藏域时，下面这样也可以
+		//form1.sel_batch_no.value=$('td:eq(1)',tr).html();//选择时，将选择的数据给form的隐藏域。
+ }
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var g=$('.grid2').datagrid({onSelect:onSelectRow,defaultSel:false,idCol:1});
+});		
+	
+</script></head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>可选择行的表格，单击时可以回调自定义函数的</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br />
+		<div><strong>2、表头为合并列时，推荐选用thead标签,要实现自动排号某个表格列，请设置属性"idCol:列编号"</strong></div>
+
+<button class="btn" type="button" onClick="alert('马上要提交的数据sel_batch_no是：'+form1.sel_batch_no.value);" value="4" > 查看提交时获取的数据 </button>
+单位名称 <input type="text" name='aaa' value=""   > 
+  <button class="btn" type="button" value="4" > 在任意其他地方的按钮 </button>
+
+
+				<table  class="grid2" width='670' >
+    				<thead>
+    		<tr>
+            	<th colspan="4"  >表头合并、不固定表头的表格，并且单击时可以回调自定义函数的</th>
+           </tr>
+         </thead>
+     		<tr>
+     					<td width='20%' btn_condition='01'  align="center">1
+     						<input type="hidden" name="batch_no" value="100309000304"/>
+     					</td>
+            	<td width='20%' >100309000304</td>
+            	<td width='30%' >花果山谷 </td>
+            	<td width='30%' >2011-01-07</td>
+         		</tr>
+    		<tr >
+      					<td  btn_condition='02' align="center">2
+      						<input type="hidden" name="batch_no" value="100309000300"/></td>
+            	<td>100309000300</td>
+            	<td>花果山谷1 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='02' align="center">3
+     						<input type="hidden" name="batch_no" value="100309000301"/></td>
+            	<td>100309000301</td>
+            	<td><input type='text' name ="somedata" value='花果山谷2' /> </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">4
+     						<input type="hidden" name="batch_no" value="100309000302"/></td>
+            	<td>100309000302</td>
+            	<td>花果山谷3 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+      					<td  btn_condition='05' align="center">5
+      						<input type="hidden" name="batch_no" value="100309000303"/></td>
+            	<td>100309000303</td>
+            	<td>花果山谷4  </td>
+            	<td>2010-11-12</td>
+            </tr>
+
+		</table>	
+<br/>
+
+
+</form>
+
+
+
+<h2><strong>上述实现效果</strong>的代码示例</h2>
+<p><strong>一、HTML代码部分：</strong></p>
+<pre>1<strong>、表格的HTML代码：与一般表格的写法相同，不要添加任何样式
+</strong>&lt;table  class=&quot;grid1&quot;  width=&quot;100%&quot;    &gt;<br>	&lt;tr&gt;<br>			&lt;td   width=&quot;15%&quot;&gt;.........&lt;/td&gt;<br>		。。。。。。。。。。。。。。。。。。<br> 	&lt;/tr&gt;<br>&lt;/table&gt;</pre>
+<p><strong>二、javascript代码：对上述html加载组件效果</strong></p>
+<pre>
+&lt;script type=&quot;text/javascript&quot;&gt;
+<br><strong>1、需要定义选择行时的回调函数
+</strong>function <strong><code>onSelectRow</code></strong>(<code>index,el</code>){<br>	//（<strong>1）此处index为选中的行号(c从0开始）el为选择的tr对象</strong>
+	 var tr=$(el);<br>		alert('您选择的行号index='+index+',第2列的内容=='+$('td:eq(1)',tr).html());
+    <strong>//（&lt;strong&gt;2）取得选择行的隐藏域的值&lt;/strong&gt;：&lt;br&gt;</strong><br>		<strong><code>$(&quot;input[name='batch_no']&quot;,tr).val()</code></strong>;//取选择行的申请编号,（如果您的行中有这样的标签&lt;input type='hidden' name='batch_no' /&gt;）<br>		$('td:eq(1)',tr).html();//取得第2列的html<br>		$(&quot;input[name='sel_batch_no']&quot;).val($('td:eq(1)',tr).html());//选择时，将选择的数据给form的隐藏域。<br>		//或这样写document.form1.sel_batch_no.value=$(&quot;input[name='batch_no']&quot;,tr).val();//选择时，将选择的数据给form的隐藏域。<br>		//如果tr中不使用隐藏域时，下面这样也可以<br>		//form1.sel_batch_no.value=$('td:eq(1)',tr).html();//选择时，将选择的数据给form的隐藏域。<br> }
+<strong>2、在初始化表格时，设置回调函数</strong><br>$(document).ready(function(){	<br>	$('.btn').PicButton();
+<strong>	</strong>	var g=$('.grid2').datagrid({<strong><code>onSelect:onSelectRow</code></strong>,defaultSel:false,idCol:1});
+   <strong> //（1） onSelect 设置当选中行时的回调函数
+    //（2）defaultSel是否缺省选中第一行
+    //（3）idCol设置第一列为自增值的标识列</strong><br><br>});		<br>	<br>&lt;/script&gt;</pre>
+<p><strong></strong></p>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Krajee JQuery Plugins - &copy; Kartik</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script type="text/javascript" src="jquery-1.7.js"></script>
+</head>
+</html>
+<script>
+	$(document).ready(function(){
+		alert("sdfsdf");
+	});	
+</script>

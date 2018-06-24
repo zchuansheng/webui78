@@ -1,0 +1,367 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+				$(".btn_popup").PicButton();
+				 
+				
+	});
+function myclick(index){
+	if(index==1){
+		$.webUtil.submitOnBtn("../ok.html",$('#btn1'));
+	}else if(index==2){
+			$.webUtil.submit("../ok.html");
+	}else if(index==3){
+			$.webUtil.open("../ok.html");
+		
+	}
+	
+	
+}
+</script>
+</head>
+
+<body class="html" id="tags">
+
+<div id="wrapper">
+
+<div id="header">
+<h1>webUtil工具集使用说明</h1>
+</div>
+<form name="form1">
+    <table border="0"><tr><td>
+    <button align="center" class="btn_popup" id="btn1" type="button" value="1"  onclick="myclick(1);"  popup="1" issubmit="1" >submitOnBtn并提交表单</button>
+    <button align="center" class="btn_popup" id="btn2"  type="button" value="1"  onclick="myclick(2);"  popup="1" issubmit="1" >submit提交表单</button>
+    <button align="center" class="btn_popup" id="btn3"  type="button" value="1"  onclick="myclick(3);" popup="1" issubmit="1" >open提交表单</button>
+   </td></tr></table>
+</form>
+<div id="maincontent"  >
+
+<h1>名称：webUtil</h1>
+<div>
+
+<h2>定义与说明</h2>
+
+<p> 本插件是类级别的插件，目的是提供一些常用公共函数的调用，,其调用方法为：$.webUtil.xxxx();</p>
+<p><span>注释：</span></p>
+<p>&nbsp;</p>
+<p>1、关于公共方法的全局配置项：参数设置方式$.webUtil.setting.参数名称=参数值</p>
+<table class="dataintable">
+  <tr>
+    <th>属性名称</th>
+    <th>说明</th>
+    <th>设置方式</th>
+  </tr>
+  <tr>
+    <td>msgboxtype</td>
+    <td><p>设置提交表单时，确认对话框的类型:</p>
+      <p>null：（此为默认值）系统方式的confirm</p>
+      <p>custom：采用自定义样式的对话框</p></td>
+    <td><p>$.webUtil.setting.msgboxtype='custom';</p>
+      <p>可以在webui78_config.js文件中设置</p></td>
+  </tr>
+  <tr>
+    <td>btn_icons</td>
+    <td><p>设置按钮 <strong><font color="#FF0000">前2个字符</font> </strong>与按钮图标的<strong><font color="#FF0000">全局</font></strong>对应关系。如果要单独设置某个按钮的图标，请参考PicButton的icon属性，详见：<a href="../picbutton/btn-01.html">PicButton参考</a></p>
+      <p>默认情况设置为：{'新增':'add1','删除':'del1', '编辑':'edit1','查询':'search','提交':'ok','保存':'save1','打印':'print','返回':'back'}</p></td>
+    <td>可以在webui78_config.js文件中设置，详细请参见:webui78_config.js</td>
+  </tr>
+  <tr>
+    <td><p>&nbsp;</p></td>
+    <td><p>&nbsp;</p></td>
+    <td><p>&nbsp;</p></td>
+  </tr>
+</table>
+<p class="note">2、关于页面跳转的公共方法，如下表所示：</p>
+<table class="dataintable">
+  <tr>
+    <th width="12%">函数名称</th>
+    <th width="29%" colspan="2">参数列表</th>
+    <th width="13%">适用情况</th>
+    <th width="21%">说明</th>
+    <th width="25%">调用方法</th>
+  </tr>
+  <tr>
+    <td height="87"><p>submitByButton(op)</p></td>
+    <td colspan="2"><p>op={<br />
+button:null,//通过那个按钮提交,不能为空<br />
+target:null,//提交时的target<br />
+url:null//提交的URL，如果为空，则用按钮的URL<br />
+}</p>        </td>
+    <td>当按钮被点击时，需要在自定义动作中提交表单数据</td>
+    <td>推荐使用此函数</td>
+    <td><p>$.webUtil.submitByButton(</p>
+      <p>{button:bo,url:bs.btn_href,target:bs.popup?&quot;_blank&quot;:&quot;&quot;});</p>
+      <p>&nbsp;</p></td>
+  </tr>
+  
+  <tr>
+    <td height="87"><p>submitOnBtn</p>
+      <p>（此函数不推荐使用，其替代函数为submitByButton）</p></td>
+    <td colspan="2"><p><strong>url</strong>:字符串，必输，要提交的URL地址</p>
+      <p><strong>btn</strong>:jquery对象，从被点击的按钮对象</p></td>
+    <td>当按钮被点击时，提交表单数据</td>
+    <td>要求有两个参数，第一个是提交的URL，第二个是被点击的按钮对象，提示时，由此函数自动获取按钮的名字，提示确认动作</td>
+    <td><p>$.webUtil.<em>submitOnBtn</em>(url,$('#btn'));</p></td>
+  </tr>
+  <tr>
+    <td rowspan="9" valign="middle"><p>submit</p></td>
+    <td colspan="2"><strong>url</strong>:字符串，<strong>必输</strong>，要提交的URL地址</td>
+    <td>自定义情况下提交表单数据，或其它独立于PicButton而单独定义表单提交情况</td>
+    <td><p>提交表单数据，本函数完成一些操作：</p>
+      <p>1.设置遮罩效果，显示&quot;正在提交数据......&quot;</p>
+      <p>2.进行表单验证</p>
+      <p>3.提示确认提交的信息（如果设置了<strong>tipmsg</strong>参数）</p>
+      <p>4.提交表单数据到指定的url</p></td>
+    <td>例1:$.webUtil.<em>submit</em>(url);    </td>
+  </tr>
+  <tr>
+    <td rowspan="8"><p>&nbsp;</p>
+<p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>op</p></td>
+    <td><strong>frm</strong>: jquery对象，用于设置要提交的表单对象,<strong>可选</strong>，默认为name=&quot;form1&quot;的表单。</td>
+    <td><p>&nbsp;</p>
+      <p>设置自定义的提交选项</p></td>
+    <td>&nbsp;</td>
+    <td><p>&nbsp;</p>
+      <p>例2:$.webUtil.submit(url,$(&quot;#form1&quot;));指定要提交的表单。<br />
+        例3:$.webUtil.submit(url,{frm:$(&quot;#form1&quot;),tipmsg:'确认要保存吗？'});指定提交表单时的提示信息<br />
+        例4:$.webUtil.submit(url,{trgt:'_blank'});提交表单并以弹出窗口的方式打开新页面。</p></td>
+  </tr>
+  <tr>
+    <td><strong>tipmsg</strong>:字符串，用于设置提交前的确认提示信息。<strong>可选</strong>，为null时，不提示确认信息。</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><strong>mask</strong>: jquery对象，用于设置提交时要遮罩的对象,<strong>可选</strong>，默认为body。</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><strong>btn</strong>: jquery对象，从被点击的按钮对象，<strong>可选</strong>。</td>
+    <td>需要用按钮的文本提示确认信息时</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><strong>trgt</strong>: jquery对象，提交时设置表单的target，<strong>可选</strong>。</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>ismask</td>
+    <td>是否需要遮罩效果</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>ischeck</td>
+    <td>是否进行表单验证</td>
+    <td>当不需要表单验证时，请设置此选项为false</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>ajax:Ajax方式提交的参数设置对象</td>
+    <td>ajax的参数设置参见$.ajax(option)的参数设置</td>
+    <td>如果此参数不为空，则用AJAX方式提交</td>
+    <td>例:$.webUtil.submit(url,{trgt:'_blank',ajax:{error:onsaveError,success:onSaveOk}});提交表单并以弹出窗口的方式打开新页面。</td>
+  </tr>
+  <tr>
+    <td rowspan="2">ajaxSubmit</td>
+    <td rowspan="2">op</td>
+    <td><p>isformdata,</p>
+      <p>设置是否提交form表单的数据</p></td>
+    <td>默认提交form表单数据，如果设置为false在不提交表单</td>
+    <td>&nbsp;</td>
+    <td> <p>ar op={<br />
+url: '../ok.html',</p>
+      <p>isformdata:false,</p>
+      <p>...........................
+          };</p></td>
+  </tr>
+  <tr>
+    <td>其他参数参见：jquery函数:$.ajax(option)的参数设置</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><p>var op={<br />
+  url: '../ok.html',<br />
+  error: onSaveError,//发生错误时的回调函数<br />
+  success: onSaveok,//成功后的回调函数<br />
+  btn:$(bn)//此参数用来提供确认信息，不是必需提供的参数<br />
+  };</p>
+      <p>$.webUtil.ajaxSubmit(op);</p></td>
+  </tr>
+  <tr>
+    <td>goto</td>
+    <td colspan="2"><strong>url</strong>字符串，<strong>必输</strong>，要转向的URL地址</td>
+    <td>不需要提交，只是简单的页面跳转</td>
+    <td>内部采用用window.location.href=url;实现</td>
+    <td>$.webUtil.<em>goto</em>(url);</td>
+  </tr>
+  <tr>
+    <td rowspan="6" valign="middle">open</td>
+    <td colspan="2"><p><strong>url</strong>字符串，<strong>必输</strong>，要转向的URL地址</p>
+      <p>&nbsp;</p></td>
+    <td><p>打开一个新窗口，不需要提交表单数据的情况</p></td>
+    <td>内部采用用window.open实现</td>
+    <td><p>$.webUtil.<em>open</em>(url);</p></td>
+  </tr>
+  <tr>
+    <td rowspan="5"><p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>op</p>
+      <p>&nbsp;</p></td>
+    <td><strong>widths</strong>:数值,打开窗口的宽度，<strong>可选</strong>，默认800px</td>
+    <td><p>需要设置打开窗口的大小及弹出方式</p></td>
+    <td rowspan="5">内部采用用window.open实现</td>
+    <td><p>$.webUtil.<em>open</em>(url,<em>{widths:850,heights:900,popup:true}</em>);</p></td>
+  </tr>
+  <tr>
+    <td><strong>heights</strong>:数值，打开窗口的高度，<strong>可选</strong>，默认680px</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>name:字符串</td>
+    <td>设置打开窗口的名称</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><strong>popup</strong>:boolean,打开窗口的方式，<strong>可选</strong>，默认false。true:弹出窗口，非弹出窗口</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>option弹出窗口的选项设置字符串</td>
+    <td>&nbsp;</td>
+    <td><p>$.webUtil.<em>open</em>(url,<em>{popup:true,option:'height=600,width=850,</em></p>
+      <p><em>location=no,scrollbars=yes,center=yes,status=no,</em></p>
+      <p><em>menubars=no,toolbars=no,resizable=yes,left=5'}</em>);</p></td>
+  </tr>
+  <tr>
+    <td>openWindow</td>
+    <td>(op)</td>
+    <td>op见对话框选项</td>
+    <td>打开对话框</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>alert</td>
+    <td>(msg,funOK)</td>
+    <td>funOK可以为空</td>
+    <td>打开消息框</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>confirm</td>
+    <td>(msg,funOk,funNo)</td>
+    <td>funOk，funNo可以为空</td>
+    <td>打开确认框</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>onKeyDownEnter</td>
+    <td>(source,target,event)</td>
+    <td><p>source接收回车的对象</p>
+      <p>target要触发事件的对象</p>
+      <p>event:可以为空，要触发的事件，默认为click</p></td>
+    <td>当按回车键时触发其他对象的事件</td>
+    <td>当source被点击时触发target的event事件</td>
+    <td> 当在窗口内按回车时，触发btn_save按钮的单击事件$.webUtil.onKeyDownEnter($(document),$(&quot;#btn_save&quot;));</td>
+  </tr>
+  <tr>
+    <td>getElCss</td>
+    <td>obj,css</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p>&nbsp;</p>
+<p class="tip"><span>提示：</span>。</p>
+<h3>详细描述</h3>
+<p><strong>无</strong></p>
+<h3>依赖的JS文件及CSS文件</h3>
+<p><br>
+&lt;script type="text/javascript" src="../js/webui78.js"&gt;&lt;/script&gt;
+</p>
+</div>
+
+
+<div>
+<h2>实例</h2>
+<h3>验证、提交表单的方法：</h3>
+<p>&nbsp;</p>
+<pre>
+&lt;script type="text/javascript"&gt;
+function goto(btn){<br />	//some process..........<br />	$.webUtil.submitOnBtn(&quot;../ok.html&quot;,$(btn));<br />}  
+&lt;/script&gt; 
+</pre>
+<h3>验证条件的设</h3>
+<p class="note"><span>注释：</span>
+  无</p>
+<p><a href="#">测试</a></p>
+</div>
+
+
+<div>
+<h2>浏览器支持</h2>
+<p>兼容IE6~9、firefox主流浏览器。</p>
+</div>
+
+
+<div>
+<h2>&nbsp;</h2>
+</div>
+<div> </div>
+
+</div>
+
+
+
+
+
+</div><div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

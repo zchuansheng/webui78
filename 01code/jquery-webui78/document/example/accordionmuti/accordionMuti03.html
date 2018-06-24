@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>accordionMutil</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+ 			//1将html数据格式化为AccordionMuti的效果
+    	$("#zcsmenu").AccordionMuti({target:"mainframe"});
+    		
+    		//2通过json文件加载数据为AccordionMuti的效果
+    		$("#zcsmenu2").hide();	  		
+	  		$.getJSON("./menu_data.json",{param:"mymenu"},function(data){
+				//alert(data);
+	  	  	var items = [];          
+				 	$.each(data, function(key, val) {
+				 		//alert(key.id);
+				 		if(val.level=="1"){
+				 			 $('<h3/>', { html: val.name }).appendTo('#zcsmenu2');
+				 			 $('<div/>', {"id": val.id} ).appendTo('#zcsmenu2');
+				 		}else if(val.level=="2"){
+					 			 $('<h3/>', {  html: val.name }).appendTo('#'+val.parent);
+				 			 $('<div/>', {"id": val.id} ).appendTo('#'+val.parent);			 			
+				 		}else if(val.level=="3"){
+					 			 $('<p/>', { "id":val.id}).appendTo('#'+val.parent);
+					 			 $('<a/>', { "href":val.url, html: val.name }).appendTo('#'+val.id);
+				 		}
+				 		
+				  });
+				 $("#zcsmenu2").show(); 
+				 $("#zcsmenu2").AccordionMuti({target:"mainframe"});
+				 
+	  		}); 
+	  			
+	  	
+	  	//	$("#zcsmenu").(100000);
+
+	  		 //setTimeout(function(){$("#zcsmenu").AccordionMuti({target:"mainframe"}); }, 300);
+	  		 //setTimeout(function(){$("#zcsmenu").show(); }, 100);
+	  		 
+
+	  		
+
+				
+				
+				
+				
+				
+	});
+
+
+	</script>
+
+  </head>
+  <body >
+<div class="headline"  >
+  <div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+  	  通过json文件加载数据为AccordionMuti的效果</div>
+<table   >
+<tr>
+			<td>
+				<table  >
+					<tr>
+						<td>
+							
+  						<div id="zcsmenu2" style="width:187px">
+							</div>	
+ 						</td>
+ 					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+  	
+  	
+  	
+
+  </body>
+</html>

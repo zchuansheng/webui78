@@ -1,0 +1,461 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+				
+				
+	});
+</script>
+</head>
+
+<body class="html" id="tags">
+
+<div id="wrapper">
+
+<div id="header">
+<h1>数据表格插件附加功能说明</h1>
+</div>
+
+
+<div id="maincontent"  >
+
+<h1>名称：datagrid</h1>
+<div>
+
+<h2>定义与说明</h2>
+<p><strong>一、表格的附加工能有：</strong></p>
+<table class="dataintable">
+  <tr>
+    <th width="7%">序号</th>
+    <th width="18%">效果1</th>
+    <th width="41%">适用情况</th>
+    <th width="34%">代码参加</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>增加数据行</td>
+    <td><p>用于动态增加数据行</p></td>
+    <td><p><a href="#attr_list1" >详细说明</a></p></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>删除数据行</td>
+    <td><p>用于动态删除表格的数据行</p></td>
+    <td><p jquery164006352877627948444="21"><a href="#attr_list2" >详细说明</a><a href="datagrid02.html" target="mainframe"></a></p></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>追加元素</td>
+    <td><p>动态向表格增加新的元素</p></td>
+    <td><p jquery164006352877627948444="22"><a href="#attr_list3" >详细说明</a><a href="datagrid03.html" target="mainframe"></a></p></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>取得表格当前选择行</td>
+    <td>查询表格当前的选择行号</td>
+    <td><p jquery164006352877627948444="23"><a href="#attr_list4" >详细说明</a><a href="datagrid04.html" target="mainframe"></a></p></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>增加新的列</td>
+    <td>需要动态增加数据列的情况</td>
+    <td><p jquery164006352877627948444="23"><a href="#attr_list5" >详细说明</a><a href="datagrid04.html" target="mainframe"></a></p></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>&nbsp;</h2>
+<h2 id="attr_list1">1、增加数据行，$('#grid1').addrow(ideps,ipos);<a href="datagrid07.html" >参见代码示例</a></h2>
+<table class="dataintable">
+  <tr>
+    <th width="10%">属性</th>
+    <th width="12%">类型</th>
+    <th width="8%">值</th>
+    <th width="36%">描述</th>
+    <th width="34%">设置方式</th>
+  </tr>
+  <tr>
+    <td><p>idel</p></td>
+    <td>数值</td>
+    <td><ul>
+      <li>auto(缺省)      </li>
+      <li></li>
+    </ul></td>
+    <td>表格宽度</td>
+    <td><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td id="onShowMsg">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2 id="attr_list2" >2、删除数据行，$('#grid1').delrow(idel);<a href="datagrid07.html" >参见代码示例</a><a href="datagrid10.html" ></a></h2>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>类型</th>
+    <th>值</th>
+    <th>描述</th>
+    <th>设置方式</th>
+  </tr>
+  <tr>
+    <td><p>ideps</p></td>
+    <td>数值</td>
+    <td><ul>
+      <li>auto(缺省) </li>
+      <li></li>
+    </ul></td>
+    <td>表格宽度</td>
+    <td><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><p>ipos</p></td>
+    <td>数值</td>
+    <td>500</td>
+    <td>表格宽度</td>
+    <td><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td id="onShowMsg2">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p></p>
+<h2 id="attr_list3">3、追加数据元素，$('#grid1').appendElements(el,op);<a href="datagrid10.html" >参见代码示例</a></h2>
+<table class="dataintable">
+  <tr>
+    <th width="11%">参数</th>
+    <th width="14%">&nbsp;</th>
+    <th width="14%">类型</th>
+    <th width="33%">值</th>
+    <th width="20%">描述</th>
+    <th width="22%">设置方式</th>
+  </tr>
+  <tr>
+    <td><p>el</p></td>
+    <td>&nbsp;</td>
+    <td>html字符串或元素对象</td>
+    <td><ul>
+      <li>不能为空</li>
+      <li></li>
+    </ul></td>
+    <td>要添加的元素</td>
+    <td><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td rowspan="5"><p>op,可以设置左边属性</p></td>
+    <td><p>irow</p></td>
+    <td>整数</td>
+    <td>可以为空</td>
+    <td>追加的位置，行坐标</td>
+    <td><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td id="onShowMsg6">icol</td>
+    <td>整数</td>
+    <td>可以为空</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg5">linkid</td>
+    <td>整数或字符串</td>
+    <td>可以为空，如果为整数，则新追加元素的value值为irow行，linkid列对应td的text内容，如果非数字，则取irow对应行内名字为linkid的input域。</td>
+    <td>用于设置新追加元素的value属性。</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg7">clear</td>
+    <td>boolean</td>
+    <td>可以为空</td>
+    <td>是否清除原td内的内容</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg3">tohead</td>
+    <td>boolean</td>
+    <td>可以为空</td>
+    <td>是否增加到表头位置</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2 id="attr_list4" >4、取得表格的当前选择行号，$('#grid1').getCurrIndex();<a href="datagrid10.html" >参见代码示例</a></h2>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>类型</th>
+    <th>值</th>
+    <th>描述</th>
+    <th>设置方式</th>
+  </tr>
+  <tr>
+    <td id="onShowMsg4">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2 id="attr_list5" >5、增加数据列，$('#grid1').addcol(el,op);<a href="datagrid10.html" >参见代码示例</a></h2>
+<table class="dataintable">
+  <tr>
+    <th width="9%">属性</th>
+    <th width="30%">&nbsp;</th>
+    <th width="30%">类型</th>
+    <th width="24%">值</th>
+    <th width="23%">描述</th>
+    <th width="14%">设置方式</th>
+  </tr>
+  <tr>
+    <td id="onShowMsg10">el</td>
+    <td>&nbsp;</td>
+    <td>插入列中每行的元素</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td rowspan="3" id="onShowMsg9">op对象用于设置新增列的属性</td>
+    <td id="onShowMsg9">ipos</td>
+    <td>整数</td>
+    <td>如果为空，则从尾部插入</td>
+    <td>如果为空，则从尾部插入</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg11">width</td>
+    <td>整数</td>
+    <td>表示列的宽度</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg8">title</td>
+    <td><p>字符串</p></td>
+    <td>列的标题</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+</table>
+<h2 id="attr_list7" >6、表格的分页对象的访问方法<a href="datagrid10.html" ></a></h2>
+<table class="dataintable">
+  <tr>
+    <th width="12%">名称</th>
+    <th width="28%">支持的方法与属性</th>
+    <th width="11%">类型</th>
+    <th width="12%">值</th>
+    <th width="37%">调用描述或示例</th>
+    </tr>
+  <tr>
+    <td rowspan="3" id="onShowMsg16">page</td>
+    <td><p>此对象为gridPaginate类型支持下列属性与方法：</p></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td><p>op.sizeofPage//每页大小</p>
+      <p>op.sizesofPage//可选择的页大小</p>
+      <p>op.currPage//当前页号</p>
+      <p>op.totalSize//总记录数</p>
+      <p>op.totalPages//总页数</p></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>var g1=$('.grid1');<br />
+alert(&quot;页大小：&quot;+g1[0].page.op.sizeofPage)</td>
+    </tr>
+  <tr>
+    <td id="onShowMsg19">setRequestPage()</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>var g1=$('.grid1');<br />
+      g1[0].page.setRequestPage(1)</td>
+    </tr>
+  <tr>
+    <td id="onShowMsg19">&nbsp;</td>
+    <td id="onShowMsg21">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+</table>
+<h2 id="attr_list8" >&nbsp;</h2>
+<h2 id="attr_list6" >7、从json加载数据，$('#grid1').loadData(op);<a href="datagrid15.html" >参见代码示例</a></h2>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>&nbsp;</th>
+    <th>类型</th>
+    <th>值</th>
+    <th>描述</th>
+    <th>设置方式</th>
+  </tr>
+  <tr>
+    <td rowspan="10" id="onShowMsg17">op用于对ajax请求参数的设置，与$.ajax(op)的op参数相同</td>
+    <td id="onShowMsg17">url</td>
+    <td>必须，字符串</td>
+    <td>&nbsp;</td>
+    <td>请求的URL</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg13">resultName</td>
+    <td>可选</td>
+    <td>&nbsp;</td>
+    <td>返回json结果集数据的名字</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg14">pageInfoName</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>返回json结果后台分页信息的名字</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg15">success</td>
+    <td><p>可选，回调函数</p></td>
+    <td>&nbsp;</td>
+    <td>服务器成功返回且加载到表格前调用的函数，参数为：success(jsdata),jsdata为服务器返回数据</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg12">onPreLoad</td>
+    <td>可选，回调函数</td>
+    <td>&nbsp;</td>
+    <td>参数onPreLoad(jsdata,op)</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg15">loadFinish</td>
+    <td><p>可选，回调函数</p></td>
+    <td>&nbsp;</td>
+    <td>加载完毕后调用的函数,参数为：:loadFinish(op.data),op.data为参数op的data参数</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg14">isformdata</td>
+    <td>可选，boolean</td>
+    <td>&nbsp;</td>
+    <td>是否提交表单数据</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg13">setCellVal</td>
+    <td>可选，回调函数</td>
+    <td>&nbsp;</td>
+    <td>customSetCellVal(i,mapName,rowVal){//参数(i,mapName,rowVal)分别为：序号，字段映射名称，当前行的各字段值数组</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg18">applyTo</td>
+    <td>jquery对象</td>
+    <td>&nbsp;</td>
+    <td>分页导航信息的归属元素（决定分页信息的位置)</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="onShowMsg14">其他有效参数</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>参见$.webutil.submitByAjax的op参数。</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p></p>
+<p>&nbsp;</p>
+<p class="note"><span>注释：</span>无</p>
+<p class="tip"><span>提示：</span>在与datagrid控件一起使用时，请将表单初始化的js放置于datagrid之后完成。</p>
+<h3>详细描述：无</h3>
+<h3>依赖的JS文件及CSS文件</h3>
+<p>&lt;link rel="stylesheet" type="text/css" href="build\webui78\skin\default\webui78.css" &gt;<br>
+&lt;script type="text/javascript" src="../js/webui78.js"&gt;&lt;/script&gt;
+</p>
+</div>
+
+
+<div>
+<h2>实例</h2>
+<h3>html代码写法：</h3>
+<p>&nbsp;</p>
+<pre>&nbsp;
+</pre>
+<p>通过JS设置表格属性 ：</p>
+<p>&nbsp;</p>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt; 
+$(document).ready(function(){	
+。。。。。。
+
+});		
+&lt;/script&gt; 
+</pre>
+<h3 id="set_validator">&nbsp;</h3>
+<p class="note"><span>注释：</span>
+  无</p>
+<p><a href="#">测试</a></p>
+</div>
+
+
+<div>
+<h2>浏览器支持</h2>
+<p>兼容IE6~9、firefox主流浏览器。</p>
+</div>
+
+
+<div>
+<h2>&nbsp;</h2>
+</div>
+
+<div>
+<h2>标准属性</h2>
+<pre>无</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+<div>
+<h2>事件属性</h2>
+<pre>无
+</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+</div>
+
+
+
+
+
+</div><div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

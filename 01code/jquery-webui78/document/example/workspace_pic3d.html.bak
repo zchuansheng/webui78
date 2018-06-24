@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"  alt=""/>
+<title> </title>
+<link rel="stylesheet" type="text/css" href="../application_css/pic3d/carousel.css" media="screen" alt=""/>
+<link rel="stylesheet" type="text/css" href="../application_css/pic3d/style.css" media="screen" alt=""/>
+<script type="text/javascript" src="../application_js/pic3d/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../application_js/pic3d/jquery.carousel.min.js"></script>
+<script type="text/javascript" src="../application_js/pic3d/jquery.mousewheel.js"></script>
+
+<script type="text/javascript">
+
+	jQuery(document).ready(function($){
+		$('#carousel').carousel({width: 800, 
+								 height: 500, 
+								 itemWidth:500, 
+								 horizontalRadius:500, 
+								 verticalRadius:100, 
+								 resize:false, 
+								 mouseScroll:false, 
+								 mouseDrag:true, 
+								 scaleRatio:0.4, 
+								 scrollbar:true, 
+								 tooltip:true, 
+								 mouseWheel:true, 
+								 mouseWheelReverse:true});
+	});
+	
+</script>
+
+</head>
+
+<body  leftmargin="0" topmargin="0" leftmargin="0">
+
+ 
+</body>
+
+</html>

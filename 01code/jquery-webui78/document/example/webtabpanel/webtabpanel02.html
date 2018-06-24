@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>accordionMutil</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+ $(document).ready(function(){  
+ 			//1将html数据格式化为AccordionMuti的效果
+	   	$('.grid_nohead').datagrid({hashead:false,trselect:false});////不需要表头，并且不需要行选择的设置
+		$('.btn_sbmt').PicButton();//无需设置参数
+		$('.btn').PicButton();
+	function onchanged(oldindex,newindex){
+		alert("活动选项卡发生变化：last actived="+oldindex+" ,  current actived="+newindex);
+	}
+	    
+	   	$(".webtab2").webTabpanel({onChanged:onchanged});
+ 
+		var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条
+		var g=$('.grid1').datagrid({toolbar:bar});
+		
+		$("#btnshow1").click(function(){
+			$(".webtab2").setActiveTab(1);
+		});
+ 		$("#btnshow2").click(function(){
+			alert("当前选中的卡片为："+$(".webtab2").getActiveTab());
+		});
+	 				
+	});
+
+
+	</script>
+
+  </head>
+  <body >
+<div class="headline"  >
+  <div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+  	  webtabpanel标签组件-嵌套表格的示例</div>
+<table   >
+<tr>
+			<td><div>
+
+						<br>
+						<button class="btn" id ='btnshow1' type="button" value="1"  mask >显示第2个选项卡</button>
+						<button class="btn" id ='btnshow2' type="button" value="1"  mask >显示当前选中选项卡序号</button>
+						<table  ><tr><td>
+						   	<div class="webtab2" style="width:800px;" >
+						   			<div>
+										 	<div >包含表格的用法</div> 
+											<div >
+												<input type="hidden" name="sel_batch_no" value=""/>
+																			<br />
+																					
+																			<div class="btn_toolbar" >
+																				<button class="btn" id ='ddd' type="button" value="1" onClick="form1.submit();"  mask >新增</button>
+																				<button class="btn" type="button" value="2" onClick="form1.submit();"  mask >编辑</button>
+																				<button class="btn" type="button" value="3" onClick="form1.submit();"   >提交</button>
+																				<button class="btn" type="button" value="4" > 打印 </button>	
+																				<button class="btn" type="button" value="4" force > 不受条件控制的按钮 </button>
+																				
+																				<div class="btn_condition" >
+																					<div id='condition_null'>新增,打印</div>
+																					<div id='00'>新增,编辑,提交</div>
+																					<div id='01'>新增,编辑,打印</div>
+																					<div id='02'>新增,提交,打印</div>
+																					<div id='03'>新增,提交</div>
+																				</div> 
+																			</div>
+																					<table  class="grid1"  width="100%"    >
+																			    		<tr>
+																			            	<td   width="15%">序号</td>
+																			            	<td   width="20%" >操作编号</td>
+																			            	<td   width="25%" >信息名称</td>
+																			            	<td   width="20" >操作员</td>
+																			            	<td   width="20%" >状态</td>
+																			           </tr>
+																			     		<tr>
+																			     		<td   btn_condition='01' align="center">1</td>
+																			            	<td>100309000304</td>
+																			            	<td>花果山谷 </td>
+																			            	<td>2011-01-07</td>
+																			            	<td>编辑</td>
+																			         		</tr>
+																			    		<tr  >
+																			      					<td  btn_condition='02' align="center">2</td>
+																			            	<td>100309000300</td>
+																			            	<td>花果山谷1花果山谷1花果山谷1花果山谷1 </td>
+																			            	<td>2010-11-12</td>
+																			            	<td>提交审核</td>
+																			            </tr>
+																			    		<tr>
+																			     					<td  btn_condition='02' align="center">3</td>
+																			            	<td>100309000301</td>
+																			            	<td>花果山谷2 </td>
+																			            	<td>2010-11-12</td>
+																			            	<td>提交审核</td>
+																			            </tr>
+																			    		<tr>
+																			     					<td  btn_condition='03' align="center">4</td>
+																			            	<td>100309000302</td>
+																			            	<td>花果山谷3 </td>
+																			            	<td>2010-11-12</td>
+																			            	<td>撤销</td>
+																			            </tr>
+																			    		<tr>
+																			      					<td  btn_condition='05' align="center">5</td>
+																			            	<td>100309000303</td>
+																			            	<td>花果山谷4 </td>
+																			            	<td>2010-11-12</td>
+																			            	<td>交易完成</td>
+																			            </tr>
+																					</table>
+																			 
+																					<br>
+
+										 		</div> 
+									 	</div>
+									 	<div>
+										 	<div >嵌入ifram的用法</div> 
+										 	<div ><iframe style="width:800px;height:600px;" src="datagrid/datagrid02.html"></iframe></div> 
+										</div>
+										<div>
+										 	<div >其他信息配置文件夹</div> 
+										 	<div >
+										 		<table  class="grid_nohead" width='80%'    >
+ 
+								     		<tr>
+								     					<td   align="center">操作编号</td>
+								            	<td><input class="zcs" type="text" id="batch_no" name="batch_no"   value="123456789012"  v_type="number" v_min=12 v_max=12 v_onShowMsg="请输入申请编号" title="操作编号"/></td>
+								            	<td>信息名称 </td>
+								            	<td><input type='text' name='sect_name' id="sect_name"  value ="" size='30' v_type="text" v_empty="1" v_min="1" v_max="40" v_onShowMsg="请输入信息名称11" title="信息名称" /></td>
+								   		  </tr>
+								    		<tr>
+								     					<td  align="center">信息代码</td>
+								            	<td><input class="zcs"  type="text" id="sect_code" name="sect_code" value="1234567890"  v_type="number" v_min=10 v_max=10 title="信息代码"/></td>
+								            	<td>工作日期 </td>
+								            	<td><input type="text" id="finish_date" name="finish_date" v_onShowMsg="请输入预计工作日期" value="2010-08-08" v_type="date" title="工作日期"/></td>
+								            </tr>
+								    		<tr >
+								      					<td  align="center">信息地址</td>
+								            	<td><input type='text' id='sect_addr' name='sect_addr' value='' title="信息地址" /></td>
+								            	<td>信息数值二 </td>
+								            	<td><input type='text' id='sect_area' name='sect_area' value='1293.00' v_type="decimal2"  title="信息数值二" /></td>
+								            </tr>
+								    		<tr>
+								     					<td  align="center">总户数</td>
+								            	<td><input type='text' id='owner_count' name='owner_count'  value='129' v_type="integer0"  title="总户数" /></td>
+								            	<td>交易金额 </td>
+								            	<td><input type='text'  id="amt" name='amt' value='1293.00'  v_type="decimal2"  title="交易金额" /></td>
+								            </tr>
+								    		<tr>
+								     					<td  align="center">是否出售</td>
+								            	<td><input type="radio" id="sold" value="1" name="sold"  v_min="1"  title="是否出售" checked />已经出售&nbsp;&nbsp;&nbsp;&nbsp; 
+								         					<input type="radio" id="sold" value="2" name="sold"  v_min="1" 	title="是否出售" />未出售
+								         					<input type="radio" id="sold" value="3" name="sold"  v_min="1"  title="是否出售"/>不知道
+								   			  </td>
+								            	<td>信息类型 </td>
+								            	<td>
+								            		<select name="sect_type" id="sect_type"  v_empty="0" title="信息类型"  >
+												          <option value="">－－请选择信息类型－－</option>
+												          <option value="1" selected>商品房</option>
+												          <option value="2">公房</option>
+												          <option value="3">小城镇</option>
+												          <option value="4">原有住房</option>
+										          </select> 
+								   			  </td>
+								        </tr>
+								    		<tr>
+								     					<td  align="center">邮编</td>
+								            	<td><input type='text' id='zipcode' name='zipcode'  value='123456' v_type="zipcode" title="邮编" /></td>
+								            	<td>交易金额2 </td>
+								            	<td><input type='text'  id="amt2" name='amt2' value='1293.00'  v_type="decimal2" title="交易金额2" /></td>
+								            </tr>
+								            
+								    		<tr>
+								     					<td  align="center">其住址范围：</td>
+								            	<td colspan='3' >
+								            		<select name="selectmore" size="3" id="selectmore" multiple v_min="2" v_max="4" title="其住址范围">
+																  <option value="0" selected >花果山谷小区的1号楼1门</option>
+																  <option value="1" selected >花果山谷小区的1号楼2门</option>
+																  <option value="2" selected >花果山谷小区的1号楼3门</option>
+																  <option value="3">花果山谷小区的2号楼1门</option>
+																  <option value="4">花果山谷小区的2号楼2门</option>
+												  </select>(按住ctrl键多选)
+								   			  </td>
+								        
+								        </tr>
+								     		<tr>
+								     					<td  align="center">规划许可证附件：</td>
+								            	<td colspan='3' ><input type="file" id="sect_file" name="sect_file" v_type="picture" v_empty="1" v_min="3" v_max="20" title="规划许可证附件" />
+								   			  </td>
+								        
+								        </tr>
+									      <tr> 
+										      <td align="right" >你的描述:</td>
+										      <td colspan="3" valign="top"> <textarea id="sect_remark" name="sect_remark" cols="50" rows="2" v_type="text" v_min=10 v_max="20" title="你的描述" >规划许可证规划许可证</textarea> 
+										      </td>
+								    	  </tr>
+								 
+								    		<tr>
+								     					<td  align="center">小区联系人</td>
+								            	<td><input type="text" id="sect_code" name="sect_code"   value="zcs123"  v_type="username" v_min=6 v_max=10 title="小区联系人"/></td>
+								            	<td>联系电话 </td>
+								            	<td><input type="text" id="tel" name="tel"  value="12345678" v_type="tel" v_min="8" v_max="11" title="联系电话" /></td>
+								        </tr>
+								    		<tr>
+								     					<td  align="center">email地址</td>
+								            	<td><input type="text" id="sect_code" name="sect_code"   value="zchuansheng@gmail.com"  v_type="email" v_min=3 v_max=50 title="email地址"/></td>
+								            	<td>联系人身份 </td>
+								            	<td> 
+								            		<input type="checkbox" name="link_type" id="link_type" value="0" v_min="1" v_max=3 title="联系人身份" />党员 
+								            		<input type="checkbox" name="link_type" id="link_type" value="1" checked />团员
+								            		<input type="checkbox" name="link_type" id="link_type" value="2" />学生
+								            		<input type="checkbox" name="link_type" id="link_type" value="3" />领导 
+								            		<input type="checkbox" name="link_type" id="link_type" value="4" />主席 
+								            	</td>
+								        </tr>
+								    		<tr>
+								     					<td  align="center">出生日期</td>
+								            	<td><input type="text" id="finish_date" name="finish_date"  value="2010-07-08" v_type="date" v_min="2010-06-01" v_max="2010-08-31" title="出生日期"/></td>
+								            	<td>身份证号码</td>
+								            	<td><input type="text" id="sect_code" name="sect_code"   value="310911190801050837"  v_type="idcard" v_min=15 v_max=18 title="身份证号码"/></td>
+								        </tr>
+								 
+										</table>
+
+										 		
+										 		</div> 						
+									 	</div>
+						 		</div>
+					</td></tr></table>	 		
+						 		
+					
+					</div>
+			</td>
+		</tr>
+	</table>
+  	
+  	
+  	
+
+  </body>
+</html>

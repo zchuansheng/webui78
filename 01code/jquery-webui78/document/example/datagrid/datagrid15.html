@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webtree</title>
+<style type="text/css">
+<!--
+.redfont {color: #FF0000;   }
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript" src="../../../document/application_js/web-commons.js"></script>
+ 
+<script type="text/javascript">
+function onloadFinish(data){
+	var g=$('.grid1');
+ 	g.appendElements('<input type="checkbox" class="sel_data" name="sel_data">',{icol:0,linkid:1});
+	$('.grid1>tbody>tr>td:nth-child(1)').attr("align","center");
+	$('.grid1>tbody>tr>td:nth-child(2)').attr("align","center");
+ }
+function onOK(jsdata){//服务器成功返回，加载数据前调用此函数
+	alert("服务器返回数据行数："+jsdata.result.length);
+}
+$(document).ready(function(){	
+	$(".btn").PicButton();
+	var grid=$('.grid1');	
+	$('.grid2').datagrid({trselect:false,headclass:"gridheadclass4"});	
+	$(".webtab1").webTabpanel();
+	grid.datagrid({thresPage:10,defSizePage:10});
+	grid.loadData({url:"./griddata/grid_data_full.json",loadFinish:onloadFinish,data:'ddd'});
+	$("#btn1").click(function(){
+			if($("#user_name").val()=="33") 
+				grid.loadData({url:"./griddata/grid_data_search.json",loadFinish:onloadFinish,data:'ddd'});
+				//下面语句是先通过回调读取服务器返回的数据
+			else grid.loadData({url:"./griddata/grid_data_full.json",loadFinish:onloadFinish,success:onOK,data:'ddd'});
+		return false;
+	});
+	var dlg_btns=[
+				{btn:'<button>新增</button>',onclick:function(e){
+					//$.webUtil.submit("../ok.html");
+					$(e.data.target).closeWebDialog();
+					 grid.loadData({url:"./griddata/grid_data_add.json",loadFinish:onloadFinish,data:'ddd'});
+					 return ;
+					}
+				},
+				{btn:'<button>关闭</button>',onclick:function(e){ $(e.data.target).closeWebDialog(); } }
+			]
+	$("#btn2").click(function(e){
+		$.webUtil.openWindow(
+			{event:e,width:600,height:300,title:"新增操作员",buttons:dlg_btns,applyTo:$("#adddiv")});		 
+		return false;
+	});
+	$("#dlg_btn1").click(function(){
+		var grid=$('.grid1');	
+		grid.loadData({url:"./griddata/grid_data_add.json",loadFinish:onloadFinish,data:'ddd'});
+	});
+	$("#btn3").click(function(){
+		  grid.loadData({url:"./griddata/grid_data_delete.json",loadFinish:onloadFinish,data:'ddd'});
+		return false;
+	});
+ 
+	$('#sel_all').click(function (){
+		$.webUtil.check_against("sel_data");
+		return ;
+	});
+
+
+	
+});		
+	 
+</script>
+ </head>
+ 
+ <div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+动态加载表格</div>
+<div class="code">
+	
+</div>
+
+<form  name ="form1">
+	操作员名称:<input type="text" id="user_name" name ="user_name" value=""/>
+	<button id="btn1" class="btn" >查询</button>
+	<button id="btn2" class="btn" >新增数据</button>
+	<button id="btn3" class="btn" >删除数据</button>
+	<button id="btn4" class="btn" >重新从JSON加载数据</button>
+	<br><span class="redfont" >本页面需要访问json文件，请放置在tomcat或weblogic等web容器中运行，其运行效果如下：</span><br>
+	<table border="0" width="800" >
+		<tr>
+			<td colspan="2" valign="top">	
+				<img src="../demo_pic/datagrid_load.png" />
+			</td>
+	  
+		</tr>
+	</table>
+	实际运行效果：
+	<table border="0" width="800" >
+		<tr>
+			<td width="50%" valign="top">					
+					<table  class="grid1"  width="100%"    >		    
+		    			<tr>
+		            	<td   width="7%"  ><a href="#" class="sel_all" id="sel_all" >反选</a></td>
+		            	<td   width="15%" name_map="id" >序号</td>
+		            	<td   width="20%" name_map="code">操作编号</td>
+		            	<td   width="20%" name_map="name">信息名称</td>
+		            	<td   width="20"  name_map="user">操作员</td>
+		            	<td   width="20%" name_map="status" >状态</td>
+		          </tr>		 
+						 
+				</table>
+ 				<div id="adddiv"  style="display:none" >
+ 					<div class="webtab1"    > 
+	 					<div> 
+                   <div>新增角色信息</div>  
+                	 <div> 
+                	 	<table width="100%"  class="grid2">
+											<thead>
+											<tr>
+											<td colspan="4" ><div align="center">角色信息</div></td>
+											</tr>
+											</thead>
+											<tr>
+												<td align="center" width="15%" >角色编码：</td>
+												<td align="left" 	 width="35%"><input type="text" name="role_code" /></td>
+												<td align="center" width="15%">角色名称：</td>
+												<td align="left"   width="35%"><input type="text" name="role_code"/></td>
+											</tr>
+											<tr>
+												<td align="center">角色描述：</td>
+												<td align="left" colspan="3" ><textarea rows="5" cols="52" ></textarea></td>
+											</tr>
+											<tr>
+												<td align="center">角色状态：</td>
+												<td align="left"><select ><option>有效&nbsp&nbsp&nbsp&nbsp&nbsp;&nbsp&nbsp&nbsp&nbsp&nbsp;</option></select></td>
+												<td align="center">新增人员：</td>
+												<td align="left"><input type="text" size="20"/></td>
+											</tr>
+					   </table>
+						  </div>
+	 					</div> 
+	 					<div> 
+                  <div >权限设置</div>                  	 	
+                   <div>
+                   		<table width="100%"  class="grid3">
+				 
+												<tr>
+													<td align="center" width="15%" >权限编码：</td>
+													<td align="left" 	 width="35%"><input type="text" name="role_code" /></td>
+													<td align="center" width="15%">权限名称：</td>
+													<td align="left"   width="35%"><input type="text" name="role_code"/></td>
+												</tr>
+	 											<tr>
+													<td align="center">权限状态：</td>
+													<td align="left"><select ><option>有效&nbsp;&nbsp;&nbsp;</option></select></td>
+													<td align="center">权限人员：</td>
+													<td align="left"><input type="text" size="20"/></td>
+												</tr>
+					 </table>
+              		</div>
+        		</div>
+	 				</div>
+
+
+ 				</div>	 
+			</td>		 
+		</tr>
+	</table>
+
+
+	
+	
+ </form>
+
+<h2><strong>上述实现效果</strong>的代码示例</h2>
+
+<p>grid.loadData({url:&quot;./griddata/grid_data_full.do&quot;,loadFinish:onloadFinish,success:onOK,data:'username=zhangcs'});<br>
+ url参数为返回JSON数据的URI。<br>
+ success:成功返回json数据并在数据加载之前调用。参数为服务器返回的json原始数据。<br>
+ loadFinish：数据加载完毕后的回调函数，可用于对数据显示的各种处理，如每行添加一个checkbox。该函数的参数为参数data的原始内容。<br>
+  data：传递给xxx.do的参数数据<br>
+  resultName：用于指定服务器返回JSON中存储结果集的变量名。默认名字为"result"<br>
+</p>
+
+</body>
+</html>
+	
+	

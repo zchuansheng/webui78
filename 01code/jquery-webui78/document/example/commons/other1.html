@@ -1,0 +1,130 @@
+
+<!DOCTYPE html >
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+				$(".btn_popup").PicButton();
+				
+	});
+function myclick(index){
+	if(index==1){
+		$.webUtil.submitOnBtn("../ok.html",$('#btn1'));
+	}else if(index==2){
+			$.webUtil.submit("../ok.html");
+	}else if(index==3){
+			$.webUtil.open("../ok.html");
+		
+	}
+	
+	
+}
+</script>
+</head>
+
+<body class="html" id="tags">
+
+<div id="wrapper">
+
+<div id="header">
+<h1>其他工具函数使用说明</h1>
+</div>
+<form name="form1">
+</form>
+<div id="maincontent"  >
+
+<h1>&nbsp; </h1>
+<div>
+
+<h2>定义与说明</h2>
+
+<p>&nbsp;</p>
+<table class="dataintable">
+  <tr>
+    <th width="10%">函数名称</th>
+    <th width="30%" >参数列表</th>
+    <th width="20%">适用情况</th>
+    <th width="20%">说明</th>
+    <th width="20%">调用方法</th>
+  </tr>
+  <tr>
+    <td height="87"><p>$.fn.check_against</p>      </td>
+    <td ><p>boxname需要反选的复选框名称</p>      </td>
+    <td>需要点击反选时</td>
+    <td>需要加载web-commons.js</td>
+    <td><p>$('#sel_checkbox').check_against(&quot;checkboxname&quot;);</p></td>
+  </tr>
+  <tr>
+    <td valign="middle"><p>$.fn.check_against2</p>      </td>
+    <td ><p>boxname需要反选的复选框名称</p>
+      <p>,callback反选完成后需要回调的函数，可空</p></td>
+    <td>需要点击反选时</td>
+    <td><p>需要加载web-commons.js</p>      </td>
+    <td><p>$(&quot;#allCheck&quot;).check_against2(&quot;checkboxname&quot;);</p>
+      <p>带回调函数：$('#sel_all').check_against2(&quot;R1&quot;,myclick);</p></td>
+  </tr>
+  
+  <tr>
+    <td>$.fn.framAutoHeight</td>
+    <td >&nbsp;</td>
+    <td>/*设置ifram 根据内容自动调整高度，ifram 内必须有body，本方法是在ifram所在页面调用*/ </td>
+    <td>需要加载web-commons.js</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>$.webCommons.setframAuto</td>
+    <td >&nbsp;</td>
+    <td>/**自动调整ifram高度，本方法可以写在被ifram包含的页面，实现对父页面的ifram进行设置*/</td>
+    <td>需要加载web-commons.js</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>标题自动逐级传递</td>
+    <td >需要加载web-commons.js</td>
+    <td>需要取得父页面的标题时</td>
+    <td>/*自动传递表单标题功能*/</td>
+    <td> <p>在jsp中可以通过request.getparameter(&quot;message_pagetitle&quot;)取得上级页面的页面标题。</p>      </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="tip">&nbsp;</p>
+</div>
+
+
+<div>
+<h2> <a href="#"></a></h2>
+</div>
+
+
+<div>
+<h2>浏览器支持</h2>
+<p>兼容IE6~9、firefox主流浏览器。</p>
+</div>
+
+
+<div>
+<h2>&nbsp;</h2>
+</div>
+<div> </div>
+
+</div>
+
+
+
+
+
+</div><div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

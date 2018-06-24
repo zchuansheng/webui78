@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function(){	
+
+	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条
+	bar.refreshbyName('00');//页面加载时绑定状态的工具条
+	$('.grid_nohead').datagrid({hashead:false,trselect:false});
+	//var g=$('.grid1').datagrid({toolbar:bar});
+	
+	var bar2=$('.btn_toolbar2').BtnToolBar();//初始化按钮工具条
+	$("#sel_status").change(function(){
+		bar2.refreshbyName($(this).val());
+	});
+
+});		
+	
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+页面加载时绑定状态的工具条</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br /><h2> 1、页面加载时，根据初始状态值，控制工具条的按钮显示：</h2>
+<div class="btn_toolbar" >
+	<button class="btn" id ='ddd' type="button" value="1" onClick="form1.submit();"  mask >新增</button>
+	<button class="btn" type="button" value="2" onClick="form1.submit();"  mask >编辑</button>
+	<button class="btn" type="button" value="3" onClick="form1.submit();"   >提交</button>
+	<button class="btn" type="button" value="4" > 打印 </button>	
+	<button class="btn" type="button" value="4" force > 不受条件控制的按钮 </button>
+	
+	<div class="btn_condition" >
+		<div id='condition_null'>新增,打印</div>
+		<div id='00'>新增,编辑,提交</div>
+		<div id='01'>新增,编辑,打印</div>
+		<div id='02'>新增,提交,打印</div>
+		<div id='03'>新增,提交</div>
+	</div> 
+</div>
+
+
+<table  class="grid_nohead" width='80%'    >
+  <tr>
+    <td   align="center">操作编号</td>
+    <td>100309000304</td>
+    <td>信息名称 </td>
+    <td><input type='text' name='data' value='XXX市XXX区花果山谷项目' size='30'  /></td>
+  </tr>
+  <tr>
+    <td  align="center">信息代码1</td>
+    <td>100309000301</td>
+    <td>工作日期1 </td>
+    <td>2010-11-12</td>
+  </tr>
+  <tr >
+    <td  align="center">信息地址</td>
+    <td>XXX市ＸＸＸ区ＸＸＸ路</td>
+    <td>信息面积 </td>
+    <td>1293.00</td>
+  </tr>
+  <tr>
+    <td  align="center">信息代码2</td>
+    <td>100309000301</td>
+    <td>工作日期2 </td>
+    <td>2010-11-12</td>
+  </tr>
+  <tr>
+    <td  align="center">信息代码3</td>
+    <td>100309000301</td>
+    <td>工作日期3 </td>
+    <td>2010-11-12</td>
+  </tr>
+  <tr>
+    <td  align="center">交易状态</td>
+    <td><strong>编辑</strong></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h2>示例代码</h2>
+<p>当需要提示信息时：需要调用<code><strong>refreshbyName</strong></code>初始化。</p>
+<pre>
+&lt;script type="text/javascript"&gt; 
+$(document).ready(function(){	
+<code>  var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条
+  bar.refreshbyName('00');//页面加载时绑定状态的工具条</code>
+});		
+&lt;/script&gt;  
+</pre>
+<h2>2、选择框的值控制状态条显示的示例代码</h2>
+<div class="btn_toolbar2" >
+	<button class="btn" id ='ddd' type="button" value="1" onClick="form1.submit();"  mask >新增</button>
+	<button class="btn" type="button" value="2" onClick="form1.submit();"  mask >编辑</button>
+	<button class="btn" type="button" value="3" onClick="form1.submit();"   >提交</button>
+	<button class="btn" type="button" value="4" > 打印 </button>	
+	<button class="btn" type="button" value="4" force > 不受条件控制的按钮 </button>
+	
+	<div class="btn_condition" >
+		<div id='condition_null'>新增,打印</div>
+		<div id='00'>新增,编辑,提交</div>
+		<div id='01'>新增,编辑,打印</div>
+		<div id='02'>新增,提交,打印</div>
+		<div id='03'>新增</div>
+	</div> 
+</div>
+
+<p>由选择控制按钮工具条的显示状态：
+  <label for="sel_status"></label>
+  <select name="sel_status" id="sel_status">
+    <option value="condition_null">无选择</option>
+    <option value="00">编辑状态</option>
+    <option value="01">提交审核状态</option>
+    <option value="02">撤销审核状态</option>
+    <option value="03">交易完成状态</option>
+  </select>
+</p>
+<h2>&nbsp;</h2>
+<h2>示例代码</h2>
+<p>当选择时：需要调用<code><strong>refreshbyName</strong></code>初始化。</p>
+<pre>
+&lt;script type="text/javascript"&gt; 
+$(document).ready(function(){	
+
+<code>  var bar2=$('.btn_toolbar2').BtnToolBar();//初始化按钮工具条
+  $(&quot;#sel_status&quot;).change(function(){<br>		bar2.refreshbyName($(this).val());<br>	});
+</code>
+});		
+&lt;/script&gt; 
+        </pre>
+<p>&nbsp;</p>
+</form>
+
+
+
+</body>
+</html>

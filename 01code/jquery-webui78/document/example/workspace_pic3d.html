@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"  alt=""/>
+<title> </title>
+<link rel="stylesheet" type="text/css" href="../application_css/pic3d/carousel.css" media="screen" alt=""/>
+<link rel="stylesheet" type="text/css" href="../application_css/pic3d/style.css" media="screen" alt=""/>
+<script type="text/javascript" src="../application_js/pic3d/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../application_js/pic3d/jquery.carousel.min.js"></script>
+<script type="text/javascript" src="../application_js/pic3d/jquery.mousewheel.js"></script>
+
+<script type="text/javascript">
+
+	jQuery(document).ready(function($){
+		$('#carousel').carousel({width: 800, 
+								 height: 500, 
+								 itemWidth:500, 
+								 horizontalRadius:500, 
+								 verticalRadius:100, 
+								 resize:false, 
+								 mouseScroll:false, 
+								 mouseDrag:true, 
+								 scaleRatio:0.4, 
+								 scrollbar:true, 
+								 tooltip:true, 
+								 mouseWheel:true, 
+								 mouseWheelReverse:true});
+	});
+	
+</script>
+
+</head>
+
+<body  leftmargin="0" topmargin="0" leftmargin="0">
+
+	<div id="wide-wrapper" >		
+		
+		<ul id="carousel">
+			<li>
+				<img src="99demopic/image1.png"  alt=""/>
+				<div class="tooltip">数据表格（可以自定义皮肤样式）</div>
+			</li>
+			<li>
+				<img src="99demopic/image2.png" alt=""/>
+				<div class="tooltip">可以排序、可以过滤数据的表格</div>
+			</li>
+			<li>
+				<img src="99demopic/image3.png" alt=""/>                   
+				<div class="tooltip">带各类图标的按钮</div>
+			</li>
+			<li>
+				<img src="99demopic/image4.png" alt=""/>
+				<div class="tooltip">表单自动验证，并提示验证失败信息</div>
+			</li>
+			<li>
+				<img src="99demopic/image5.png" alt=""/>
+				<div class="tooltip">日历对话框，可对日期类型的输入自动弹出日期选择框</div>
+			</li>
+			<li>
+				<img src="99demopic/image6.png" alt=""/>
+				<div class="tooltip">窗口组件，可以模拟弹出窗口</div>
+			</li>
+			<li>
+				<img src="99demopic/image7.png" alt=""/>
+				<div class="tooltip">窗口组件，待按钮的对话框组件</div>
+			</li>
+			<li>
+				<img src="99demopic/image8.png" alt=""/>
+				<div class="tooltip">选项卡组件，可以分类显示更多内容</div>
+			</li>
+			<li>
+				<img src="99demopic/image9.png" alt=""/>
+				<div class="tooltip">树组件，带图标、复选框、单选框等各种形式的树视图</div>
+			</li>
+			<li>
+				<img src="99demopic/image10.png" alt=""/>
+				<div class="tooltip">树组件，可配置成折叠菜单的样式</div>
+			</li>
+			<li>
+				<img src="99demopic/image11.png" alt=""/>
+			</li>
+		 
+		</ul>
+	
+    </div>
+<br>
+<h5 style="font-size:14px; text-align:center" >上述图片为webui78部分组件效果图(支持鼠标滚轮滚动查看)，详细内容请参考具体样例代码</h5>
+ 
+</body>
+
+</html>

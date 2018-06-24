@@ -1,0 +1,7 @@
+{"result":[
+{"id":1,"name":"壹级信息1","url":"./treedata/tree_data1.json","level":"1","isleaf":false,"parent_id":"0" }, 
+{"id":10,"name":"壹级信息2","url":"./treedata/dept_tree/tree_data10.json","level":"1","isleaf":false,"parent_id":"0","check_status":"1" }, 
+{"id":19,"name":"壹级信息3","url":"./treedata/tree_data19.json","level":"1","isleaf":false,"parent_id":"0" }
+],
+"message":""
+}

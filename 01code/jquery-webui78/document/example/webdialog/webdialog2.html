@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webdialog1</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+
+<script type="text/javascript">
+
+var dlg;
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条
+	$('.grid_head').datagrid({trselect:false,hashead:true});
+	var g=$('.grid1').datagrid( {width:'90%',trselect:false});//或执行代码 g[0].grid.setBar(bar);	
+	$('.grid_nohead').datagrid({trselect:false,hashead:false});
+	$("#btn1").click(function(e ){
+		$.webUtil.openWindow();
+	});
+	$("#btn2").click(function(e ){
+		$.webUtil.openWindow();
+	});
+	 
+/////////////////////
+
+	$(".testdlg").click(function(e){
+		var applyTo=$('.detail1',$(this).closest('tr'));
+		var op={applyTo:applyTo,event:e,checkOnClose:true};//checkOnClose为true表示关闭时验证元素有效性
+		$.webUtil.openWindow(op);	
+	});
+	$(".testdlg2").click(function(e){
+		var applyTo=$('.detail2',$(this).closest('tr'));
+		var op={applyTo:applyTo,event:e,checkOnClose:false};//checkOnClose为false表示关闭时不验证元素有效性
+		$.webUtil.openWindow(op);	
+	});
+/////////////	
+	
+	
+
+});		
+	 
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+窗口应用于特定元素上</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br />
+		<div><strong>窗口应用于特定元素上时，需要指定applyTo参数:</strong><br/>	
+	    	$.webUtil.openWindow({applyTo:.....});	 //指定applyTo参数 <br/>
+ 		</div>
+  <div class="btn_toolbar" >
+			<button class="btn" id ='btn1' type="button" value="1"    force >打开对话框</button>
+			<button class="btn" id ='btn2' type="button" value="1"    force >点击输入</button>			
+<button align="center" class="btn" id ='btn_save' type="button" value="1"  btn_href="../ok.html"  force >通过按钮自动验证提交</button>&nbsp; 
+		    <p>&nbsp;</p>
+		</div>
+ 		<table  class="grid1"  width="80%"    >
+    		<tr>
+            	<td   width="10%">序号</td>
+            	<td   width="10%" >编号</td>
+            	<td   width="25%" >信息名称</td>
+            	<td   width="20%" >对话框内带验证的例子</td>
+            	<td   width="20%" >对话框内不验证</td>
+           </tr>
+     		<tr>
+     		<td   btn_condition='01' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+           	<td><a  class="testdlg" href="#"  >点此输入被隐藏的元素</a>
+            		<div class="detail1" style="display:none">
+            			<table class="grid_nohead"  width="100%"  >
+            				<tr><td>姓名</td><td><input type="text" id="name1" v_min="10" title="姓名" value="张三1"/></td></tr>
+            				<tr><td>身份证</td><td><input type="text"   v_min="7" value="1212121"/></td></tr>
+            				<tr><td>联系方式</td><td><input type="text"  v_min="11"  value="13812345671"/></td></tr>
+            			</table>
+            			
+            		</div>            		
+            </td>
+           	<td><a  class="testdlg2" href="#"  >点此输入被隐藏的元素-不验证</a>
+            		<div class="detail2" style="display:none">
+            			<table class="grid_head"  width="100%"  >
+            				<tr><td>数据项</td><td>值</td></tr>
+           					<tr><td>姓名</td><td><input type="text" id="name1" v_empty="1" v_min="10" value="不验证1"/></td></tr>
+            				<tr><td>身份证</td><td><input type="text" v_empty="1"   v_min="7" value="111111111"/></td></tr>
+            				<tr><td>联系方式</td><td><input type="text" v_empty="1"  v_min="11"  value="13812345671"/></td></tr>
+            			</table>
+            			
+            		</div>            		
+            </td>
+   		  </tr>
+    		<tr  >
+      					<td  btn_condition='02' align="center">2</td>
+            	<td>100309000300</td>
+            	<td>花果山谷1花果山谷1花果山谷1花果山谷1 </td>
+           	<td><a  class="testdlg" href="#"  >点此输入被隐藏的元素</a>
+            		<div class="detail1" style="display:none">
+            			<table class="grid_nohead"  width="100%"  >
+            				<tr><td>姓名</td><td><input type="text" id="name2" v_min="10" value="张三2"/></td></tr>
+            				<tr><td>身份证</td><td><input type="text" v_min="7" value="2222222"/></td></tr>
+            				<tr><td>联系方式</td><td><input type="text" v_min="11" value="13812342222"/></td></tr>
+            			</table>
+            			
+            		</div>            		
+           	  </td>
+          	<td><a  class="testdlg2" href="#"  >点此输入被隐藏的元素-不验证</a>
+            		<div class="detail2" style="display:none">
+            			<table class="grid_head"  width="100%"  >
+            				<tr><td>数据项</td><td>值</td></tr>
+            				<tr><td>姓名</td><td><input type="text" id="name1" v_empty="1"  v_min="10" value="不验证2"/></td></tr>
+            				<tr><td>身份证</td><td><input type="text"  v_empty="1"   v_min="7" value="1212121"/></td></tr>
+            				<tr><td>联系方式</td><td><input type="text" v_empty="1"  v_min="11"  value="13812345671"/></td></tr>
+            			</table>
+            			
+            		</div>            		
+            </td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='02' align="center">3</td>
+            	<td>100309000301</td>
+            	<td>花果山谷2 </td>
+           	<td><a  class="testdlg" href="#"  >点此输入被隐藏的元素</a>
+            		<div class="detail1" style="display:none">
+            			<table class="grid_nohead"  width="100%"  >
+            				<tr><td>姓名</td><td><input type="text" v_min="10" value="张三3"/></td></tr>
+            				<tr><td>身份证</td><td><input type="text" v_min="7" value="33333333"/></td></tr>
+            				<tr><td>联系方式</td><td><input type="text"  v_min="11" value="13812343333"/></td></tr>
+            			</table>
+            			
+            		</div>            		
+           	  </td>
+          	<td><a  class="testdlg2" href="#"  >点此输入被隐藏的元素-不验证</a>
+            		<div class="detail2" style="display:none">
+            			<table class="grid_head"  width="100%"  >
+            				<tr><td>数据项</td><td>值</td></tr>
+            				<tr><td>姓名</td><td><input type="text" id="name1" v_empty="1"  v_min="10" value="不验证3"/></td></tr>
+            				<tr><td>身份证</td><td><input type="text"   v_empty="1"  v_min="7" value="1212121"/></td></tr>
+            				<tr><td>联系方式</td><td><input type="text" v_empty="1"   v_min="11"  value="13812345671"/></td></tr>
+            			</table>
+            			
+            		</div>            		
+            </td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">4</td>
+            	<td>100309000302</td>
+            	<td>花果山谷3 </td>
+            	<td><a  class="testdlg" href="#"  >点此输入被隐藏的元素</a>
+           		<div class="detail1"  >
+            			<table class="grid_nohead"  width="100%"  >
+            				<tr><td>姓名</td><td><input type="text" v_min="10" value="张三4"/></td></tr>
+            				<tr><td>身份证</td><td><input type="text" v_min="7" value="12444444"/></td></tr>
+            				<tr><td>联系方式</td><td><input type="text"  v_min="11" value="13812344444"/></td></tr>
+            			</table>
+            			
+           		  </div>            		
+            	</td>
+           	<td><a  class="testdlg2" href="#"  >点此输入被隐藏的元素-不验证</a>
+            		<div class="detail2" style="display:none">
+            			<table class="grid_head"  width="100%"  >
+            				<tr><td>数据项</td><td>值</td></tr>
+            				<tr><td>姓名</td><td><input type="text" id="name1" v_empty="1" v_min="10" value="不验证4"/></td></tr>
+            				<tr><td>身份证</td><td><input type="text"   v_empty="1" v_min="7" value="1212121"/></td></tr>
+            				<tr><td>联系方式</td><td><input type="text" v_empty="1"  v_min="11"  value="13812345671"/></td></tr>
+            			</table>
+            			
+            		</div>            		
+            </td>
+            </tr>
+    		<tr >
+      					<td  btn_condition='05' align="center">5</td>
+            	<td>100309000303</td>
+            	<td>花果山谷4 </td>
+           	<td><a  class="testdlg" href="#"  >点此输入被隐藏的元素</a>
+            		<div class="detail1" style="display:none">
+            			<table class="grid_nohead"  width="100%"  >
+            				<tr><td>姓名</td><td><input type="text" v_min="10" value="张三5"/></td></tr>
+            				<tr><td>身份证</td><td><input type="text" v_min="7" value="5555555"/></td></tr>
+            				<tr><td>联系方式</td><td><input type="text"  v_min="11" value="13812345555"/></td></tr>
+            			</table>
+            			
+            		</div>            		
+           	  </td>
+          	<td><a  class="testdlg2" href="#"  >点此输入被隐藏的元素-不验证</a>
+            		<div class="detail2" style="display:none">
+            			<table class="grid_head"  width="100%"  >
+             				<tr><td>数据项</td><td>值</td></tr>
+           				<tr><td>姓名</td><td><input type="text" id="name1" v_empty="1"  v_min="10" value="不验证5"/></td></tr>
+            				<tr><td>身份证</td><td><input type="text"  v_empty="1"  v_min="7" value="1212121"/></td></tr>
+            				<tr><td>联系方式</td><td><input type="text" v_empty="1"  v_min="11"  value="13812345671"/></td></tr>
+            			</table>
+            			
+            		</div>            		
+            </td>
+            </tr>
+		</table>
+		<br><br>其他表单输入项：
+
+		<table  class="grid_nohead" width='80%'    >
+          <tr>
+            <td   align="center">操作编号</td>
+            <td><input class="zcs" type="text" id="batch_no" name="batch_no"   value=""  v_type="username" v_min="1" v_max="12" v_onShowMsg="请输入12位申请编号" title="操作编号"/></td>
+            <td>信息名称 </td>
+            <td><input name='sect_name' type='text' id="sect_name" title="信息名称" value="名字"    size='30' v_type="text"   v_min="1" v_max="40" v_onShowMsg="某某某城市花园"  /></td>
+          </tr>
+          <tr>
+            <td align="right" >你的描述:</td>
+            <td colspan="3" valign="top"><textarea id="sect_remark" name="sect_remark" cols="50" rows="2"  
+              v_type="text" v_min=10 v_max="20"  v_onShowMsg="本次XXX内容.....本次XXX费用....元" title="你的描述" ></textarea>
+            </td>
+          </tr>
+        </table>
+		<br>
+
+	
+</form>
+
+
+
+</body>
+</html>

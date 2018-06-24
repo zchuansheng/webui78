@@ -1,0 +1,123 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+				$(".btn_popup").PicButton();
+				 
+				
+	});
+function myclick(index){
+	if(index==1){
+		$.webUtil.submitOnBtn("../ok.html",$('#btn1'));
+	}else if(index==2){
+			$.webUtil.submit("../ok.html");
+	}else if(index==3){
+			$.webUtil.open("../ok.html");
+		
+	}
+	
+	
+}
+</script></head>
+
+<body class="html" id="tags">
+
+<div id="wrapper">
+
+<div id="header">
+<h1>页面遮罩工具使用说明</h1>
+</div>
+<div id="maincontent"  >
+
+<h1>名称：setmask</h1>
+<div>
+
+<h2>定义与说明</h2>
+
+<p> 本插件是对象级别的插件，可以实现页面加载时遮罩、页面提交时遮罩两种效果</p>
+<p>一、遮罩效果</p>
+<table class="dataintable">
+  <tr>
+    <th width="111">函数名称</th>
+    <th width="236">参数列表</th>
+    <th width="126">适用情况</th>
+    <th width="54">说明</th>
+    <th width="249">调用方法</th>
+  </tr>
+  <tr>
+    <td height="87"><p>$.fn.setmask(op)</p></td>
+    <td><p>op={<br />
+msg:null,//遮罩层要显示的消息<br />
+zindex:当前毫秒数,//显示层</p>
+      <p>caller:null//调用遮罩的元素对象<br />
+        }</p></td>
+    <td>需要设置遮罩层的时候</td>
+    <td>&nbsp;</td>
+    <td><p>$(&quot;body&quot;).setmask({msg:'系统正在处理数据，请等待...',caller:$(&quot;#btn&quot;)});//对body加载遮罩层效果</p>      </td>
+  </tr>
+  
+  <tr>
+    <td height="87"><p>$.fn.unmask()</p>      </td>
+    <td><p><strong>无</strong></p>      </td>
+    <td>需要取消遮罩时调用</td>
+    <td>&nbsp;</td>
+    <td><p> $(&quot;body&quot;)..unmask();//取消body的遮罩效果</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="tip"><span>提示：</span>。</p>
+<h3>详细描述</h3>
+<p><strong>无</strong></p>
+<h3>依赖的JS文件及CSS文件</h3>
+<p><br>
+&lt;script type="text/javascript" src="../js/webui78.js"&gt;&lt;/script&gt;
+</p>
+</div>
+
+
+<div>
+<h2>实例</h2>
+<h3>验证、提交表单的方法：</h3>
+<p>&nbsp;</p>
+<pre>&nbsp;</pre>
+<h3>验证条件的设</h3>
+<p class="note"><span>注释：</span>
+  无</p>
+<p><a href="#">测试</a></p>
+</div>
+
+
+<div>
+<h2>浏览器支持</h2>
+<p>兼容IE6~9、firefox主流浏览器。</p>
+</div>
+
+
+<div>
+<h2>&nbsp;</h2>
+</div>
+<div> </div>
+
+</div>
+
+
+
+
+
+</div><div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webdialog1</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+var dlg;
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	$('.grid_nohead').datagrid({trselect:false,hashead:false});
+	var g=$('.grid1').datagrid( {width:'90%',trselect:false});//或执行代码 g[0].grid.setBar(bar);	
+  //dlg=$("body").webDialog();
+	$("#btn1").click(function(e ){
+		$.webUtil.alert("请您确认一下！！！！！",function(){ alert("你确认后，回调到自定义的函数啦！");});
+	});
+	$("#btn2").click(function(e ){
+		$.webUtil.confirm("您确定要xxx吗？",
+		function(){ alert("看来你确定要xxx了，回调你的确认函数！");},
+		function(){ alert("你取消了要xxx，回调你的取消函数！");}
+	);
+	});
+	$("#btn3").click(function(e ){
+		$.webUtil.openWindow(
+			{title:"自定义按钮",buttons:[
+				{btn:'<button>我的按钮1</button>',onclick:function(e){$(e.data.target).closeWebDialog();}},
+				{btn:'<button>我的按钮2</button>',onclick:function(e){$(e.data.target).closeWebDialog();}},
+				{btn:'<button>我的按钮3（提交表单）</button>',onclick:function(e){
+					$.webUtil.submit("../ok.html");
+					$(e.data.target).closeWebDialog();
+				}
+				}
+			]});
+	});
+	$("#btn4").click(function(e ){
+		alert($("#dlg_btn1").length);
+		$.webUtil.openWindow(
+			{title:"自定义按钮",buttons:[
+				{btn:$("#dlg_btn1")},
+				{btn:$("#dlg_btn2"),onclick:function(e){$(e.data.target).closeWebDialog();}}
+ 			]});
+	});
+	$("#btn5").click(function(e ){
+		$.webUtil.openWindow(
+			{title:"自定义按钮",buttons:$(".fordialog2 .btn")});
+	});
+/////////////////////
+
+	$(".testdlg").click(function(e){
+		$.webUtil.openWindow({event:e});	
+	});
+/////////////	
+	
+	
+
+});		
+ 	
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+打开窗口</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br />
+		<div><strong>此处演示窗口中按钮的操作:</strong><br/>	
+	    $.webUtil.openWindow();<br/>
+		</div>
+<div class="btn_toolbar" >
+	<button class="btn" id="btn1" type="button" value="1"   >模拟alert消息框</button>
+	<button class="btn" id="btn2" type="button" value="2"   >模拟confirm确认框</button>
+	<button class="btn" id="btn3" type="button" value="3"   >添加自定义按钮提交表单</button>
+	<br>
+	<br>
+	<button class="btn" id="btn4" type="button" value="4"   >在主页面用html编写的按钮-逐个添加</button>	
+	<button class="btn" id="btn5" type="button" value="4"   >在主页面用html编写的按钮-批量添加</button>
+</div>
+ 
+ <div  class="fordialog1" style="display:none">
+	<button class="btn" id="dlg_btn1" type="button" value="1"  >用html编写的按钮1</button>
+	<button class="btn" id="dlg_btn2" type="button"  value="2" >用html编写的按钮2</button>
+ </div>
+ <div  class="fordialog2" style="display:none">
+	<button class="btn" id="dlg_btn3" type="button" value="3"  >用html编写的按钮3</button>
+	<button class="btn" id="dlg_btn4" type="button" value="4"  >用html编写的按钮4 </button>	
+	<button class="btn" id="dlg_btn5" type="button" value="4"  >用html编写的按钮5 </button>
+ </div>
+  
+ <br><br>
+		<table  class="grid1"  width="80%"    >
+    		<tr>
+            	<td   width="15%">序号</td>
+            	<td   width="20%" >操作编号</td>
+            	<td   width="25%" >信息名称</td>
+            	<td   width="20%" >操作员</td>
+            	<td   width="20%" >状态</td>
+           </tr>
+     		<tr>
+     		<td   btn_condition='01' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+           	<td><a  class="testdlg" href="#"  >点击此处也可打开我</a>
+            		        		
+            	</td>
+            	<td>编辑</td>
+         		</tr>
+    		<tr  >
+      					<td  btn_condition='02' align="center">2</td>
+            	<td>100309000300</td>
+            	<td>花果山谷1花果山谷1花果山谷1花果山谷1 </td>
+           	<td><a  class="testdlg" href="#"  >点击此处也可打开我</a>
+            		      		
+            	</td>
+            	<td>提交审核</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='02' align="center">3</td>
+            	<td>100309000301</td>
+            	<td>花果山谷2 </td>
+           	<td><a  class="testdlg" href="#"  >点击此处也可打开我</a>
+            		        		
+            	</td>
+            	<td>提交审核</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">4</td>
+            	<td>100309000302</td>
+            	<td>花果山谷3 </td>
+            	<td><a  class="testdlg" href="#"  >点击此处也可打开我</a>          		
+            	</td>
+            	<td>撤销</td>
+            </tr>
+    		<tr >
+      					<td  btn_condition='05' align="center">5</td>
+            	<td>100309000303</td>
+            	<td>花果山谷4 </td>
+           	<td><a  class="testdlg" href="#"  >点击此处也可打开我</a>
+            		          		
+            	</td>
+            	<td>交易完成</td>
+            </tr>
+		</table>
+
+		<br>
+ 
+</form>
+
+
+
+</body>
+</html>

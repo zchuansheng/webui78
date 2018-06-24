@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+	function onSelectRow(index,el){
+		var tr=$(el);
+		
+		$("input[name='batch_no']",tr).val();//取选择行的申请编号,（如果您的行中有这样的标签<input type='hidden' name='batch_no' />）
+		$('td:eq(1)',tr).html();//取得第2列的html内容
+		$("input[name='sel_batch_no']").val($('td:eq(1)',tr).html());//选择时，将选择的数据给form的隐藏域。
+		//或这样写document.form1.sel_batch_no.value=$("input[name='batch_no']",tr).val();//选择时，将选择的数据给form的隐藏域。
+		//如果tr中不使用隐藏域时，下面这样也可以
+		//form1.sel_batch_no.value=$('td:eq(1)',tr).html();//选择时，将选择的数据给form的隐藏域。
+ }
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条(有一组button组成的div,见下面html实例，.btn_toolbar .btn .btn_condition 三个样式名称不能变之外其他都可以改变)
+
+	
+	var g=$('.grid2').datagrid({onSelect:onSelectRow,onAddRow:addRow,trselect:true,idCol:1,idStart:3});//或执行代码 g[0].p.onSelect=onSelectRow;	也可以
+	var g=$('.grid3').datagrid({ trselect:true});//或执行代码 g[0].p.onSelect=onSelectRow;	也可以
+
+
+$("#del_row_btn").click(function(){
+	var tb=$("#table_id");
+	var sel_checkbox=$("[name='row_check_box']");
+	for(var i=sel_checkbox.length-1;i>=0;i--){
+		if(sel_checkbox[i].checked)	tb.delrow(i+1);
+	}
+})
+
+});
+function addRow(tr){
+	alert($(tr).html());
+}		
+	
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>可以增加删除行的表格,要实现自动排号某个表格列，请设置属性"idCol:列编号"</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br />
+		<div><strong>7、可以增加删除行的表格,要实现自动排号某个表格列，请设置属性"idCol:列编号"</strong></div>
+		<table border ="1">
+<tr>
+	<td><button class="btn" type="button" onClick="alert('马上要提交的数据sel_batch_no是：'+form1.sel_batch_no.value);" value="4" > 查看提交时获取的数据 </button></td>
+	<td><span >单位名称</span><input type="text" name='aaa' value=""   > 
+  <button class="btn" type="button" value="4" > 在任意其他地方的按钮 </button>
+
+  </td>	
+</tr>
+
+</table>
+<div class="btn_toolbar">
+  <button class="btn" type="button" value="4" onClick=" $('.grid2').addrow();" force > 增加行(默认向后增加)</button>
+  <button class="btn" type="button" value="4" onClick=" $('.grid2').addrow(null,3,3);" force > 增加行(以第3行为基础,在第3行后插入) </button>
+<button class="btn" type="button" value="4" onClick=" $('.grid2').addrow($('<tr><td>新增行</td><td>新增行</td><td>新增行</td><td>新增行</td></tr>'),3,3);" force > 增加行(自定义行) </button>
+</div>
+<div class="btn_toolbar">
+  <button class="btn" type="button" value="4" onClick=" $('.grid2').delrow();" force > 删除行(默认从最后删除)</button>
+  <button class="btn" type="button" value="4" onClick=" $('.grid2').delrow(2);" force > 删除行(删除第2行)</button>
+    <button class="btn" type="button" value="4" onClick=" $('.grid2').delrow($('.grid2')[0].grid.currIndex+1);" force > 删除当前选中行</button>
+</div>
+<br>
+
+
+				<table  class="grid2" width='670' >
+    				<thead>
+    		<tr>
+            	<th colspan="4"  >表头合并、不固定表头的表格，并且单击时可以回调自定义函数的</th>
+           </tr>
+         </thead>
+     		<tr>
+     					<td width='20%' btn_condition='01'  align="center">a
+     						<input type="hidden" name="batch_no" value="100309000304"/>
+     					</td>
+            	<td width='20%' >100309000304</td>
+            	<td width='30%' >花果山谷 </td>
+            	<td width='30%' >2011-01-07</td>
+         		</tr>
+    		<tr >
+      					<td  btn_condition='02' align="center">b
+      						<input type="hidden" name="batch_no" value="100309000300"/></td>
+            	<td>100309000300</td>
+            	<td>花果山谷1 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='02' align="center">c
+     						<input type="hidden" name="batch_no" value="100309000301"/></td>
+            	<td>100309000301</td>
+            	<td><input type='text' name ="somedata" value='花果山谷2' /> </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">d
+     						<input type="hidden" name="batch_no" value="100309000302"/></td>
+            	<td>100309000302</td>
+            	<td>花果山谷3 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+      					<td  btn_condition='05' align="center">5
+      						<input type="hidden" name="batch_no" value="100309000303"/></td>
+            	<td>100309000303</td>
+            	<td>花果山谷4  </td>
+            	<td>2010-11-12</td>
+            </tr>
+
+		</table>	
+<br/>
+当页面中需要用js动态添加删除行时，因datagrid采用类似于List的存储方式。
+当需要点击按钮时删除多行数据时，需要采用如下代码：<br>
+$("#del_row_btn").click(function(){<br>
+	var tb=$("#table_id");<br>
+	var sel_checkbox=$("[name='row_check_box']");<br>
+	for(var i=sel_checkbox.length-1;i>=0;i--){<br>
+		if(sel_checkbox[i].checked)	tb.delrow(i+1);<br>
+	}<br>
+})<br>
+其中：del_row_btn为删除行按钮的ID，table_id为表格的ID。row_check_box为每行内选择框的名称，sel_checkbox为选择框对象
+  <br>
+  <button class="btn" id="del_row_btn" type="button" value="4" force > 删除行(默认从最后删除)</button>
+
+
+				<table  id="table_id" class="grid3" width='670' >
+    				<thead>
+    		<tr>
+            	<th colspan="4"  >删除多行的示例</th>
+           </tr>
+         </thead>
+     		<tr>
+     					<td width='20%' btn_condition='01'  align="center"><input name='row_check_box' type="checkbox" >
+     						<input type="hidden" name="batch_no" value="100309000304"/>
+     					</td>
+            	<td width='20%' >100309000304</td>
+            	<td width='30%' >花果山谷 </td>
+            	<td width='30%' >2011-01-07</td>
+         		</tr>
+    		<tr >
+      					<td  btn_condition='02' align="center"><input name='row_check_box' type="checkbox" >
+      						<input type="hidden" name="batch_no" value="100309000300"/></td>
+            	<td>100309000300</td>
+            	<td>花果山谷1 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='02' align="center"><input name='row_check_box' type="checkbox" >
+     						<input type="hidden" name="batch_no" value="100309000301"/></td>
+            	<td>100309000301</td>
+            	<td><input type='text' name ="somedata" value='花果山谷2' /> </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center"><input name='row_check_box' type="checkbox" >
+     						<input type="hidden" name="batch_no" value="100309000302"/></td>
+            	<td>100309000302</td>
+            	<td>花果山谷3 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+      					<td  btn_condition='05' align="center"><input name='row_check_box' type="checkbox" >
+      						<input type="hidden" name="batch_no" value="100309000303"/></td>
+            	<td>100309000303</td>
+            	<td>花果山谷4  </td>
+            	<td>2010-11-12</td>
+            </tr>
+   		<tr>
+      					<td  btn_condition='05' align="center"><input name='row_check_box' type="checkbox" >
+      						<input type="hidden" name="batch_no" value="100309000305"/></td>
+            	<td>100309000305</td>
+            	<td>花果山谷5  </td>
+            	<td>2010-11-12</td>
+            </tr>
+
+		</table>	
+
+</form>
+
+
+
+</body>
+</html>

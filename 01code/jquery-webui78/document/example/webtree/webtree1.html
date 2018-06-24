@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webtree</title>
+
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/lib/jquery-migrate-1.3.0.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+function selNode(node){
+	//alert("node="+node.html());
+	
+}
+
+$(document).ready(function(){	
+ 	var tree1=$('#mytree1');
+ 	var tree2=$('#mytree2');
+ 	var tree3=$('#mytree3');
+	tree1.webTree({collapsed:true,enable_selbtn:false,onSelect:selNode,onExpand:selNode,onCollapse:selNode});// 
+	tree2.webTree({collapsed:true,enableIcon:true,enable_selbtn:true});// 
+	tree3.webTree({collapsed:true,enableIcon:true,enable_selbtn:true,selbtn:{type:"radio"}});// 
+	$('#mytree4').webTree({collapsed:true,enableIcon:true,icons:{type:1},enable_selbtn:true});// 
+	$(".btn").PicButton();
+	$("#btn11").click(function(){
+		tree1.addNode($("<li><div>my child node!</div></li><li><div>my child node"+$(".nodeitem",tree1).length+"!</div></li>"),tree1.getSelectedNode());
+		return false;
+	});
+	$("#btn12").click(function(){
+		tree1.addNode($("<li><div>my brother node!</div></li><li><div>my brother node"+$(".nodeitem",tree1).length+"!</div></li>"),tree1.getSelectedNode(),false);
+		return false;
+	});
+	$("#btn21").click(function(){
+		tree2.addNode($("<li><div>my child node!</div></li><li><div>my child node"+$(".nodeitem",tree2).length+"!</div></li>"),tree2.getSelectedNode());
+		return false;
+	});
+	$("#btn22").click(function(){
+		tree2.addNode($("<li><div>my brother node!</div></li><li><div>my brother node"+$(".nodeitem",tree2).length+"!</div></li>"),tree2.getSelectedNode(),false);
+		return false;
+	});
+	$("#btn23").click(function(){
+		tree2.removeNode(tree2.getSelectedNode());
+		return false;
+	});
+ 
+});		
+	
+</script>
+ </head>
+ 
+ <div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+树结构视图</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<table border="2" >
+		<tr>
+			<td width="25%" valign="top">	
+	<button id="btn11" class="btn" >追加孩子节点</button>
+	<button id="btn12" class="btn" >插入兄弟节点</button>
+
+				<ul id="mytree1"  >	 
+		<li><div><a href="#">Item 1</a></div>
+			<ul>
+				<li  ><div>Item 1.0</div>
+					<ul>
+						<li><div>Item 1.0.0</div></li>
+					</ul>
+				</li>
+				<li><div><a href="#">Item 1.1</a></div></li>
+				<li><div><a href="#">Item 1.2</a></div>
+					<ul>
+						<li class="open"><div>Item 1.2.0 </div>
+						<ul>
+							<li ><div><a href="#">Item 1.2.0.0</a></div></li>
+							<li><div><a href="#">Item 1.2.0.1</a></div></li>
+							<li><div><a href="#">Item 1.2.0.2</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 1.2.1</a></div>
+						<ul>
+							<li><div><a href="#">Item 1.2.1.0</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 1.2.2</a></div>
+						<ul>
+							<li><div><a href="#">Item 1.2.2.0</a></div></li>
+							<li><div><a href="#">Item 1.2.2.1</a></div></li>
+							<li><div><a href="#">Item 1.2.2.2</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><div><a href="#">Item 2</a></div>
+			<ul>
+				<li><div><span>Item 2.0</span></div>
+					<ul>
+						<li><div><a href="#">Item 2.0.0</a></div>
+						<ul>
+							<li><div><a href="#">Item 2.0.0.0</a></div></li>
+							<li><div><a href="#">Item 2.0.0.1</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+				<li><div><a href="#">Item 2.1</a></div>
+					<ul>
+						<li><div><a href="#">Item 2.1.0</a></div>
+						<ul>
+							<li><div><a href="#">Item 2.1.0.0</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 2.1.1</a></div>
+						<ul>
+							<li><div><a href="#">Item 2.1.1.0</a></div></li>
+							<li><div><a href="#">Item 2.1.1.1</a></div></li>
+							<li><div><a href="#">Item 2.1.1.2</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 2.1.2</a></div>
+						<ul>
+							<li><div><a href="#">Item 2.1.2.0</a></div></li>
+							<li><div><a href="#">Item 2.1.2.1</a></div></li>
+							<li><div><a href="#">Item 2.1.2.2</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><div><a href="#">Item 3</a></div>
+			<ul>
+				<li class="open"><div><a href="#">Item 3.0</a></div>
+					<ul>
+						<li><div><a href="#">Item 3.0.0</a></div></li>
+						<li><div></div><a href="#">Item 3.0.1</a></div>
+							<ul>
+								<li><div><a href="#">Item 3.0.1.0</a></div></li>
+								<li><div><a href="#">Item 3.0.1.1</a></div></li>
+							</ul>
+						</li>
+						<li><div><a href="#">Item 3.0.2</a></div>
+							<ul>
+								<li><div><a href="#">Item 3.0.2.0</a></div></li>
+								<li><div><a href="#">Item 3.0.2.1</a></div></li>
+								<li><div><a href="#">Item 3.0.2.2</a></div></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul> 
+			</td>
+			<td width="25%" valign="top">
+	<button id="btn21" class="btn" >追加孩子节点</button>
+	<button id="btn22" class="btn" >插入兄弟节点</button>
+	<button id="btn23" class="btn" >删除选择节点</button>
+
+				<ul id="mytree2"  >	 
+		<li><div><a href="#">Item 1</a></div>
+			<ul>
+				<li><div>Item 1.0</div>
+					<ul>
+						<li><div>Item 1.0.0<input type="hidden" name ="dd" value="0" /></div></li>
+					</ul>
+				</li>
+				<li><div><a href="#">Item 1.1</a></div></li>
+				<li><div><a href="#">Item 1.2</a></div>
+					<ul>
+						<li> <div>Item 1.2.0 </div>
+						<ul>
+							<li><div><a href="#">Item 1.2.0.0</a></div></li>
+							<li><div><a href="#">Item 1.2.0.1</a></div></li>
+							<li><div><a href="#">Item 1.2.0.2</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 1.2.1</a></div>
+						<ul>
+							<li><div><a href="#">Item 1.2.1.0</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 1.2.2</a></div>
+						<ul>
+							<li><div><a href="#">Item 1.2.2.0</a></div></li>
+							<li><div><a href="#">Item 1.2.2.1</a></div></li>
+							<li><div><a href="#">Item 1.2.2.2</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><div><a href="#">Item 2</a></div>
+			<ul>
+				<li><div><span>Item 2.0</span></div>
+					<ul>
+						<li><div><a href="#">Item 2.0.0</a></div>
+						<ul>
+							<li><div><a href="#">Item 2.0.0.0</a></div></li>
+							<li><div><a href="#">Item 2.0.0.1</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+ 			</ul>
+		</li>
+ 
+	</ul> 
+	
+			</td>
+			<td width="25%" valign="top">
+				 
+				<ul id="mytree3"  >	 
+		<li><div><a href="#">Item 1</a></div>
+			<ul>
+				<li><div>Item 1.0</div>
+					<ul>
+						<li><div>Item 1.0.0<input type="hidden" name ="dd" value="0" /></div></li>
+					</ul>
+				</li>
+				<li><div><a href="#">Item 1.1</a></div></li>
+				<li><div><a href="#">Item 1.2</a></div>
+					<ul>
+						<li><div>Item 1.2.0 </div>
+						<ul>
+							<li><div><a href="#">Item 1.2.0.0</a></div></li>
+							<li><div><a href="#">Item 1.2.0.1</a></div></li>
+							<li><div><a href="#">Item 1.2.0.2</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 1.2.1</a></div>
+						<ul>
+							<li><div><a href="#">Item 1.2.1.0</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 1.2.2</a></div>
+						<ul>
+							<li><div><a href="#">Item 1.2.2.0</a></div></li>
+							<li><div><a href="#">Item 1.2.2.1</a></div></li>
+							<li><div><a href="#">Item 1.2.2.2</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><div><a href="#">Item 2</a></div>
+			<ul>
+				<li><div><span>Item 2.0</span></div>
+					<ul>
+						<li><div><a href="#">Item 2.0.0</a></div>
+						<ul>
+							<li><div><a href="#">Item 2.0.0.0</a></div></li>
+							<li><div><a href="#">Item 2.0.0.1</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+ 			</ul>
+		</li>
+ 
+	</ul> 
+			</td>
+			<td width="25%" valign="top">
+					<ul id="mytree4"  >	 
+		<li><div><a href="#">项目1</a></div>
+			<ul>
+				<li><div>楼幢1</div>
+					<ul>
+						<li><div>门牌1</div></li>
+						<li><div>门牌2</div></li>
+					</ul>
+				</li>
+				<li><div><a href="#">Item 1.1</a></div></li>
+				<li><div><a href="#">Item 1.2</a></div>
+					<ul>
+						<li><div>Item 1.2.0 </div>
+						<ul>
+							<li><div><a href="#">Item 1.2.0.0</a></div></li>
+							<li><div><a href="#">Item 1.2.0.1</a></div></li>
+							<li><div><a href="#">Item 1.2.0.2</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 1.2.1</a></div>
+						<ul>
+							<li><div><a href="#">Item 1.2.1.0</a></div></li>
+						</ul>
+					</li>
+						<li><div><a href="#">Item 1.2.2</a></div>
+						<ul>
+							<li><div><a href="#">Item 1.2.2.0</a></div></li>
+							<li><div><a href="#">Item 1.2.2.1</a></div></li>
+							<li><div><a href="#">Item 1.2.2.2</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><div><a href="#">项目2</a></div>
+			<ul>
+				<li><div><span>Item 2.0</span></div>
+					<ul>
+						<li><div><a href="#">Item 2.0.0</a></div>
+						<ul>
+							<li><div><a href="#">Item 2.0.0.0</a></div></li>
+							<li><div><a href="#">Item 2.0.0.1</a></div></li>
+						</ul>
+					</li>
+					</ul>
+				</li>
+ 			</ul>
+		</li>
+ 
+	</ul> 
+			</td>
+		</tr>
+	</table>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	---------------------------------------------------------------
+	
+	
+	</form>
+
+
+</body>
+</html>
+	
+	

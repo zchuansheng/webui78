@@ -1,0 +1,433 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+	   	$(".webtab1").webTabpanel({width:950,height:'100%'});
+				
+				
+	});
+</script>
+</head>
+
+<body class="html" id="tags">
+
+<div id="wrapper">
+
+<div id="header">
+<h1>数据验证控件的使用说明</h1>
+</div>
+
+
+<h1>名称</h1>
+<div>
+
+<h2>定义与说明</h2>
+<p>表单验证插件实现了对表单元素类型、长度的验证，缺省情况下无需调用任何JS代码，只需要通过表单元素属性，设置表单元素的验证条件即可。</p>
+<p>需要设置的表单元素属性见<a href="#attr_list">下表(可选的配置选项)</a>。</p>
+
+
+<div>
+	<div class="webtab1"    >
+		<div>
+			<div>1表单验证的准备工作</div> 
+			<div>
+			
+			<p><strong>一、要对表单进行验证，您需要完成以下工作：</strong></p>
+			<p><strong>1、设置每个需要验证元素的验证条件</strong>（通过元素属性设置验证条件）</p>
+			<p> 通过表单元素属性设置验证条件,<a href="#attr_list">详细的设置方法见请参见属性说明</a></p>
+			<p><strong>2、用PicButton提交表单;</strong></p>
+			<p>(1)如果提交的按钮设置了<strong>btn_href，PicButton自动执行表单验证。</strong><a href="#set_validator">代码参见</a></p>
+			<p>(2)如果没有定义<strong>btn_href</strong>，而采用自定义的onclick函数提交，请使用$webUtil.submitOnBtn(url,btn)来提交表单，</p>
+			<p>关于 $.webUtil的用法请参见章节<a href="../commons/webUtil.html" target="_self"> $.webUtil的使用介绍</a></p>
+		
+			 </div>
+		</div>
+		<div>
+			<div >2表单验证提示信息</div> 
+			<div> 
+				<p><strong>二、关于表单提示信息的设置</strong></p>
+				<p>表单元素的提示信息一共有3种：</p>
+				<table class="dataintable">
+				  <tr>
+					<th>提示方式</th>
+					<th>使用情况</th>
+					<th>设置方式</th>
+				  </tr>
+				  <tr>
+					<td><p>鼠标移过时提示</p></td>
+					<td>客户难以理解的输入域，或在输入前，就有必要做出解释的输入域</td>
+					<td><p>调用setTipMessage设置</p>
+					  <p>默认为无此效果</p></td>
+				  </tr>
+				  <tr>
+					<td><p>元素获得焦点前提示示例数据</p></td>
+					<td><p>适用于需要举例说明的输入域，在获得焦点前，在输入框内以<strong>灰色字体</strong>显示一些<strong>例子</strong>数据</p>
+					  <p>当获得焦点后，自动清除示例数据</p></td>
+					<td><p>设置属性onShowMsg。<strong>必须调用表单或元素的setValidator()方可生效，</strong></p>
+					  <p>默认为无此效果</p></td>
+				  </tr>
+				  <tr>
+					<td>验证格式出错时提示</td>
+					<td><p>当验证出错时，自动提示错误信息。</p>
+					  <p>（注意需要用到title属性的值，如果没有设置 title属性的值，可能出现提示信息不完整）</p>
+					  <p>&nbsp;</p></td>
+					<td><p>默认情况下无需设置，设置属性</p>
+					  <p>onErrorMsg,可显示自定义的消息内容</p>
+					  <p>默认为取元素的title的内容自动组合提示。</p></td>
+				  </tr>
+				</table>
+				<p></p>
+			
+			</div>
+		</div>
+		<div>
+			<div >3支持的验证元素</div> 
+			<div> 
+							
+				<p  id="form_el_type"><strong>三、缺省情况，验证的表单元素</strong></p>
+				<p><span class="note"> 表单验证控件，默认情况下表单所有表单元素进行验证。支持的验证元素有：</span></p>
+				<table class="dataintable">
+				  <tr>
+					<th width="14%">表单元素类型</th>
+					<th width="39%">验证方式</th>
+					<th width="47%">说明</th>
+				  </tr>
+				  <tr>
+					<td><p>text</p></td>
+					<td>缺省可以为空，0~999</td>
+					<td><p>&nbsp;</p></td>
+				  </tr>
+				  <tr>
+					<td><p>checkbox</p></td>
+					<td>缺省至少选择1个</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td>radio</td>
+					<td>缺省至少选择1个</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td>password</td>
+					<td>同text</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td>file</td>
+					<td>同text</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td>select</td>
+					<td>缺省至少选择1个</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td>textarea</td>
+					<td>同text</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td>hidden</td>
+					<td>缺省不检查</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				  </tr>
+				</table>
+				<h2>&nbsp;</h2>
+			</div>
+		</div>
+		<div>
+			<div >4可选的配置选项</div> 
+			<div> 
+							<h2>四、可选的属性</h2>
+				<p>此控件可以设置的属性有</p>
+				<table id="attr_list"class="dataintable">
+				  <tr>
+					<th>属性</th>
+					<th>类型</th>
+					<th>值</th>
+					<th>描述</th>
+					<th>设置方式</th>
+				  </tr>
+				  <tr>
+					<td><p>type</p></td>
+					<td>字符串</td>
+					<td>text(缺省)<a href="#" onclick="javascript:$.webUtil.open('./datatype.html',850,600,true); ">可以设置的类型列表</a></td>
+					<td>数据类型的检查，<a href="#" onclick="javascript:$.webUtil.open('./datatype.html',850,600,true); ">点击此处查看类型列表</a>，目前支持的数据类型</td>
+					<td><p>通过js方式设置，如：$('#em_id&quot;).setValidator({<code>type:'number'</code>});</p>
+					  <p>通过元素属性设置：&lt;input class=&quot;zcs&quot; type=&quot;text&quot; id=&quot;batch_no&quot; name=&quot;batch_no&quot; </p>
+					  <p><code>v_type=&quot;number&quot;</code> v_min=&quot;12 &quot; v_max=&quot;12&quot; /&gt;</p></td>
+				  </tr>
+				  <tr>
+					<td><p>empty</p></td>
+					<td>bool型</td>
+					<td><p>true(缺省)</p>
+				    <p>false</p></td>
+					<td><p>是否可以为空，true可以为空，false不可以为空。(当设置元素的属性 v_empty=&quot;1&quot; 时 此属性为true)</p>
+					  <p>&nbsp;</p></td>
+					<td><p>通过js方式设置，如：$('#em_id&quot;).setValidator({<code>empty:true</code>});</p>
+					  <p>通过元素属性设置：&lt;input class=&quot;zcs&quot; type=&quot;text&quot; id=&quot;batch_no&quot; name=&quot;batch_no&quot; </p>
+					  <p>v_type=&quot;number&quot; <code>v_empty=&quot;1&quot; </code> v_min=&quot;12 &quot; v_max=&quot;12&quot; /&gt;</p></td>
+				  </tr>
+				  <tr>
+					<td>min</td>
+					<td>数值</td>
+					<td><p>0(缺省)</p>
+					  <p>当empty=false,或v_empty=&quot;0&quot;时，min的缺省值为1 </p>
+					  <ul>
+					  <p>&nbsp;</p>
+					</ul></td><td><p>输入元素的最小长度，对于checkbox radio ,select元素，表示至少要选择的个数,当empty=false,或v_empty=&quot;0&quot;时，min的缺省值为1</p>
+					  <p><strong>特别注意：如果验证类型为date时，此值表示允许的最小日期</strong></p></td>
+					<td><p>通过JS设置，如：$('#em_id&quot;).setValidator({<code>min:12</code>});</p>
+					  <p>通过元素属性设置： <code>v_min=&quot;12&quot;</code></p></td>
+				  </tr>
+				  <tr>
+					<td>max</td>
+					<td>数值</td>
+					<td>999(缺省)</td>
+					<td><p>输入元素的最大长度，对于checkbox radio ,select元素，表示最多可选择的个数</p>
+				    <p><strong>特别注意：如果验证类型为date时，此值表示允许的最大日期</strong></p></td>
+					<td><p>通过JS设置，如：$('#em_id&quot;).setValidator({<code>max:12</code>});</p>
+					  <p>通过元素属性设置： <code>v_max=&quot;12&quot;</code></p></td>
+				  </tr>
+				  <tr>
+					<td id="onShowMsg2">onShowMsg</td>
+					<td>文本</td>
+					<td>null(缺省)</td>
+					<td>设置元素获得焦点前，以灰色显示的文本内，本属性仅适用于:input、textarea类型的标签，其他标签设置此属性将无效。设置本属性时，需要调用<strong>setValidator</strong>初始化。</td>
+					<td><p>通过JS设置，如：$('#em_id&quot;).setValidator({<code>onShowMsg:'请输入信息名称11'</code>});</p>
+					  <p>通过元素属性设置： <code>v_onShowMsg=&quot;请输入信息名称11&quot;</code></p></td>
+				  </tr>
+				  <tr>
+					<td id="onShowMsg3">onErrMsg</td>
+					<td>文本</td>
+					<td>null(缺省)</td>
+					<td><p>当验证错误时，显示自定义的错误信息，默认情况下由插件自动组成错误提示</p></td>
+					<td><p>通过JS设置，如：$('#em_id&quot;).setValidator({<code>onErrMsg:'输入的信息错误'</code>});</p>
+					  <p>通过元素属性设置： <code>v_onErrMsg=&quot;输入的信息错误&quot;</code></p></td>
+				  </tr>
+				  <tr>
+					<td id="onShowMsg4">group</td>
+					<td>文本</td>
+					<td>null</td>
+					<td>用来定义验证元素的分组名字，组名自定义，主要用于radio,chechbox 元素的分组验证，如果没有定义group属性，将整个页面内，name相同的元素为同一组。</td>
+					<td><p>通过JS设置，如：$('#em_id&quot;).setValidator({<code>group:'group1'</code>});</p>
+					  <p>通过元素属性设置： <code>v_group=&quot;group1&quot;</code></p></td>
+				  </tr>
+				  <tr>
+					<td id="onShowMsg5">ischeck</td>
+					<td>bool型</td>
+					<td>true（缺省）</td>
+					<td><p>true执行验证，false不执行验证。(当设置元素的属性 v_ischeck=&quot;1&quot; 时 此属性为true)。</p>
+					  <p>缺省情况不需要设置此参数，默认执行验证。</p></td>
+					<td><p>通过JS设置，如：$('#em_id&quot;).setValidator({<code>ischeck:false</code>});</p>
+					  <p>通过元素属性设置： <code>v_ischeck=&quot;0&quot;</code></p></td>
+				  </tr>
+				  <tr>
+					<td id="onShowMsg">&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td><p>&nbsp;</p>
+					  <p>&nbsp;</p></td>
+					<td><p>&nbsp;</p></td>
+				  </tr>
+				</table>
+			</div>
+		</div>
+		<div>
+			<div >5验证相关的其他调用方法</div> 
+			<div> 
+			
+				<p><strong>五、验证相关的调用方法</strong></p>
+				<p><span class="note"> 表单验证控件，默认情况下表单所有表单元素进行验证。支持的验证元素有：</span></p>
+				<table class="dataintable">
+				  <tr>
+					<th width="14%">名称</th>
+					<th width="20%">参数</th>
+					<th width="59%">说明</th>
+					<th width="7%">&nbsp;</th>
+				  </tr>
+				  <tr>
+					<td><p> $(&quot;sel&quot;). setValidator(op)</p></td>
+					<td><p>op验证选项，可以为空</p>
+					  <p>选项设置见上表：&rdquo;可选的属性&rdquo;</p></td>
+					<td><p>一、setValidator方法实现了将对象加入组件的验证队列中，并设置相应的验证条件，如果op未设置，则采用下列顺序设置验证条件：</p>
+					  <p>1.取得v_type,v_empty,v_max,v_min 属性值，设置验证条件。</p>
+					  <p>2.如果没有设置v_type,v_empty,v_max,v_min，则采用默认的验证条件。</p>
+					  <p>二、可以对&ldquo;表单&rdquo;、&ldquo;<a href="#form_el_type">表单元素</a>&rdquo;两类对象调用setValidator方法</p>
+					  <p>1、对&ldquo;表单&rdquo;对象调用setValidator时，则设置所有表单元素的验证条件，</p>
+ 						<p>2、对&ldquo;表单元素&rdquo;对象调用setValidator,则设置本元素的验证条件</p>
+ 						<p></p>
+ 				 
+				<p><code>三、重要说明：在加载大量数据时（超过800行数据），请不要在页面加载时[$(document).ready()]时调用setValidator,否则会有一定的加载延时</code></p>				</td>
+					<td><p>&nbsp;</p></td>
+				  </tr>
+				  <tr>
+				    <td><p>$(&quot;sel&quot;).formIsValid()</p></td>
+				    <td><p>无参数，返回值为boolean</p>
+				        <p>true:表单验证通过</p>
+				      <p>false：表单验证未通过</p></td>
+				    <td><p>只能对form表单调用,其处理逻辑：</p>
+				        <p>1.判断组件的验证队列是否初始化，没有初始化，则对form表单调用setValidator()。 </p>
+				      <p>2.对验证队列中的元素逐个验证谁否符合条件，如果全部符合，则返回true,否则返回false.</p></td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td><p>$(&quot;sel&quot;).checkDataValid()</p></td>
+				    <td><p>无参数，返回值为boolean</p>
+				        <p>true:验证通过</p>
+				      <p>false：验证未通过</p></td>
+				    <td><p>对选择器内所有表单元素的验证：</p>
+				        <p>1.判断组件的验证队列是否初始化，没有初始化， </p>
+				      <p>2.对验证队列中的元素逐个验证谁否符合条件，如果全部符合，则返回true,否则返回false.</p></td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+				    <td height="162"><p>$.webValidator.checkValid()</p></td>
+				    <td><p>无参数，返回值为boolean</p>
+				        <p>true:验证通过</p>
+				        <p>false：验证未通过</p></td>
+				    <td><p>对单个元素验证</p>
+				        <p> 验证谁否符合条件 ，则返回true,否则返回false.</p>
+			        </td>
+					<td>&nbsp;</td>
+				  </tr>
+				</table>
+							
+			</div>
+
+		</div>
+		<div>
+				<div>实例</div>
+				<div>	
+				<h2>实例</h2>
+<h3>验证条件的设置：</h3>
+<p>通过元素属性设置验证条件：（<strong>推荐</strong>）</p>
+<pre>
+&lt;form action=&quot;&quot; method=&quot;post&quot; name=&quot;form1&quot; id=&quot;form1&quot;&gt;
+&lt;table  class=&quot;grid_nohead&quot; width='80%'    &gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;操作编号&lt;/td&gt;<br />&lt;td&gt;&lt;input   type=&quot;text&quot; id=&quot;batch_no&quot; name=&quot;batch_no&quot; value=&quot;123456789012&quot;  title=&quot;操作编号&quot;  
+v_type=&quot;number&quot; v_min=&quot;12&quot; v_max=&quot;12&quot; v_onShowMsg=&quot;请输入申请编号&quot;/&gt;&lt;/td&gt;
+&lt;td&gt;信息名称 &lt;/td&gt;
+&lt;td&gt;&lt;input type='text' name='sect_name' id=&quot;sect_name&quot;  value =&quot;&quot; size='30'title=&quot;信息名称&quot; 
+ v_type=&quot;text&quot; v_empty=&quot;1&quot; v_min=&quot;1&quot; v_max=&quot;40&quot; v_onShowMsg=&quot;请输入信息名称11&quot; /&gt;
+&lt;/td&gt;<br />&lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+<p>通过JS设置验证条件，（有两种可以选择的调用方式）：</p>
+<p>1.可以<strong>对表单调用</strong>setValidator，用于设置表单的<strong>所有元素</strong>的验证条件</p>
+<p>2..可以<strong>对部分元素调用</strong>setValidator，用于设置表单的<strong>部分元素</strong>的验证条件。</p>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt; 
+$(document).ready(function(){	
+$(&quot;#form1&quot;).setValidator();//先对表单调用setValidator。
+//然后可以对某个元素设置验证条件，<strong>通过JS设置验证条件后，将覆盖通过元素属性设置的验证条件</strong>
+$(&quot;#batch_no&quot;).setValidator({type:'text',empty:false,min='12',max='12'});
+
+
+});		
+&lt;/script&gt; 
+</pre>
+<h3 id="set_validator">验证、提交表单</h3>
+<p>通过PicButton设置<strong>btn_href</strong>属性，验证、提交表单：</p>
+<pre>&lt;button align=&quot;center&quot; class=&quot;btn_sbmt&quot;  type=&quot;button&quot; value=&quot;1&quot;  btn_href=&quot;save.html&quot; &gt;提交&lt;/button&gt;</pre>
+<p>通过PicButton自定义函数，提交表单：</p>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+//...............
+
+function goto(btn){<br />	//some process..........<br />	$.webUtil.submitOnBtn(&quot;../ok.html&quot;,$(btn));<br />	<br />}
+&lt;/script&gt; 
+
+//....................
+//....................
+//按钮的html代码
+&lt;button align=&quot;center&quot; class=&quot;btn&quot; id ='btn_save' type=&quot;button&quot; value=&quot;1&quot;  onclick=&quot;goto(this);&quot;   &gt;自定义函数验证提交&lt;/button&gt;</pre>
+<h3>设置某个元素的鼠标移过提示信息：</h3>
+<p>通过元素属性设置验证条件：</p>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt; 
+$(document).ready(function(){	
+	$(&quot;#batch_no&quot;).setTipMessage(&quot;请在此输入您的申请编号！&quot;);
+
+});		
+&lt;/script&gt; 
+</pre>
+<p class="note"><span>注释：</span>
+	无</p>
+<p><a href="#">测试</a></p>
+</div>
+				
+				
+						
+				</div>
+			</div>
+	</div>
+</div>
+ 
+
+
+<h2></h2>
+<p class="note"><span>注释：</span>无</p>
+<p class="tip"><span>提示：</span>在与datagrid控件一起使用时，请将表单初始化的js放置于datagrid之后完成。</p>
+<h3>详细描述：无</h3>
+<h3>依赖的JS文件及CSS文件</h3>
+<p>&lt;link rel="stylesheet" type="text/css" href="build\webui78\skin\default\webui78.css" &gt;<br>
+&lt;script type="text/javascript" src="../js/webui78.js"&gt;&lt;/script&gt;
+</p>
+</div>
+<br />
+
+
+
+
+
+<div>
+<h2>浏览器支持</h2>
+<p>兼容IE6~9、firefox主流浏览器。</p>
+</div>
+
+
+<div>
+<h2>&nbsp;</h2>
+</div>
+
+<div>
+<h2>标准属性</h2>
+<pre>无</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+<div>
+<h2>事件属性</h2>
+<pre>无
+</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+</div>
+
+
+
+
+
+</div><div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

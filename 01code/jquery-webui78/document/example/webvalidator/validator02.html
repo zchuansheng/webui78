@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>validator</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78_config.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){	
+	
+	//$.webUtil.setting.msgboxtype="custom";//设置消息框类型，启用自定义格式的确认框
+	$('.grid_nohead').datagrid({hashead:false,trselect:false});////不需要表头，并且不需要行选择的设置
+	$('.btn').PicButton( );
+	$('#form1').setValidator();
+	//$("#sect_remark").setTipMessage("在此输入描述信息，信息格式为：XXX的内容，施工工艺");
+	
+	//$("#sect_file").setValidator({empty:true});
+	
+
+
+
+		
+		
+		
+});		
+function goto(btn){
+	//some process..........
+	$.webUtil.submitOnBtn("../ok.html",$(btn));
+	
+}
+
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>设置输入框内的灰色默认值</div>
+<br/>
+<button align="center" class="btn" id ='btn_save' type="button" value="1"  istip="1"  btn_href="../ok.html"   >通过按钮自动验证提交</button>&nbsp;
+<button align="center" class="btn" id ='btn_save' type="button" value="1"  onclick="goto(this);"   >自定义函数验证提交</button>
+
+<form action="" method="post" name="form1" id="form1">
+  
+		<table  class="grid_nohead" width='80%'    >
+
+     		<tr><td   align="center">操作编号</td>
+            	<td><input class="zcs" type="text" id="batch_no" name="batch_no"   value=""  v_type="username" v_min="1" v_max="12" v_onShowMsg="请输入12位申请编号" title="操作编号"/></td>
+            	<td>信息名称 </td>
+            	<td><input name='sect_name' type='text' id="sect_name" title="信息名称" value="名字"    size='30' v_type="text"   v_min="1" v_max="40" v_onShowMsg="某某某城市花园"  /></td>
+         		</tr>
+    		
+	      <tr> 
+		      <td align="right" >你的描述:</td>
+		      <td colspan="3" valign="top"> <textarea id="sect_remark" name="sect_remark" cols="50" rows="2"  
+              v_type="text" v_min=10 v_max="20"  v_onShowMsg="本次XXX内容.....本次XXX费用....元" title="你的描述" ></textarea> 
+		      </td>
+	    	</tr>
+
+
+
+		</table>
+  <h2>&nbsp;</h2>
+  <h2>示例</h2>
+  <p>当需要提示信息时：需要调用<strong>setValidator</strong>初始化。</p>
+        <pre>
+&lt;script type="text/javascript"&gt; 
+$(document).ready(function(){	
+
+<code>  $('#form1').setValidator();</code>
+
+});		
+&lt;/script&gt; 
+        </pre>
+        <p>表单元素的html代码,需要如下写法。当设置v_onShowMsg时，如果同时value也设置了值，则显示value的内容</p>
+        <pre> &lt;tr&gt;&lt;td   align=&quot;center&quot;&gt;操作编号&lt;/td&gt;<br>   &lt;td&gt;&lt;input class=&quot;zcs&quot; type=&quot;text&quot; id=&quot;batch_no&quot; name=&quot;batch_no&quot;   value=&quot;&quot;  
+       v_type=&quot;username&quot; v_min=&quot;1&quot; v_max=&quot;12&quot; <code><strong>v_onShowMsg=&quot;请输入12位申请编号&quot;</strong> </code>title=&quot;操作编号&quot;/&gt;&lt;/td&gt;
+   &lt;td&gt;信息名称 &lt;/td&gt;<br>   &lt;td&gt;&lt;input type='text' name='sect_name' id=&quot;sect_name&quot;  <code><strong>value=&quot;名字&quot;</strong> </code> size='30' 
+       v_type=&quot;text&quot;   v_min=&quot;1&quot; v_max=&quot;40&quot; <code><strong>v_onShowMsg=&quot;某某某城市花园&quot;</strong></code> title=&quot;信息名称&quot;  /&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt; 
+   &lt;td align=&quot;right&quot; &gt;你的描述:&lt;/td&gt;<br>	  &lt;td colspan=&quot;3&quot; valign=&quot;top&quot;&gt; &lt;textarea id=&quot;sect_remark&quot; name=&quot;sect_remark&quot; cols=&quot;50&quot; rows=&quot;2&quot;  
+        v_type=&quot;text&quot; v_min=10 v_max=&quot;20&quot;  <code><strong>v_onShowMsg=&quot;本次XXX内容.....本次XXX费用....元&quot;</strong></code> title=&quot;你的描述&quot; &gt;&lt;/textarea&gt; &lt;/td&gt;
+ &lt;/tr&gt;</pre>
+        <p class="note"><span>注释：</span>无</p>
+  <br/>
+</form>
+<div id="supportType"></div>
+
+</body>
+</html>

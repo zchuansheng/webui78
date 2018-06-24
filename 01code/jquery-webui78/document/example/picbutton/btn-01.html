@@ -1,0 +1,241 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+				
+				
+	});
+</script>
+</head>
+
+<body class="html" id="tags">
+
+<div id="wrapper">
+
+<div id="header">
+<h1>按钮控件的使用说明</h1>
+</div>
+
+
+<div id="maincontent"  >
+
+<h1>名称：PicButton</h1>
+<div>
+
+<h2>定义与说明</h2>
+
+<p> PicButton图片按钮插件是基于标准的&lt;button&gt;标签的功能扩展，支持&lt;button&gt;标签原有的所有属性、事件，实现自定义的图片效果的按钮。</p>
+<p>要使用PicButton，需要完成以下步骤：</p>
+<p><strong>1、在文档初始化完毕后，编写图片按钮的初始化JS代码</strong></p>
+<pre>
+&lt;script type=&quot;text/javascript&quot;&gt; 
+$(document).ready(function(){	
+	$('.btn').PicButton();
+});		
+&lt;/script&gt; 
+</pre>
+<p><strong>2、需要显示按钮的地方，写按钮的html代码</strong></p>
+<pre>
+&lt;button class=&quot;btn&quot; id ='ddd' type=&quot;button&quot; value=&quot;1&quot; onclick=&quot;form1.submit();&quot;  mask &gt; 新增&lt;/button&gt; 
+</pre>
+<p class="note"><span></span><span>注释：</span>  </p>
+<p class="note">1.PicButton可以放置在页面的任何地方使用<br>
+  2.PicButton可以放置在 &lt;div class="btn_toolbar" &gt;内，与BtnToolBar插件结合起来使用<br>
+  3.PicButton可以与BtnToolBar插件结合起来使用，实现工具条的功能效果</p>
+
+<p class="tip"><span>提示：</span>请将PicButton的初始化语句放置在页面加载完毕后调用</p>
+<h3>详细描述</h3>
+
+<p>PicButton插件可以完成以下功能：</p>
+<p>一、用按钮执行Javascript，<a href="btn01.html" target="_self"> 详细参见示例代码</a></p>
+<p>二、用按钮执行表单提交，并页面跳转<a href="btn02.html" target="_self"> 详细参见示例代码</a></p>
+<p>三、用按钮执行页面跳转，不提交表单<a href="btn03.html" target="_self"> 详细参见示例代码</a></p>
+<p>四、与BtnToolBar组合使用，完成按钮工具条的自动隐藏与显示效果。<a href="../datagrid/datagrid01.html" target="_self"> 详细参见示例代码</a></p>
+<h3>依赖的JS文件及CSS文件</h3>
+<p>&lt;link rel="stylesheet" type="text/css" href="build\webui78\skin\default\webui78.css" &gt;<br>
+&lt;script type="text/javascript" src="../js/webui78.js"&gt;&lt;/script&gt;
+</p>
+</div>
+<div>
+  <h2>可选的属性</h2>
+  <p>此控件可以设置的属性有</p>
+  <table class="dataintable">
+    <tr>
+      <th>属性</th>
+      <th>值</th>
+      <th>描述</th>
+      <th>设置方式</th>
+    </tr>
+    <tr>
+      <td>btn_href</td>
+      <td><ul>
+        <li>string(缺省为空)</li>
+      </ul></td>
+      <td>按钮被点击时，需要提交的URL，设置此属性后，按钮将会完成以下事情：
+        1.进行表单验证
+        2.设置关联表单的action
+        3.调用表单的submit()</td>
+      <td>通过元素的属性设置，如：<br />
+        &lt;button class=&quot;btn&quot; id ='ddd' type=&quot;button&quot; <code> btn_href=&quot;someaction.do&quot;</code> istip=&quot;1&quot; nosubmit=&quot;1&quot;&gt; 新增&lt;/button&gt; </td>
+    </tr>
+    <tr>
+      <td>istip</td>
+      <td><ul>
+        <li>false(缺省)</li>
+        <li>true</li>
+      </ul></td>
+      <td>按钮被点击时，是否提示确认框（确认框的内容是&rdquo;您确认要&lt;<i>按钮的名字</i>&gt;吗？&quot;），<strong>当btn_href未设置或<em><code>issubmit</code>=&quot;0&quot;</em>时，此属性无效</strong></td>
+      <td><p>通过JS或元素的属性设置，如：<br />
+        $('.btn').PicButton({<code>istip:true</code>}); 或设置属性 <em><code>istip</code>=&quot;1&quot; </em> （提示）， <em><code>istip</code>=&quot;0&quot; </em> （不提示）</p></td>
+    </tr>
+    <tr>
+      <td>issubmit</td>
+      <td><ul>
+        <li>true(缺省)</li>
+        <li>false</li>
+      </ul></td>
+      <td>在页面跳转时，是否需要提交表单，true提交表单，false不提交表单。<strong>当btn_href未设置时，此属性无效,</strong>当通过属性设置时，<em><code>issubmit</code>=&quot;1&quot;</em>时，此值为true,<em><code>issubmit</code>=&quot;0&quot;时，此值为false</em></td>
+      <td>通过js方式或元素的属性设置，如：<br />
+        var by=$('body');<br />
+        $('.btn').PicButton({<code>issubmit:true</code>});或设置属性 <em><code>issubmit</code>=&quot;1&quot; </em> （提交）， <em><code>issubmit</code>=&quot;0&quot; </em> （不提交）</td>
+    </tr>
+    <tr>
+      <td>ischeck</td>
+      <td><ul>
+        <li>true(缺省)</li>
+        <li>false</li>
+      </ul></td>
+      <td>当提交表单时，true检查验证表单，false不检查验证表单。<strong>当btn_href未设置时，此属性无效,</strong>当通过属性设置时，<em><code>ischeck</code>=&quot;1&quot;</em>时，此值为true,<em><code>ischeck</code>=&quot;0&quot;时，此值为false</em></td>
+      <td>通过js方式或元素的属性设置，如：<br />
+        var by=$('body');<br />
+        $('.btn').PicButton({<code>ischeck:true</code>});或设置属性 <em><code>ischeck</code>=&quot;1&quot; </em> （验证）， <em><code>ischeck</code>=&quot;0&quot; </em> （不验证）</td>
+    </tr>
+    <tr>
+      <td>popup</td>
+      <td><ul>
+        <li>false(缺省)</li>
+        <li>true</li>
+      </ul></td>
+      <td>页面跳转时，以弹出窗口方式显示,<strong>当btn_href未设置时，此属性无效</strong></td>
+      <td><p>通过js方式或元素的属性设置</p>
+        <p>或设置属性 <em>popup=&quot;1&quot; </em> （弹出）， <em>popup=&quot;0&quot; </em> （不弹出）</p></td>
+    </tr>
+    <tr>
+      <td>formobj</td>
+      <td><ul>
+        <li>null(缺省)</li>
+        <li>jquery对象</li>
+      </ul></td>
+      <td>按钮点击时，要提交的表单对象（jquery对象） ，<strong>当btn_href未设置时，此属性无效</strong></td>
+      <td>通过js方式设置，如：<br />
+        var frm1=$('#form1');<br />
+        $('.btn').PicButton({<code>formobj:frm1</code>});</td>
+    </tr>
+    <tr>
+      <td>maskobj</td>
+      <td><ul>
+        <li>null(缺省)</li>
+        <li>jquery对象</li>
+      </ul></td>
+      <td>按钮点击时，需要遮罩的对象（jquery对象），默认是body对象，<strong>当btn_href未设置时，此属性无效</strong></td>
+      <td>通过js方式设置，如：<br />
+        var by=$('body');<br />
+        $('.btn').PicButton({<code> formobj:by</code>});</td>
+    </tr>
+    <tr>
+      <td><s>mask</s></td>
+      <td><ul>
+        <li><s>false(缺省)</s></li>
+        <li><s>true(当设置属性mask=&quot;1&quot;时 此属性为true)</s></li>
+      </ul></td>
+      <td>此属性被废弃</td>
+      <td><s>通过js方式或元素的属性设置，如：<br />
+        &lt;button class=&quot;btn&quot; id ='ddd' type=&quot;button&quot; <code> mask=&quot;1&quot;</code> &gt; 新增&lt;/button&gt; </s></td>
+    </tr>
+    <tr>
+      <td>force</td>
+      <td><ul>
+        <li>false(缺省)</li>
+        <li>true(当设置属性force=&quot;1&quot;时 此属性为true)</li>
+      </ul></td>
+      <td>与BtnToolBar插件结合使用时，是否强制显示此按钮(不收按钮显示条件的限制），按钮不再BtnToolBar显示时，此属性无效</td>
+      <td>通过js方式或元素的属性设置，如：<br />
+        &lt;button class=&quot;btn&quot; id ='ddd' type=&quot;button&quot; <code> force=&quot;1&quot;</code> &gt; 新增&lt;/button&gt; </td>
+    </tr>
+    <tr>
+      <td>enabIcon</td>
+      <td>true(缺省)，可选</td>
+      <td>是否启用按钮图标</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>icon</td>
+      <td>null,空</td>
+      <td>用于设置某个按钮的图标式名称，如果未设置，则采用&ldquo;btn_icon_def&rdquo;样式，</td>
+      <td><a href="btn01.html">点此查看webui78支持的按钮图标 </a>。推荐尽量使用全局名称对应关系设置，参见：<a href="../commons/webUtil.html">webUtil.setting.btn_icons</a></td>
+    </tr>
+  </table>
+</div>
+<div>
+  <h2>实例</h2>
+<p>图片按钮的一般用法：初始化</p>
+<pre>
+&lt;script type="text/javascript"&gt; 
+$(document).ready(function(){	
+	$('.btn').PicButton();
+
+});		
+&lt;/script&gt; 
+</pre>
+<p>需要显示按钮的地方，需要如下写法</p>
+<pre>
+&lt;button class="btn" id ='ddd' type="button" value="1" onclick="form1.submit();"  mask &gt; 新增&lt;/button&gt; 
+</pre>
+<p class="note"><span>注释：</span>
+	上述代码中的class="btn" 中的class名字可以是任意自定义的类名称
+</p>
+<p><a href="#">测试</a></p>
+</div>
+
+
+<div>
+<h2>浏览器支持</h2>
+<p>兼容IE6~9、firefox主流浏览器。</p>
+</div>
+<div>
+  <h2>标准属性</h2>
+<pre>id, class, title, style, dir, lang, xml:lang, accesskey, tabindex</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+<div>
+<h2>事件属性</h2>
+<pre>onfocus, onblur, onclick, ondblclick, onmousedown, onmouseup, 
+onmouseover, onmousemove, onmouseout, onkeypress, onkeydown, onkeyup
+</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+</div>
+
+
+
+
+
+</div><div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webtree</title>
+<style type="text/css">
+<!--
+.redfont {color: #FF0000;   }
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+ 
+$(document).ready(function(){	
+	$(".btn").PicButton();
+ 	$('.grid_nohead').datagrid({hashead:false,trselect:false});////不需要表头，并且不需要行选择的设置
+	
+	$("#btn1").click(function(){
+		
+		  	$.webUtil.open("./webtree5-1.html",{widths:500,heights:600});
+	});
+	$("#btn2").click(function(){
+		
+		  	$.webUtil.open("./webtree5-2.html",{widths:500,heights:600});
+	});
+	 
+ 
+});		
+	 
+</script>
+ </head>
+ 
+ <div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+树结构视图</div>
+<div class="code">
+	
+</div>
+<form action="" method="post" name="form1" id="form1">  
+		<table  class="grid_nohead" width='80%'    >
+     		<tr><td   align="center">操作编号</td>
+            	<td><input class="zcs" type="text" id="batch_no" name="batch_no"   value=""  v_type="username" v_min="1" v_max="12" v_onShowMsg="请输入12位申请编号" title="操作编号"/></td>
+            	<td>操作员名称： </td>
+            	<td><input name='sect_name' type='text' id="sect_name" title="信息名称" value="名字"    size='30' v_type="text"   v_min="1" v_max="40" v_onShowMsg="某某某城市花园"  /></td>
+         		</tr>
+    		
+	      <tr> 
+		      <td align="right" >操作员归属部门:</td>
+		      <td colspan="3" valign="top">                      
+           <input id="deptId" v_type="text"  type="text" class="text"  value="" name="deptId" readonly="true" />
+           <input id="deptName" v_type="text" type="text" class="text"  value="" name="deptName" readonly="true" />
+           <button  class="btn" id="btn1"   type="button" value="" >选择-复选</button>
+          <button  class="btn" id="btn2"   type="button" value="" >选择-单选</button>
+
+		      </td>
+	    	</tr>
+
+
+
+		</table>
+	
+	</form>
+
+
+</body>
+</html>
+	
+	

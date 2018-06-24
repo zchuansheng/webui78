@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+	function onSelectRow(index,el){
+		var tr=$(el);
+		alert('您选择的行号index='+index+',第2列的内容=='+$('td:eq(1)',tr).html());
+		$("input[name='batch_no']",tr).val();//取选择行的申请编号,（如果您的行中有这样的标签<input type='hidden' name='batch_no' />）
+		$('td:eq(1)',tr).html();//取得第2列的html内容
+		$("input[name='sel_batch_no']").attr("value",$("input[name='batch_no']",tr).val());//选择时，将选择的数据给form的隐藏域。
+		//或这样写document.form1.sel_batch_no.value=$("input[name='batch_no']",tr).val();//选择时，将选择的数据给form的隐藏域。
+		//如果tr中不使用隐藏域时，下面这样也可以
+		//form1.sel_batch_no.value=$('td:eq(1)',tr).html();//选择时，将选择的数据给form的隐藏域。
+ }
+
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条(有一组button组成的div,见下面html实例，.btn_toolbar .btn .btn_condition 三个样式名称不能变之外其他都可以改变)
+	var g=$('.grid1').datagrid({toolbar:bar});//或执行代码 g[0].grid.setBar(bar);	也可以
+	//alert('ddd');
+
+	
+	var g=$('.grid2').datagrid({onSelect:onSelectRow,defaultSel:false,idCol:1});//或执行代码 g[0].p.onSelect=onSelectRow;	也可以
+
+	$('.grid_fixhead').datagrid({fixhead:true});//固定表头
+	$('.grid_nohead').datagrid({hashead:false,trselect:false});////不需要表头，并且不需要行选择的设置
+
+	var g=$('.grid_redtr').datagrid({toolbar:bar});
+	
+	$(".grid_span").datagrid({trselect:false,colspan:[1,9],rowspan:[1]});
+	$(".grid_span").gridRowspan(2);
+	
+	$(".grid_span").gridRowspan(3,2);//依赖于第2行，如果第二行相同才合并第3行，否则合并
+//	$(".grid_span").gridColspan(6);
+
+
+});		
+	
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>关于行合并、列合并的例子</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+			<div><strong>6、关于行合并、列合并的例子</strong></div>
+					<table  class="grid_span" width='100%'    >
+    		<tr>
+            	<td width="20%"  >序号</td>
+            	<td width="20%"  >操作编号</td>
+            	<td width="30%" >信息名称</td>
+            	<td width="30%" >操作员</td>
+           </tr>
+     		<tr>
+     					<td  align="center"><strong>汇总金额</strong></td>
+            	<td><strong>汇总金额</strong></td>
+            	<td><strong>汇总金额</strong></td>
+            	<td>120.00</td>
+         		</tr>
+     		<tr>
+     					<td   btn_condition='01' align="center">2</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+         		</tr>
+    		<tr    >
+      					<td  btn_condition='02' align="center">2</td>
+            	<td>100309000300</td>
+            	<td class="greentd" >花果山谷1 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr  class="redtr">
+     					<td  btn_condition='02' align="center">3</td>
+            	        <td >100309000301</td>
+            	<td >花果山谷2 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr  class="yellowtr">
+     					<td  btn_condition='03' align="center">4</td>
+            	        <td>100309000302</td>
+            	<td>花果山谷2 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+      					<td  btn_condition='05' align="center">5</td>
+            	<td>100309000303</td>
+            	<td>花果山谷5</td>
+            	<td >花果山谷5</td>
+            </tr>
+   		<tr>
+      					<td  btn_condition='05' align="center">6</td>
+            	<td>100309000303</td>
+            	<td>花果山谷5</td>
+            	<td class="greentd">2010-11-12</td>
+            </tr>
+   		<tr>
+      					<td  btn_condition='05' align="center">6</td>
+            	        <td>100309000303</td>
+            	<td>花果山谷7 </td>
+            	<td>2010-11-12</td>
+            </tr>
+   		<tr>
+      					<td   align="right"><strong>合计</strong></td>
+            	<td><strong>合计</strong></td>
+            	<td><strong>合计</strong></td>
+            	<td>1239.22</td>
+            </tr>
+
+		</table>
+
+
+</form>
+
+
+
+</body>
+</html>

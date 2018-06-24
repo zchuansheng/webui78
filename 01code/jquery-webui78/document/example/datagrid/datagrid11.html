@@ -1,0 +1,482 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78_config.js"></script>
+<script type="text/javascript" src="../../../document/application_js/web-commons.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar(); 
+
+	var g=$('.grid_paging').datagrid({thresPage:10,defSizePage:10}); 
+	var g=$('.grid2').datagrid(); 
+	
+	g.appendElements('<input type="checkbox" name="sel_data">',{icol:0,linkid:1});
+	g.appendElements('<a href="#" class="sel_all"  id="sel_all">反选</a>',{icol:0,linkid:1,clear:true,tohead:true});
+	$('#sel_all').check_against2("sel_data");
+	 
+
+});		
+	
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>前端分页</div>
+
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br />
+<div><strong>前端分页的列子,设置起始分页的记录数，每页大小：$('.grid_paging').datagrid({thresPage:10,defSizePage:10});<br/>	
+</strong>
+</div>
+<button align="center" class="btn" id ='btn_save' type="button" value="1"  btn_href="../ok.html"   >通过按钮自动验证提交</button>&nbsp;
+<button align="center" class="btn" id ='btn_save' type="button" value="1"  onclick="goto(this);"   >自定义函数验证提交</button>
+
+<br><br>
+<table  class="grid_paging" height="100%" >
+    		<tr>
+            	<td width="100"  >序号</td>
+            	<td width="200"  >编号</td>
+            	<td width="300" >名称</td>
+            	<td width="200" >日期</td>
+            	<td width="100" >列 55555</td>
+            	<td width="100" >列 666666</td>
+            </tr>
+     		
+    		<tr>
+     					<td  btn_condition='01' align="center">1</td>
+            	<td>100309000304_01</td>
+            	<td>测试数据1 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" v_min="12" name="data5" size="8" value="111" /></td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">2</td>
+            	<td>100309000304_02</td>
+            	<td>测试数据2 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" v_min="12" name="data5" size="8" value="222" /></td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">3</td>
+            	<td>100309000304_03</td>
+            	<td>测试数据3 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" v_min="12" name="data5" size="8" value="333" /></td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">4</td>
+            	<td>100309000304_04</td>
+            	<td>测试数据4 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">5</td>
+            	<td>100309000304_05</td>
+            	<td>测试数据5 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+   		<tr>
+     					<td  btn_condition='01' align="center">6</td>
+            	<td>100309000304_06</td>
+            	<td>测试数据6 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">7</td>
+            	<td>100309000304_07</td>
+            	<td>测试数据7 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">8</td>
+            	<td>100309000304_08</td>
+            	<td>测试数据8 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">9</td>
+            	<td>100309000304_09</td>
+            	<td>测试数据9 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">10</td>
+            	<td>100309000304_10</td>
+            	<td>测试数据10 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='01' align="center">11</td>
+            	<td>100309000304_11</td>
+            	<td>测试数据11 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">12</td>
+            	<td>100309000304_12</td>
+            	<td>测试数据12 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">13</td>
+            	<td>100309000304_13</td>
+            	<td>测试数据13 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">14</td>
+            	<td>100309000304_14</td>
+            	<td>测试数据14 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">15</td>
+            	<td>100309000304_15</td>
+            	<td>测试数据15 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='01' align="center">16</td>
+            	<td>100309000304_16</td>
+            	<td>测试数据16 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">17</td>
+            	<td>100309000304_17</td>
+            	<td>测试数据17 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">18</td>
+            	<td>100309000304_18</td>
+            	<td>测试数据18 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">19</td>
+            	<td>100309000304_19</td>
+            	<td>测试数据19 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">20</td>
+            	<td>100309000304_20</td>
+            	<td>测试数据20 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='01' align="center">21</td>
+            	<td>100309000304_21</td>
+            	<td>测试数据21 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">22</td>
+            	<td>100309000304_22</td>
+            	<td>测试数据22 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">23</td>
+            	<td>100309000304_23</td>
+            	<td>测试数据23 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" name="data5" size="8" value="111" /></td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">24</td>
+            	<td>100309000304_24</td>
+            	<td>测试数据24 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" name="data5" size="8" value="111" /></td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">25</td>
+            	<td>100309000304_25</td>
+            	<td>测试数据25 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" v_min="12" name="data5" size="8" value="111" /> </td>
+            	<td>数据6</td>
+            </tr>
+ 
+
+</table>
+
+
+
+<table  class="grid2" height="100%" >
+    		<tr>
+            	<td width="100"  >序号</td>
+            	<td width="200"  >编号</td>
+            	<td width="300" >名称</td>
+            	<td width="200" >日期</td>
+            	<td width="100" >列 55555</td>
+            	<td width="100" >列 666666</td>
+            </tr>
+     		
+    		<tr>
+     					<td  btn_condition='01' align="center">1</td>
+            	<td>100309000304_01</td>
+            	<td>测试数据1 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" v_min="12" name="data5" size="8" value="111" /></td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">2</td>
+            	<td>100309000304_02</td>
+            	<td>测试数据2 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" v_min="12" name="data5" size="8" value="222" /></td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">3</td>
+            	<td>100309000304_03</td>
+            	<td>测试数据3 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" v_min="12" name="data5" size="8" value="333" /></td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">4</td>
+            	<td>100309000304_04</td>
+            	<td>测试数据4 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">5</td>
+            	<td>100309000304_05</td>
+            	<td>测试数据5 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+   		<tr>
+     					<td  btn_condition='01' align="center">6</td>
+            	<td>100309000304_06</td>
+            	<td>测试数据6 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">7</td>
+            	<td>100309000304_07</td>
+            	<td>测试数据7 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">8</td>
+            	<td>100309000304_08</td>
+            	<td>测试数据8 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">9</td>
+            	<td>100309000304_09</td>
+            	<td>测试数据9 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">10</td>
+            	<td>100309000304_10</td>
+            	<td>测试数据10 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='01' align="center">11</td>
+            	<td>100309000304_11</td>
+            	<td>测试数据11 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">12</td>
+            	<td>100309000304_12</td>
+            	<td>测试数据12 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">13</td>
+            	<td>100309000304_13</td>
+            	<td>测试数据13 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">14</td>
+            	<td>100309000304_14</td>
+            	<td>测试数据14 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">15</td>
+            	<td>100309000304_15</td>
+            	<td>测试数据15 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='01' align="center">16</td>
+            	<td>100309000304_16</td>
+            	<td>测试数据16 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">17</td>
+            	<td>100309000304_17</td>
+            	<td>测试数据17 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">18</td>
+            	<td>100309000304_18</td>
+            	<td>测试数据18 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">19</td>
+            	<td>100309000304_19</td>
+            	<td>测试数据19 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">20</td>
+            	<td>100309000304_20</td>
+            	<td>测试数据20 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='01' align="center">21</td>
+            	<td>100309000304_21</td>
+            	<td>测试数据21 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">22</td>
+            	<td>100309000304_22</td>
+            	<td>测试数据22 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">23</td>
+            	<td>100309000304_23</td>
+            	<td>测试数据23 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" name="data5" size="8" value="111" /></td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">24</td>
+            	<td>100309000304_24</td>
+            	<td>测试数据24 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" name="data5" size="8" value="111" /></td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">25</td>
+            	<td>100309000304_25</td>
+            	<td>测试数据25 </td>
+            	<td>2011-01-07</td>
+             	<td><input type="text" id="data5" v_min="12" name="data5" size="8" value="111" /> </td>
+            	<td>数据6</td>
+            </tr>
+ 
+
+</table> 
+</form>
+
+
+
+</body>
+</html>

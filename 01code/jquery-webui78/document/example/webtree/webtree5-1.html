@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webtree</title>
+<style type="text/css">
+<!--
+.redfont {color: #FF0000;   }
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+/////以下四个回调函数设置不是必需，根据需要配置 
+function onSelect(node){// 
+	alert("选择的节点="+node.data("node_data").id+"   ,节点数据（以名字为例）="+node.data("node_data").name);
+}
+function onExpand(node){// 
+	alert("展开的节点="+node.data("node_data").id+"   ,节点数据（以名字为例）="+node.data("node_data").name);
+}
+
+function onCheckClick(node,newStatus){//  
+	alert("节点的当前状态值="+newStatus+",checked的节点="+node.data("node_data").id+"   ,节点数据（以名字为例）="+node.data("node_data").name);
+}
+function onPreLoad(jsdata,ops){
+	//jsdata是后台传输到前端的json原始数据，jsdata.result是数据结果集的名字默认是"result"，可以通过初始化时的resultName修改。
+	//ops为树的初始化配置信息
+	/*请参考下面注释内容，有选择的使用*/
+	//alert("jsdata.result.length="+jsdata.result.length); 
+//	$.each(jsdata.result, function() { 
+//		this.url="/my.do";//此语句将导致此节点的在动态加载子节点时，请求的URL改为"/my.do"
+//		this.custom_param='my name';//此语句可以在后台程序中，用request.getParameter("custom_param")取得值:my name
+//	});
+ 	
+}
+function onLoadFinished(node,jsdata){//
+	//jsdata是后台传输到前端的json原始数据，jsdata.result是数据结果集的名字默认是"result"，可以通过初始化时的resultName修改。
+ 	if(node.attr("id")!="dept_tree"){ //此语句可用于判断是否非根节点
+		alert("onLoadFinished的节点="+node.data("node_data").id+"   ,节点数据（以名字为例）="+node.data("node_data").name);
+	}
+	var selNodes=$("#deptId",window.opener.document).val();
+	if(node.attr("id")=="dept_tree"){ //此语句可用于判断是否为根节点,"dept_tree"为自定义的树ID
+		//此处演示怎样把父页面选中的节点，回显到树中，让节点处于选中状态。
+		//注意动态加载的树，仅能回显第一级节点
+		selNodes=selNodes.replace(/,/gm,",#"); 
+		selNodes=selNodes.substr(0,selNodes.length-2);
+		$("#dept_tree").setNodeCheckStatus($("#"+selNodes),"1");
+	}
+}
+
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+
+$(document).ready(function(){	
+	$(".btn").PicButton();
+ 
+ 		var tree1=$('#dept_tree'); 
+		tree1.webTree({loadUrl:"./treedata/dept_tree/tree_data.json",
+			loadOnExpand:2,//0：展开不加载子节点,1每次展开都重新加载子节点,2仅在没有子节点时加载
+			collapsed:true,
+			expandOne:true,enableIcon:true,
+			icons:{type:1},enable_selbtn:true,
+			onSelect:onSelect,
+			lockedOnLoad:true,
+			onExpand:onExpand,
+			onCheckClick:onCheckClick,
+			onLoadFinished:onLoadFinished,
+			//form_used:true,本参数仅在【加载节点时，需要同步将表单数据提交到后台】的情况下设置为true即可
+			onPreLoad:onPreLoad
+			
+		}
+		);// 
+	//加载第一级节点
+ 		tree1.loadNode( );
+ 		
+ 		
+ 		
+ 		
+ 	//当点击确定按钮时，执行窗口关闭动作
+	$("#btn1").click(function(){
+		var nodedata=$("#dept_tree").getCheckedNodeData();
+		//nodedata的内容依赖于后台SQL语句查询的内容，sql有哪些列，它就有哪些属性。
+		var str_sel_dept_id="";
+		var str_sel_dept_name="";
+		$.each(nodedata,function(){//循环将选中的数值，以逗号分隔的方式放入父页面中。
+			str_sel_dept_id+=this.id+",";
+			str_sel_dept_name+=this.name+",";
+		});
+		$("#deptId",window.opener.document).val(str_sel_dept_id);
+		$("#deptName",window.opener.document).val(str_sel_dept_name);
+		window.close();
+
+	});
+	//当点击取消按钮时，执行窗口关闭动作
+	$("#btn2").click(function(){
+		window.close();
+	});
+	
+	$("#btn3").click(function(){
+		//根据节点ID设置选中状态
+ 		$("#dept_tree").setNodeCheckStatus($("#1,#10"),"1");
+ //		$("#dept_tree").setNodeCheckStatus(null,"0");设置所有节点取消选中
+
+	});
+	$("#btn4").click(function(){
+		//获得鼠标当前选中节点
+ 		var node=$("#dept_tree").getSelectedNode();
+		alert("获得鼠标当前选中节点="+node.data("node_data").id+"   ,节点数据（以名字为例）="+node.data("node_data").name);
+	});
+	$("#btn5").click(function(){
+		//获得当前checked节点
+ 			var nodes=$("#dept_tree").getCheckedNode($("#1,#10"),"1");
+ 			nodes.each(function(){
+ 				var node=$(this);
+ 				alert("获得当前checked节点="+node.data("node_data").id+"   ,节点数据（以名字为例）="+node.data("node_data").name);
+ 				return;
+			});
+	});
+
+});		
+	 
+</script>
+ </head>
+ 
+ <div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+树结构视图</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<button type="button" class="btn" id="btn1" value="">确定</button>
+	<button type="button" class="btn" id="btn2">取消</button>
+	<button type="button" class="btn" id="btn3">选中节点</button><br>
+	<button type="button" class="btn" id="btn4">获得鼠标当前选中节点</button>
+	<button type="button" class="btn" id="btn5">获得当前checked节点</button>
+ 	<input type="hidden" name="myformdata" value="test111111111" />
+	<br><span class="redfont" >1.本页面需要访问json文件，请放置在tomcat或weblogic等web容器中运行，其运行效果如下：<br>
+		2.为了演示各种事件监听方法，注意本页面弹出框较多，请您根据自己的需要配置</span><br>
+ 
+	加载部门目录树：		
+	<table border="1" width="100%" >
+		<tr> 
+				<td width="50%" align="left" valign="top">
+					<ul id="dept_tree"> </ul>  
+				</td>
+		</tr>
+	</table>
+ 
+	
+	</form>
+
+
+</body>
+</html>
+	
+	

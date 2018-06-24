@@ -1,0 +1,7 @@
+{"result":[
+{"id":3,"name":"叁级信息信息11-1","url":"./treedata/tree_data3.json","level":"3","isleaf":false,"parent_id":"2" },
+{"id":4,"name":"叁级信息信息11-2","url":"http://www.google.com.hk","level":"3","isleaf":false,"parent_id":"2" },
+{"id":5,"name":"叁级信息信息11-3","url":"http://www.google.com.hk","level":"3","isleaf":false,"parent_id":"2" }
+],
+"message":""
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>accordionMutil</title>
+<style>
+html { overflow-x:hidden; }
+/**上面语句去掉菜单的水平滚动条*/
+</style>
+<link rel="stylesheet" type="text/css" href="../../build/webui78/skin/default/webui78.css" /> 
+<link rel="stylesheet" type="text/css" href="../../build/webui78/skin/accordionMenu/skin-tree-01.css" /> 
+ 
+<script type="text/javascript" src="../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+ $(document).ready(function(){  
+ 			//1将html数据格式化为AccordionMuti的效果
+    	$("#zcsmenu").AccordionMuti({target:"mainframe"});
+    	$('body').addClass("menucss");
+    	var tree1=$('#menu_tree');
+			tree1.webTree({target:'mainframe',collapsed:true,expandOne:true,enableIcon:true,enable_selbtn:false,enable_hitbtn:false,
+				name_map:{name:"menu_name"},
+				icons:{open:'branch-o2',closed:'branch-c2'}});// 	 
+			//tree1.loadNode({url:"./example_menu.json", isfull:true}); 
+	 
+
+  				
+	});
+	</script>
+  </head>
+  <body  topmargin="0" leftmargin="0" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" marginheight="0" marginwidth="0">
+<table  border="0" width="100%" height="100%"   cellpadding="0" cellspacing="0" >
+	<tr><td height="100% >    
+	<div style="width:100%;height:100%" >
+		<ul style="width:100%;height:100%" id="menu_tree">
+			<li id="10100"> <div >00.变更日志</div>
+				<ul >
+					<li  id="10200"> <div >00.1更新日志</div>
+						<ul >
+							<li  id="10300"> <div ><a  href="../../build/changelog.html" target="mainframe">更新日志</a></div></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li id="10400"> <div >01.表格控件datagrid</div>
+				<ul >
+					<li id="10500"> <div >01.1.表格的介绍文档</div>
+						<ul >
+							<li id="10600"> <div ><a  href="datagrid/datagrid-00.html" target="mainframe">1.1.1.datagrid介绍</a></div> </li>
+							<li  id="10700"> <div ><a  href="datagrid/datagrid-01.html" target="mainframe">1.1.2.datagrid附加功能</a></div> </li>
+						</ul>
+					</li>
+					<li id="10800"> <div >01.2.表格用法例子</div>
+						<ul >
+							<li id="10900"> <div ><a  href="datagrid/datagrid01.html" target="mainframe">1.一般用法</a></div></li>
+							<li id="11000"> <div ><a  href="datagrid/datagrid02.html" target="mainframe">2.可选择行的例子</a></div></li>
+							<li id="11100"> <div ><a  href="datagrid/datagrid03.html" target="mainframe">3.固定表头的例子</a></div></li>
+							<li id="11200"> <div ><a  href="datagrid/datagrid04.html" target="mainframe">4.无表头的表单模式</a></div></li>
+							<li id="11300"> <div ><a  href="datagrid/datagrid05.html" target="mainframe">5.自定义行/列的颜色格式</a></div></li>
+							<li id="11400"> <div ><a  href="datagrid/datagrid06.html" target="mainframe">6.合并首行或尾行的例子</a></div> </li>
+							<li id="11500"> <div ><a  href="datagrid/datagrid07.html" target="mainframe">7.可增加或删除行的例子</a></div> </li>
+							<li id="11600"> <div ><a  href="datagrid/datagrid08.html" target="mainframe">8.自定义行及自增长列用法</a></div> </li>
+							<li id="11700"> <div ><a  href="datagrid/datagrid09.html" target="mainframe">9.自定义表头样式的例子</a></div> </li>
+							<li id="11800"> <div ><a  href="datagrid/datagrid10.html" target="mainframe">10.追加元素的例子</a></div> </li>
+							<li id="11900"> <div ><a  href="datagrid/datagrid11.html" target="mainframe">11.前端分页的例子</a></div> </li>
+							<li id="12000"> <div ><a  href="datagrid/datagrid12.html" target="mainframe">12.嵌套表格</a></div> </li>
+							<li id="12100"> <div ><a  href="datagrid/datagrid13.html" target="mainframe">13.可排序可筛选表格</a></div> </li>
+							<li id="12200"> <div ><a  href="datagrid/datagrid14.html" target="mainframe">14.更换皮肤样式效果表格</a></div> </li>
+							<li id="12300"> <div ><a  href="datagrid/datagrid14_01.html" target="mainframe">14.1.自定义样式效果表格</a></div> </li>
+							<li id="12400"> <div ><a  href="datagrid/datagrid15.html" target="mainframe">15.动态加载表格</a></div> </li>
+							<li  id="12500"> <div ><a  href="datagrid/web-ui_example.html" target="mainframe">综合</a></div> </li>
+						</ul></li>
+					<li  id="12600"> <div >01.3.表格性能测试</div>
+						<ul >
+							<li id="12700"> <div ><a  href="datagrid/datagrid3000.html" target="mainframe">1.性能测试3000条</a></div> </li>
+							<li  id="12800"> <div ><a  href="datagrid/datagrid5000.html" target="mainframe">2.性能测试5000条</a></div> </li>
+						</ul></li>
+				</ul></li>
+			<li id="12900"> <div >02.图片按钮及按钮工具条
+				</div>
+				<ul >
+					<li id="13000"> <div >02.1按钮说明</div>
+						<ul >
+							<li id="13100"> <div ><a  href="picbutton/btn-01.html" target="mainframe">PicButton介绍</a></div> </li>
+							<li  id="13200"> <div ><a  href="picbutton/BtnToolBar-02.html" target="mainframe">1.BtnToolBar工具条介绍</a></div> </li>
+						</ul></li>
+					<li  id="13300"> <div >02.2按钮使用举例</div>
+						<ul >
+							<li id="13400"> <div ><a  href="picbutton/btn01.html" target="mainframe">1.按钮执行javascript</a></div> </li>
+							<li id="13500"> <div ><a  href="picbutton/btn02.html" target="mainframe">2.用按钮提交表单</a></div> </li>
+							<li id="13600"> <div ><a  href="picbutton/btn03.html" target="mainframe">3.用按钮跳转.弹出页面</a></div> </li>
+							<li id="13700"> <div ><a  href="picbutton/btn04.html" target="mainframe">4.综合示例</a></div> </li>
+							<li id="13800"> <div ><a  href="datagrid/datagrid01.html" target="mainframe">5.绑定表格的按钮工具条</a></div> </li>
+							<li  id="13900"> <div ><a  href="picbutton/BtnToolBar2.html" target="mainframe">6.页面加载时绑定的工具条</a></div> </li>
+						</ul></li>
+				</ul></li>
+			<li id="14000"> <div >03.表单验证
+				</div>
+				<ul >
+					<li id="14100"> <div >03.1表单验证说明</div>
+						<ul >
+							<li id="14200"> <div ><a  href="webvalidator/validator--00.html" target="mainframe">1.表单验证介绍</a></div> </li>
+							<li  id="14300"> <div ><a  href="webvalidator/dataType.html" target="mainframe">2.支持的验证类型</a></div> </li>
+						</ul></li>
+					<li  id="14400"> <div >03.2表单验证的例子</div>
+						<ul >
+							<li id="14500"> <div ><a  href="webvalidator/validator01.html" target="mainframe">1.表单验证的例子</a></div> </li>
+							<li id="14600"> <div ><a  href="webvalidator/validator02.html" target="mainframe">2.设置输入框内灰色默认值</a></div> </li>
+							<li id="14700"> <div ><a  href="webvalidator/validator03.html" target="mainframe">3.设置鼠标移过时提示信息</a></div> </li>
+							<li id="14800"> <div ><a  href="webvalidator/validator04.html" target="mainframe">4.验证出错提示自定义信息</a></div> </li>
+							<li id="14900"> <div ><a  href="webvalidator/validator05.html" target="mainframe">5.对有选择的元素进行验证</a></div> </li>
+							<li id="15000"> <div ><a  href="webvalidator/validator06.html" target="mainframe">6.ajax方式提交表单</a></div> </li>
+							<li id="15100"> <div ><a  href="webvalidator/validator07.html" target="mainframe">7.测试性能(700条)</a></div> </li>
+							<li  id="15200"> <div ><a  href="datagrid/datagrid3000.html" target="mainframe">8.测试性能(3000条)</a></div> </li>
+						</ul></li>
+				</ul></li>
+			<li id="15300"> <div >04.菜单折叠组件
+				</div>
+				<ul >
+					<li id="15400"> <div >04.1菜单说明</div>
+						<ul >
+							<li  id="15500"> <div ><a  href="accordionmuti/accordionMutil-00.html" target="mainframe">1.折叠组件说明</a></div> </li>
+						</ul></li>
+					<li  id="15600"> <div >04.2菜单例子</div>
+						<ul >
+							<li id="15700"> <div ><a  href="accordionmuti/accordionMuti01.html" target="mainframe">1.换皮肤样式的菜单</a></div> </li>
+							<li id="15800"> <div ><a  href="accordionmuti/accordionMuti02.html" target="mainframe">2.一般菜单</a></div> </li>
+							<li id="15900"> <div ><a  href="accordionmuti/accordionMuti03.html" target="mainframe">3.从json数据加载</a></div> </li>
+							<li  id="16000"> <div ><a  href="accordionmuti/accordionMuti04.html" target="mainframe">4.包含表格的折叠</a></div> </li>
+						</ul></li>
+				</ul></li>
+			<li id="16100"> <div >05.日历组件
+				</div>
+				<ul >
+					<li  id="16200"> <div >05.1日历选择</div>
+						<ul >
+							<li id="16300"> <div ><a  href="webdatepicker/calendar.html" target="mainframe">1.日历框介绍</a></div> </li>
+							<li  id="16400"> <div ><a  href="webdatepicker/calendar1.html" target="mainframe">2.日历示例</a></div> </li>
+						</ul></li>
+				</ul></li>
+			<li id="16500"> <div >06.窗口、对话框
+				</div>
+				<ul >
+					<li id="16600"> <div >06.1对话框介绍</div>
+						<ul >
+							<li  id="16700"> <div ><a  href="webdialog/webdialog--00.html" target="mainframe">1.对话框窗口的介绍</a></div> </li>
+						</ul></li>
+					<li  id="16800"> <div >06.2对话框使用举例</div>
+						<ul >
+							<li id="16900"> <div ><a  href="webdialog/webdialog1.html" target="mainframe">1.打开对话框</a></div> </li>
+							<li id="17000"> <div ><a  href="webdialog/webdialog2.html" target="mainframe">2.用对话框显示隐藏输入域</a></div> </li>
+							<li id="17100"> <div ><a  href="webdialog/webdialog3.html" target="mainframe">3.带内容的模态对话框</a></div> </li>
+							<li  id="17200"> <div ><a  href="webdialog/webdialog4.html" target="mainframe">4.带按钮的对话框</a></div> </li>
+						</ul></li>
+				</ul></li>
+			<li id="17300"> <div >07.tab标签面板组件
+				</div>
+				<ul >
+					<li  id="17400"> <div >07.1标签帮助</div>
+						<ul >
+							<li id="17500"> <div ><a  href="webtabpanel/webtabpanel--00.html" target="mainframe">1.标签介绍</a></div> </li>
+							<li id="17600"> <div ><a  href="webtabpanel/webtabpanel01.html" target="mainframe">2.标签使用示例</a></div> </li>
+							<li  id="17700"> <div ><a  href="webtabpanel/webtabpanel02.html" target="mainframe">3.标签中嵌套表格</a></div> </li>
+						</ul></li>
+				</ul></li>
+			<li id="17800"> <div >08.遮罩组件
+				</div>
+				<ul >
+					<li  id="17900"> <div >08.1遮罩帮助</div>
+						<ul >
+							<li id="18000"> <div ><a  href="mask/maskui-00.html" target="mainframe">1.遮罩介绍</a></div> </li>
+							<li  id="18100"> <div ><a  href="mask/maskui01.html" target="mainframe">2.遮罩使用示例</a></div> </li>
+						</ul></li>
+				</ul></li>
+			<li id="18200"> <div >09.树组件	</div>
+				<ul >
+					<li  id="18300"> <div >09.1树组件介绍</div>
+						<ul >
+							<li id="18400"> <div ><a  href="webtree/webtree1-00.html" target="mainframe">00.树介绍</a></div> </li>
+						</ul></li>
+			 
+					<li  id="18500"> <div >09.2树使用示例demo</div>
+						<ul >
+							<li id="18510"> <div ><a  href="webtree/webtree1.html" target="mainframe">01.树使用示例</a></div> </li>
+							<li id="18520"> <div ><a  href="webtree/webtree2.html" target="mainframe">02.折叠菜单效果的树</a></div> </li>
+							<li id="18530"> <div ><a  href="webtree/webtree3.html" target="mainframe">03.叶子节点在任意级</a></div> </li>
+							<li id="18540"> <div ><a  href="webtree/webtree4.html" target="mainframe">04.从JSON加载树</a></div> </li>
+							<li id="18550"> <div ><a  href="webtree/webtree5.html" target="mainframe">05.演示从树中选择数据提交后台</a></div> </li>
+							<li id="18860"> <div ><a  href="webtree/webtree9.html" target="mainframe">09.树性能测试</a></div> </li>
+						</ul></li>
+				</ul></li>
+			<li id="28100"> <div >10.webPanel面板组件
+				</div>
+				<ul >
+					<li  id="28110"> <div >10.1面板帮助</div>
+						<ul >
+							<li id="28120"> <div ><a  href="webpanel/webpanel--00.html" target="mainframe">1.面板介绍</a></div> </li>
+							<li id="28130"> <div ><a  href="webpanel/webpanel01.html" target="mainframe">2.面板使用示例</a></div> </li>
+							<li id="28140"> <div ><a  href="webpanel/webpanel02.html" target="mainframe">3.面板其他用法</a></div> </li>
+						</ul></li>
+				</ul></li>
+				
+			<li  id="18900"><div >99.公共部分</div>
+				<ul >
+					<li id="19000"><div >99.1webUtil说明</div>
+						<ul >
+							<li id="19100"> <div ><a  href="commons/webUtil.html" target="mainframe">1.webUtil工具集合介绍</a></div> </li>
+							<li  id="19200"> <div ><a  href="commons/webUtil01.html" target="mainframe">2.webUtil调用示例</a></div> </li>
+						</ul></li>
+					<li id="19300"> <div >99.2webTipTool说明</div>
+						<ul >
+							<li id="19400"> <div ><a  href="commons/webTipTool.html" target="mainframe">webTipTool工具介绍</a></div> </li>
+							<li  id="19500"> <div ><a  href="commons/webTipTool01.html" target="mainframe">webTipTool调用示例</a></div> </li>
+						</ul></li>
+					<li id="19600"> <div >99.3拖动/大小调整组件</div>
+						<ul >
+							<li  id="19700"> <div ><a  href="commons/dropdragresize.html" target="mainframe">拖动/大小调整介绍</a></div> </li>
+						</ul></li>
+					<li  id="19800"> <div >99.2其他</div>
+						<ul >
+							<li  id="19900"> <div ><a  href="commons/other1.html" target="mainframe">其他</a></div> </li>
+						</ul></li>
+				</ul></li>
+		</ul>
+	</div>
+
+ 
+</td>
+</tr>
+</table>
+  </body>
+</html>

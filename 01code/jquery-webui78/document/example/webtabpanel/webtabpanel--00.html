@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webtabpanel</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+ 			//1将html数据格式化为AccordionMuti的效果
+	   	$('.grid_nohead').datagrid({hashead:false,trselect:false});////不需要表头，并且不需要行选择的设置
+		$('.btn_sbmt').PicButton();//无需设置参数
+		$('.btn').PicButton();
+	   	$(".webtab1").webTabpanel({width:950,height:100});
+	   	$(".webtab2").webTabpanel();
+ 
+		var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条
+	var g=$('.grid1').datagrid({toolbar:bar});
+ 				
+				
+				
+				
+				
+	});
+
+
+	</script>
+
+  </head>
+  <body >
+<div class="headline"  >
+  <div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+  标签组件介绍</div>
+<table   >
+<tr>
+			<td>						
+				<div class="webtab1"    >
+						   			<div>
+										 	<div>基本信息</div> 
+										 	<div>
+										 	  <div>
+                                                <div ></div>
+										 	    <div>
+										 	      <table id="attr_list"class="dataintable">
+                                                    <tr>
+                                                      <th>属性</th>
+                                                      <th>类型</th>
+                                                      <th>值</th>
+                                                      <th>描述</th>
+                                                      <th>设置方式</th>
+                                                    </tr>
+                                                    <tr>
+                                                      <td><p>width</p></td>
+                                                      <td>数值</td>
+                                                      <td>&nbsp;</td>
+                                                      <td>&nbsp;</td>
+                                                      <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td><p>height</p></td>
+                                                      <td>数值</td>
+                                                      <td>&nbsp;</td>
+                                                      <td>&nbsp;</td>
+                                                      <td>&nbsp;</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                      <td id="onShowMsg">&nbsp;</td>
+                                                      <td>&nbsp;</td>
+                                                      <td>&nbsp;</td>
+                                                      <td><p>&nbsp;</p>
+                                                          <p>&nbsp;</p></td>
+                                                      <td><p>&nbsp;</p></td>
+                                                    </tr>
+                                                  </table>
+									 	        </div>
+									 	      </div>
+										 	</div>
+										</div>
+						   			<div>
+										 	<div >参数设置</div> 
+										 	<div> dfskfjksfjksfjksadjfkasjfksjfksjfks</div>
+										</div>
+						</div>
+				<div></div>
+				<div>
+
+						<br>
+						<table  ><tr><td>&nbsp;</td>
+						</tr></table>	 		
+						 		
+					
+					</div>
+			</td>
+		</tr>
+	</table>
+  	
+  	
+  	
+
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+	function onSelectRow(index,el){
+		var tr=$(el);
+		alert('您选择的行号index='+index+',第2列的内容=='+$('td:eq(1)',tr).html());
+		$("input[name='batch_no']",tr).val();//取选择行的申请编号,（如果您的行中有这样的标签<input type='hidden' name='batch_no' />）
+		$('td:eq(1)',tr).html();//取得第2列的html内容
+		$("input[name='sel_batch_no']").attr("value",$("input[name='batch_no']",tr).val());//选择时，将选择的数据给form的隐藏域。
+		//或这样写document.form1.sel_batch_no.value=$("input[name='batch_no']",tr).val();//选择时，将选择的数据给form的隐藏域。
+		//如果tr中不使用隐藏域时，下面这样也可以
+		//form1.sel_batch_no.value=$('td:eq(1)',tr).html();//选择时，将选择的数据给form的隐藏域。
+ }
+
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条(有一组button组成的div,见下面html实例，.btn_toolbar .btn .btn_condition 三个样式名称不能变之外其他都可以改变)
+	var g=$('.grid1').datagrid({toolbar:bar});//或执行代码 g[0].grid.setBar(bar);	也可以
+	//alert('ddd');
+
+	
+	var g=$('.grid2').datagrid({onSelect:onSelectRow,defaultSel:false,idCol:1});//或执行代码 g[0].p.onSelect=onSelectRow;	也可以
+
+	$('.grid_fixhead').datagrid({fixhead:true});//固定表头
+	$('.grid_nohead').datagrid({hashead:false,trselect:false});////不需要表头，并且不需要行选择的设置
+
+	var g=$('.grid_redtr').datagrid({toolbar:bar});
+	
+	$(".grid_span").datagrid({trselect:false,colspan:[1,9],rowspan:[1]});
+
+
+});		
+	
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>下面是没有表头的表格样式,并且不响应行选择的表格：</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+
+<div><strong>4、下面是没有表头的表格样式,并且不响应行选择的表格：<br/>初始化代码：$('.grid_nohead').datagrid({hashead:false,trselect:false});	
+<strong>
+</div>
+<div class="btn_toolbar">
+  <button class="btn" type="button" value="4" onClick=" $('.grid_nohead').addrow();" force > 增加行(默认向后增加)</button>
+  <button class="btn" type="button" value="4" onClick=" $('.grid_nohead').delrow();" force > 删除行(默认从最后删除)</button>
+  <button class="btn" type="button" value="4" onClick=" $('.grid_nohead').addrow(null,4,3);" force > 增加行(以第3行为基础,在第4行后插入) </button>
+  <button class="btn" type="button" value="4" onClick=" $('.grid_nohead').delrow(2);" force > 删除行(删除第2行)</button>
+</div>
+
+		<table  class="grid_nohead" width='80%'    >
+
+     		<tr>
+     					<td   align="center">操作编号</td>
+            	<td>100309000304</td>
+            	<td>信息名称 </td>
+            	<td><input type='text' name='data' value='XXX市XXX区花果山谷项目' size='30'  /></td>
+         		</tr>
+    		<tr>
+     					<td  align="center">信息代码1</td>
+            	<td>100309000301</td>
+            	<td>工作日期1 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr >
+      					<td  align="center">信息地址</td>
+            	<td><input type='text' name='data' value='XXX市ＸＸＸ区ＸＸＸ路' size='30'  /></td>
+            	<td>信息面积 </td>
+            	<td><input type='text' name='data' value='1293.00' size='30'  /></td>
+            </tr>
+    		<tr>
+     					<td  align="center">信息代码2</td>
+            	<td>100309000301</td>
+            	<td>工作日期2 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+     					<td  align="center">信息代码3</td>
+            	<td>100309000301</td>
+            	<td>工作日期3 </td>
+            	<td>2010-11-12</td>
+            </tr>
+
+		</table>
+
+</form>
+
+
+
+</body>
+</html>

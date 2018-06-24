@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webtree</title>
+
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+function actionNode(node){
+
+	//alert("node="+node.html());
+	
+}
+function onOK(jsdata){//服务器成功返回，加载数据前调用此函数
+	alert("服务器返回数据行数："+jsdata.result.length);
+}
+
+$(document).ready(function(){	
+	$(".btn").PicButton();
+ 	var tree1=$('#mytree1');
+ 	var tree2=$('#mytree2');
+
+	tree1.webTree({collapsed:true,expandOne:true,enableIcon:true,enable_selbtn:false, 
+		 onSelect:actionNode,onExpand:actionNode,onCollapse:actionNode});// 
+	tree2.webTree({loadOnExpand:true,collapsed:true,expandOne:true,enableIcon:true,icons:{type:1},
+		enable_selbtn:false,
+		 onSelect:actionNode,onExpand:actionNode,onCollapse:actionNode});// 
+	 
+	
+	$("#btn11").click(function(){
+		  tree1.loadNode({url:"./treedata/menu_data_full.json",param:"mymenu",success:onOK,isfull:true});
+		return false;
+	});
+	$("#btn12").click(function(){
+		var selNode=tree2.getSelectedNode();
+		var pid=selNode.attr("id");
+		if(pid=="mytree2") pid="";
+		//alert("./treedata/tree_data"+pid+".json");
+	  tree2.loadNode({url:"./treedata/tree_data"+pid+".json",parent_id:pid},selNode);
+		return false;
+	});
+ 
+});		
+	 
+</script>
+ </head>
+ 
+ <div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+树组件的两种方式加载性能测试</div>
+<div class="code">
+	
+</div>
+ 
+	<table border="1" width="1000" >
+    <tr>
+    	<td  width="50%">采用先生成html代码，后渲染效果的方式加载</td>
+    	<td  width="50%" >采用json方式加载树</td>
+    </tr>
+	<tr>
+		<td  valign="top">	 
+		<iframe  height="1000" width="100%" src="webtree9-1.html"></iframe>
+	 
+			</td>
+	 
+			<td   align="left" valign="top">
+				<iframe height="1000" width="100%"  src="webtree9-2.html"></iframe>
+			</td>
+		</tr>
+	</table>
+
+	
+	
+	
+	
+	
+ 
+
+
+</body>
+</html>
+	
+	

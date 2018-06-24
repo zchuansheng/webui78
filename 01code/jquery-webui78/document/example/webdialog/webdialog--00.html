@@ -1,0 +1,266 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+	   	$(".webtab1").webTabpanel({width:950,height:'100%'});
+				
+				
+	});
+</script>
+</head>
+
+<body class="html" id="tags">
+
+<div id="wrapper">
+
+<div id="header">
+<h1>窗口组件的使用说明</h1>
+</div>
+
+
+<h1>名称</h1>
+<div>
+
+<h2>定义与说明</h2>
+<p>&nbsp; </p>
+<p>&nbsp; </p>
+
+
+<div>
+	<div class="webtab1"    >
+
+		<div>
+			<div >2可选的配置选项</div> 
+			<div> 
+							<h2>&nbsp;</h2>
+				<p>此控件可以设置的属性有</p>
+				<table id="attr_list"class="dataintable">
+				  <tr>
+					<th>属性</th>
+					<th>类型</th>
+					<th>值</th>
+					<th>描述</th>
+					<th>设置方式</th>
+				  </tr>
+				  <tr>
+					<td><p>width</p></td>
+					<td>数值</td>
+					<td>缺省400<a href="#" onclick="javascript:$.webUtil.open('./datatype.html',850,600,true); "></a></td>
+					<td>&nbsp;</td>
+					<td><p>&nbsp;</p>				    </td>
+				  </tr>
+				  <tr>
+					<td><p>height</p></td>
+					<td>数值</td>
+					<td><p>缺省170</p>				    </td>
+					<td><p>&nbsp;</p>				    </td>
+					<td><p>&nbsp;</p>				    </td>
+				  </tr>
+				  <tr>
+					<td>top</td>
+					<td>数值</td>
+					<td>0(缺省)</td><td><p>&nbsp;</p>
+					  </td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td>left</td>
+					<td>数值</td>
+					<td>0(缺省)</td>
+					<td>&nbsp;</td>
+					<td><p>&nbsp;</p>				    </td>
+				  </tr>
+				  <tr>
+				    <td id="onShowMsg6">name</td>
+				    <td>文本</td>
+				    <td>null(缺省)</td>
+				    <td>//用于设置窗口名称，可以凭此名称关闭窗口，例如：$(document).closeWebDialog(&quot;myName1&quot;);</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+					<td id="onShowMsg2">title</td>
+					<td>文本</td>
+					<td>null(缺省)</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td id="onShowMsg3">ismodel</td>
+					<td>&nbsp;</td>
+					<td>false</td>
+					<td>//是否是模态对话框</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td id="onShowMsg4">url</td>
+					<td>&nbsp;</td>
+					<td>null</td>
+					<td>要打开的URL</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+				    <td id="onShowMsg5">handle</td>
+				    <td>jquery对象</td>
+				    <td>null</td>
+				    <td>对话框html所在的管理对象,applyTo不为空时即applyTo，否则为执行WebDialog的对象</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td id="onShowMsg5">applyTo</td>
+				    <td>jquery对象</td>
+				    <td>null</td>
+				    <td>将对话的内容对象</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td id="onShowMsg5">checkOnClose</td>
+				    <td>&nbsp;</td>
+				    <td>false</td>
+				    <td>当关闭时是否执行窗口内表单元素的验证</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td id="onShowMsg5">content</td>
+				    <td>jquery对象或html字符串</td>
+				    <td>null</td>
+				    <td>对话框内容</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td id="onShowMsg5">opacity</td>
+				    <td>&nbsp;</td>
+				    <td>0.5</td>
+				    <td>拖动、改变大小时的透明度</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td id="onShowMsg5">minWidth</td>
+				    <td>&nbsp;</td>
+				    <td>50</td>
+				    <td>最小宽度</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td id="onShowMsg5">maxWidth</td>
+				    <td>&nbsp;</td>
+				    <td>1024</td>
+				    <td>&nbsp;</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td id="onShowMsg5">minHeight</td>
+				    <td>&nbsp;</td>
+				    <td>50</td>
+				    <td>&nbsp;</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td id="onShowMsg5">maxHeight</td>
+				    <td>&nbsp;</td>
+				    <td>768</td>
+				    <td>最大高度</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td id="onShowMsg5">animate</td>
+				    <td>&nbsp;</td>
+				    <td>300</td>
+				    <td>动画时间，如果&lt;1则无动画效果</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td id="onShowMsg5">event</td>
+				    <td>&nbsp;</td>
+				    <td>null</td>
+				    <td>触发打开窗口的事件对象</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+				    <td id="onShowMsg5">startPos</td>
+				    <td>&nbsp;</td>
+				    <td>{x:0,y:0}</td>
+				    <td>窗口动画的起始位置</td>
+				    <td>&nbsp;</td>
+			      </tr>
+				  <tr>
+					<td id="onShowMsg5">&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				  </tr>
+				  <tr>
+					<td id="onShowMsg">&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td><p>&nbsp;</p>
+					  <p>&nbsp;</p></td>
+					<td><p>&nbsp;</p></td>
+				  </tr>
+				</table>
+			</div>
+		</div>
+				<div>
+			<div >1说明</div> 
+			<div>。。。。。。。。</div>
+		</div>
+		<div>
+			 
+							
+			</div>
+		</div>
+	</div>
+</div>
+ 
+<p class="note"><span>注释：</span>
+	无</p>
+<p><a href="#">测试</a></p>
+</div>
+
+
+<div>
+<h2>浏览器支持</h2>
+<p>兼容IE6~9、firefox主流浏览器。</p>
+</div>
+
+
+<div>
+<h2>&nbsp;</h2>
+</div>
+
+<div>
+<h2>标准属性</h2>
+<pre>无</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+<div>
+<h2>事件属性</h2>
+<pre>无
+</pre>
+<p>如需完整的描述，请访问相应的W3C标准。</p>
+</div>
+
+</div>
+
+
+
+
+
+</div><div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

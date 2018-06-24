@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webtree</title>
+
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+	var start0 =new Date();
+	var end1 =0;
+	var end2 =0;
+	
+ 
+function onOK(jsdata){//服务器成功返回，加载数据前调用此函数
+ 
+	 end1 =new Date(); 
+	 $("#time1").html((end1-start0)/1000);
+}
+function loadFinished(node){//加载完毕后调用此函数
+	 
+	 end2 =new Date(); 
+	 $("#time2").html((end2-end1)/1000);
+	 $("#time0").html((end2-start0)/1000);
+	 $("#icount").html($(".nodeitem",$('#mytree1')).length);
+
+}
+function onError(XMLHttpRequest, textStatus, errorThrown){
+ 
+	//alert("执行失败;"+XmlHttpRequest.responseText);
+}
+function onComplete(jqXHR, textStatu){
+	//alert("执行完成:"+textStatu);
+}
+
+$(document).ready(function(){	
+	$(".btn").PicButton();
+ 	var tree1=$('#mytree1');
+  
+
+	tree1.webTree({collapsed:true,expandOne:true,enableIcon:true,enable_selbtn:false,
+	name_map:{name:"menu_name"},onLoadFinished:loadFinished});// 
+	 
+	 
+	
+	$("#btn11").click(function(){
+			  start0 =new Date();
+			  end1 =0;
+			 end2 =0;
+		  tree1.loadNode({url:"./treedata/example_1000.json",param:"mymenu",success:onOK,isfull:true,error:onError,complete:onComplete});
+		return false;
+	});
+	
+
+});		
+	 
+</script>
+ </head>
+ 
+ <div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+json方式加载</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<button id="btn11" class="btn" >加载整个树</button><br>
+    
+    请求Jsons数据的时间：<span id="time1" ></span>秒，树组件初始化时间:<span id="time2" ></span>秒, 总用时：<span id="time0" ></span>秒</td>
+ <br>加载的总节点数：<span id="icount"></span>个
+
+	 <table border="0" width="800" >
+		<tr>
+			<td width="50%" valign="top">	
+	<div>
+				<ul id="mytree1">	
+	 
+				</ul> 
+	</div>
+			</td> 
+	 
+		 
+		</tr>
+	</table>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	---------------------------------------------------------------
+	
+	
+	</form>
+
+
+</body>
+</html>
+	
+	

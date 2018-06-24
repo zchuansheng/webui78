@@ -1,0 +1,69 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+    	$(document).ready(function(){  
+
+			allPrpos($.webValidator.dataType);
+				
+		
+});	
+	
+function allPrpos(obj) { 
+    var props = [];
+    var tb=$('<table class="dataintable">');
+    tb.append('<tr><th>数据类型</th><th>描述</th><th>正则表达式</th><th>备注</th></tr>');
+    for(var p in obj){ 
+        if(typeof(obj[p])!="function"){ 
+            //props.push(p + ":" + obj[p].title);
+			var tr=$('<tr><td>'+p+'</td></tr>');
+			tr.append("<td>"+obj[p].title+"</td>");
+			tr.append("<td>"+obj[p].regex+"</td>");
+			tr.append("<td> </td>");
+			
+			tb.append(tr);
+        } 
+    } 
+    $("#dataType").append(tb);
+    //alert(tb.html());
+  
+
+}		
+</script>
+</head>
+
+<body class="html" id="tags">
+
+<div id="wrapper">
+
+<div id="header">
+<h1>数据验证控件的使用说明</h1>
+</div>
+
+
+<div id="maincontent"  >
+
+	
+	
+	<div id="dataType">
+
+	<h2>支持的数据类型列表(本页为动态加载）</h2>		
+
+</div>
+
+<div id="footer">
+<p>以上提供的内容仅用于学习培训。我们不保证内容的正确性。</p>
+<p>版权所有，保留一切权利。未经书面许可，不得转载。对任何法律问题及风险不承担任何责任。</p>
+</div>
+
+</div>
+</body>
+</html>

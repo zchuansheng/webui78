@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webtree</title>
+<style type="text/css">
+<!--
+.redfont {color: #FF0000;   }
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+
+function actionNode(node){
+
+	//alert("node="+node.html());
+	
+}
+function onOK(jsdata){//服务器成功返回，加载数据前调用此函数
+	alert("服务器返回数据行数："+jsdata.result.length);
+}
+
+$(document).ready(function(){	
+	$(".btn").PicButton();
+ 	var tree1=$('#mytree1');
+ 	var tree2=$('#mytree2');
+
+	tree1.webTree({collapsed:true,expandOne:true,enableIcon:true,enable_selbtn:false, 
+		 onSelect:actionNode,onExpand:actionNode,onCollapse:actionNode});// 
+	tree2.webTree({loadOnExpand:true,collapsed:true,expandOne:true,enableIcon:true,icons:{type:1},
+		enable_selbtn:false,
+		 onSelect:actionNode,onExpand:actionNode,onCollapse:actionNode});// 
+	 
+	
+	$("#btn11").click(function(){
+		  tree1.loadNode({url:"./treedata/menu_data_full.json",param:"mymenu",success:onOK,isfull:true
+		  	//,name_map:{id:"hpb_id",name:"hp_name"}
+		  });
+		return false;
+	});
+	$("#btn12").click(function(){
+		var selNode=tree2.getSelectedNode();
+		var pid=selNode.attr("id");
+		if(pid=="mytree2") pid="";
+		//alert("./treedata/tree_data"+pid+".json");
+	  tree2.loadNode({url:"./treedata/tree_data"+pid+".json",parent_id:pid},selNode);
+		return false;
+	});
+ 
+});		
+	 
+</script>
+ </head>
+ 
+ <div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+ 从json动态加载的树</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<button id="btn11" class="btn" >加载整个树(第一个树)</button>
+	<button id="btn12" class="btn" >加载右边树的第一级节点</button>
+	<br><span class="redfont" >本页面需要访问json文件，请放置在tomcat或weblogic等web容器中运行，其运行效果如下：</span><br>
+	<table border="0" width="800" >
+		<tr>
+			<td colspan="2" valign="top">	
+				<img src="../demo_pic/tree_load.png" />
+			</td>
+	  
+		</tr>
+	</table>
+	实际运行效果：		
+	<table border="1" width="800" >
+	 
+
+		<tr>
+			<td width="50%" valign="top">	
+	<div>
+				<ul id="mytree1">	
+	 
+				</ul> 
+	</div>
+			</td>
+	 
+			<td width="50%" align="left" valign="top">
+				<ul id="mytree2">		 
+				</ul>  
+			</td>
+		</tr>
+	</table>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	---------------------------------------------------------------
+	
+	
+	</form>
+
+
+</body>
+</html>
+	
+	

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>validator</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){	
+	var g=$('.grid2').datagrid({onSelect:onSelectRow,defaultSel:false});//或执行代码 g[0].p.onSelect=onSelectRow;	也可以
+		
+	$('.grid_nohead').datagrid({hashead:false,trselect:false});////不需要表头，并且不需要行选择的设置
+	$('.btn').PicButton( );
+
+	
+
+
+
+		
+		
+		
+});		
+
+function onSelectRow(index,el){
+		var tr=$(el);
+		//alert('您选择的行号index='+index+',第2列的内容=='+$('td:eq(1)',tr).html());
+		$("input[name='batch_no']",tr).val();//取选择行的申请编号,（如果您的行中有这样的标签<input type='hidden' name='batch_no' />）
+		$('td:eq(1)',tr).html();//取得第2列的html内容
+		$("input[name='batch_no']").attr("value",$('td:eq(1)',tr).html());//选择时，将选择的数据给form的隐藏域。
+		//或这样写document.form1.sel_batch_no.value=$("input[name='batch_no']",tr).val();//选择时，将选择的数据给form的隐藏域。
+		//如果tr中不使用隐藏域时，下面这样也可以
+		//form1.sel_batch_no.value=$('td:eq(1)',tr).html();//选择时，将选择的数据给form的隐藏域。
+ }
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>验证出错时提示自定义信息</div>
+<br/>
+
+<form action="" method="post" name="form1" id="form1">
+<table><tr><td   align="center">操作编号</td>
+<td><input class="zcs" type="text" id="batch_no" name="batch_no"   value=""  v_type="text" v_min="1" v_max="12"   v_onErrmsg="请在下表选择一行数据然后点击查询" title="操作编号"/>
+<button align="center" class="btn" id ='btn_save' type="button" value="1"  btn_href="../ok.html"  istip="0" >查询</button>&nbsp;</td>
+</tr>
+</table>
+				<table  class="grid2" width='670' >
+    				<thead>
+    		<tr>
+            	<th    >序号</th><th    >操作编号</th><th >信息名称</th><th >交易日期</th>
+           </tr>
+         </thead>
+     		<tr>
+     					<td width='20%' btn_condition='01'  align="center">1
+     						<input type="hidden" name="batch_no" value="100309000304"/>
+     					</td>
+            	<td width='20%' >100309000304</td>
+            	<td width='30%' >花果山谷 </td>
+            	<td width='30%' >2011-01-07</td>
+         		</tr>
+    		<tr >
+      					<td  btn_condition='02' align="center">2
+      						<input type="hidden" name="batch_no" value="100309000300"/></td>
+            	<td>100309000300</td>
+            	<td>花果山谷1 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='02' align="center">3
+     						<input type="hidden" name="batch_no" value="100309000301"/></td>
+            	<td>100309000301</td>
+            	<td><input type='text' name ="somedata" value='花果山谷2' /> </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">4
+     						<input type="hidden" name="batch_no" value="100309000302"/></td>
+            	<td>100309000302</td>
+            	<td>花果山谷3 </td>
+            	<td>2010-11-12</td>
+            </tr>
+    		<tr>
+      					<td  btn_condition='05' align="center">5
+      						<input type="hidden" name="batch_no" value="100309000303"/></td>
+            	<td>100309000303</td>
+            	<td>花果山谷4  </td>
+            	<td>2010-11-12</td>
+            </tr>
+
+		</table>	
+  <h2>&nbsp;</h2>
+  <h2>示例</h2>
+                <p>自定义错误提示信息，需要设置<strong>onErrmsg（v_onErrmsg）</strong>属性参数，例如：</p>
+                <pre>
+&lt;script type="text/javascript"&gt; 
+$(document).ready(function(){	
+
+//自定义错误提示信息,无需依赖初始化。
+
+});		
+&lt;/script&gt; 
+                </pre>
+  <p>上面的例子中，只需要设置[操作编号]元素的<strong>v_onErrmsg</strong>属性即可</p>
+                <pre>&lt;td&gt;&lt;input class=&quot;zcs&quot; type=&quot;text&quot; id=&quot;batch_no&quot; name=&quot;batch_no&quot;   value=&quot;&quot;  
+v_type=&quot;text&quot; v_min=&quot;1&quot; v_max=&quot;12&quot;   <code><strong>v_onErrmsg=&quot;请在下表选择一行数据然后点击查询&quot;</strong> </code> title=&quot;操作编号&quot;/&gt;
+                </pre>
+  <br/>
+</form>
+<div id="supportType"></div>
+
+</body>
+</html>

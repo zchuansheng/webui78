@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="./build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="./build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="./build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){	
+	var idx=parseInt( new Date().getTime()/1000);
+	$(document).setmask({zindex:idx});
+	var panel=$("#login").webPanel( {width:400} );
+	//移动panel到屏幕中央：
+ var left=($(window).width()-panel.width())/2+$(document).scrollLeft()
+ var top=($(window).height()-panel.height())/3+$(document).scrollTop()
+	panel.css({position:"absolute",left:left,top:top,"z-index":idx+1});
+	/////////////////////////
+	$(".btn").PicButton();
+	$(".btn").click(function(){
+		window.location.href="./document/example/index.html";
+		return false;
+	});
+	
+});		
+ 	
+//
+
+</script>
+
+</head>
+
+<body  >
+<div id="login" align="center" title="系统登录" >
+<table  align="center" width="400" >
+<tr><td>
+<form name="form1" action="login" method="post">
+	<INPUT TYPE="hidden" name="EncyCode0"/> 
+	<INPUT TYPE="hidden" name="EncyCode"/> 
+	<INPUT TYPE="hidden" name="UserEncyCode"/>
+	<table align="center"   >
+		<tr>
+		<td colspan="2" align="center"><html:errors /></td>
+		</tr>		
+		<tr>
+		<td align="right" width="40%">用户:&nbsp;&nbsp;&nbsp;</td>
+		<td height="25" align="left" width="60%">
+		<input name="userName" type="text" size="10" maxlength="10" title="用户" value=""  class="text"  ></td>
+		</tr>
+	
+		<tr>
+		<td align="right">密码:&nbsp;&nbsp;&nbsp;</td>
+		<td align="left">
+		<input name="userPass" size="10"  type="password" class="text"   title="密码" value=""  ></td>
+		</tr>
+
+		<tr>
+		<td    colspan="2" align="center">
+		 <button  class="btn"  name ="login">登陆</button> 
+					<button   class="btn"  name ="reg" >注册</button>					
+
+		</div>
+		</td>
+		</tr> 
+	</table>
+	</form>
+</td></tr>
+</table>
+
+</div>
+
+</body>
+</html>

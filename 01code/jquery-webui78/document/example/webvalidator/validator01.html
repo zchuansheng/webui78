@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>validator</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/lib/jquery-migrate-1.3.0.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){	
+		
+	$('.grid_nohead').datagrid({hashead:false,trselect:false});////不需要表头，并且不需要行选择的设置
+	$('.btn').PicButton( );
+	$("#batch_no").setTipMessage("请输入您的申请编号");
+	$("#sect_remark").setTipMessage("在此输入描述信息，信息格式为：XXX的内容，施工工艺");
+
+	$("#form1").setValidator();
+	//$("#sect_file").setValidator({empty:false});
+	$.webUtil.onKeyDownEnter($(document),$("#btn_save"));
+	
+
+
+
+		
+		
+		
+});		
+function mySubmit(btn){
+	//some process..........
+	$.webUtil.submitOnBtn("../ok.html",$(btn));
+	
+}
+function formatNumfunction(b){
+		var e={symbol:'A'},c;
+		var decSymbol=".";
+	
+			c=new RegExp("[^\\d"+decSymbol+"-]","g")
+		
+		b=b.replace(c,"");
+			b=b.replace(decSymbol,"$#$").replace(new RegExp("\\.","g"),"").replace("$#$",decSymbol);
+			b=b.replace(/^\-/g,"$*$").replace(/\-/g,"").replace("$*$","-");
+			b=b.replace(new RegExp("^\\-$|^-"+decSymbol+"$|^\\"+decSymbol+"$|^-"+decSymbol+"\\d$"),"");
+			return b
+	}
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>表单验证的例子</div>
+<br/>
+<button align="center" class="btn" id ='btn_save' type="button" value="1"  btn_href="../ok.html"   >通过按钮自动验证提交</button>&nbsp;
+<button align="center" class="btn" id ='btn_save' type="button" value="1"  onclick="mySubmit(this);"   >自定义函数验证提交</button>
+
+<form action="" method="post" name="form1" id="form1">
+  
+		<table  class="grid_nohead" width='80%'    >
+
+     		<tr>
+     					<td   align="center">操作编号</td>
+            	<td><input class="zcs" type="text" id="batch_no" name="batch_no"   value="123456789012"    v_min="12" v_max="12" v_onShowMsg="请输入申请编号" title="操作编号"/></td>
+            	<td>信息名称 </td>
+            	<td><input type='text' name='sect_name' id="sect_name" size='30' v_type="text"  value="111" v_min="1" v_max="40" v_onShowMsg="请输入信息名称11" title="信息名称"  /></td>
+         		</tr>
+    		<tr>
+     					<td  align="center">信息代码</td>
+            	<td><input class="zcs"  type="text" id="sect_code" name="sect_code" value="1234567890"  v_type="number" v_min=10 v_max=10 title="信息代码"/></td>
+            	<td>工作日期 </td>
+            	<td><input type="text" id="finish_date" name="finish_date" title="工作日期" v_onShowMsg="请输入预计工作日期" v_min="2012-01-01"   value="2011-10-08" v_type="date" title="工作日期"/></td>
+            </tr>
+    		<tr >
+      					<td  align="center">信息地址</td>
+            	<td><input type='text' id='sect_addr' name='sect_addr' v_empty='1' v_min ='2' value='' title="信息地址" /></td>
+            	<td>信息数值二decimal3 </td>
+            	<td><input type='text' id='sect_area' name='sect_area' value='1293.00' v_type="decimal3"  title="信息数值二" /></td>
+            </tr>
+    		<tr>
+     					<td  align="center">总户数</td>
+            	<td><input type='text' id='owner_count' name='owner_count'  value='129' v_type="num1"  title="总户数" /></td>
+    					<td  align="center">邮编</td>
+            	<td><input type='text' id='zipcode' name='zipcode'  value='123456' v_type="zipcode" title="邮编" /></td>
+            </tr>
+    		<tr>
+            	<td>交易金额num</td>
+            	<td><input type='text'  id="amt11" name='amt11' value='1293.00'  v_type="num"  title="交易金额1" /></td>
+             	<td>交易金额num1</td>
+            	<td><input type='text'  id="amt12" name='amt12' value='0.00'  v_type="num1" title="交易金额2" /></td>
+            </tr>
+   		<tr>
+            	<td>交易金额decimal1 </td>
+            	<td><input type='text'  id="amt" name='amt' value='1293.00'  v_type="decimal1"  title="交易金额1" /></td>
+             	<td>交易金额decimal2</td>
+            	<td><input type='text'  id="amt2" name='amt2' value='0.00'  v_type="decimal2" title="交易金额2" /></td>
+            </tr>
+    		<tr>
+     					<td  align="center">金额decimal3</td>
+             	<td><input type='text'  id="amt3" name='amt3' value='0' onKeyUp="formatNum(this)"  v_type="decimal3" title="交易金额2" /></td>
+            	<td>交易金额decimal4</td>
+            	<td><input type='text'  id="amt4" name='amt4' value='-1293.00'  v_type="decimal4" title="交易金额2" /></td>
+            </tr>
+    		<tr>
+     					<td  align="center">是否出售</td>
+            	<td><input type="radio" id="sold" value="1" name="sold"  v_min="1"  title="是否出售" checked />已经出售&nbsp;&nbsp;&nbsp;&nbsp; 
+         					<input type="radio" id="sold" value="2" name="sold"  v_min="1" 	title="是否出售" />未出售
+         					<input type="radio" id="sold" value="3" name="sold"  v_min="1"  title="是否出售"/>不知道
+         			</td>
+            	<td>信息类型 </td>
+            	<td>
+            		<select name="sect_type" id="sect_type"  v_empty="0" title="信息类型"  >
+				          <option value="all">－－请选择信息类型－－</option>
+				          <option value="1" selected>商品房</option>
+				          <option value="2">公房</option>
+				          <option value="3">小城镇</option>
+				          <option value="4">原有住房</option>
+				        </select> 
+        			</td>
+        </tr>
+
+            
+    		<tr>
+     					<td  align="center">其住址范围：</td>
+            	<td colspan='3' >
+            		<select name="selectmore" size="3" id="selectmore" multiple v_min="2" v_max="4" title="其住址范围">
+								  <option value="0" selected >花果山谷小区的1号楼1门</option>
+								  <option value="1" selected >花果山谷小区的1号楼2门</option>
+								  <option value="2" selected >花果山谷小区的1号楼3门</option>
+								  <option value="3">花果山谷小区的2号楼1门</option>
+								  <option value="4">花果山谷小区的2号楼2门</option>
+								</select>(按住ctrl键多选)
+         			</td>
+        
+        </tr>
+     		<tr>
+     					<td  align="center">规划许可证附件：</td>
+            	<td colspan='3' ><input type="file" id="sect_file" name="sect_file" v_type="picture" v_empty="1" v_min="0"  v_max="20" title="规划许可证附件" />
+         			</td>
+        
+        </tr>
+	      <tr> 
+		      <td align="right" >你的描述:</td>
+		      <td colspan="3" valign="top"> <textarea id="sect_remark" name="sect_remark" cols="50" rows="2"  v_type="text" v_min=10 v_max="20" title="你的描述" >规划许可证规划许可证</textarea> 
+		      </td>
+	    	</tr>
+
+    		<tr>
+     					<td  align="center">小区联系人</td>
+            	<td><input type="text" id="sect_code" name="sect_code"   value="zcs123"  v_type="username" v_min=6 v_max=10 title="小区联系人"/></td>
+            	<td>联系电话 </td>
+            	<td><input type="text" id="tel" name="tel"  value="12345678" v_type="tel" v_min="8" v_max="11" title="联系电话" /></td>
+        </tr>
+    		<tr>
+     					<td  align="center">email地址</td>
+            	<td><input type="text" id="sect_code" name="sect_code"   value="zchuansheng@gmail.com" v_empty="1" v_type="email" v_min=3 v_max=50 title="email地址"/></td>
+            	<td>联系人身份 </td>
+            	<td> 
+            		<input type="checkbox" name="link_type" id="link_type" value="0" v_min="1" v_max=3 title="联系人身份" />党员 
+            		<input type="checkbox" name="link_type" id="link_type" value="1" checked />团员
+            		<input type="checkbox" name="link_type" id="link_type" value="2" />学生
+            		<input type="checkbox" name="link_type" id="link_type" value="3" />领导 
+            		<input type="checkbox" name="link_type" id="link_type" value="4" />主席 
+            	</td>
+        </tr>
+    		<tr>
+     					<td  align="center">出生日期</td>
+            	<td><input type="text" id="finish_date" name="finish_date"  value="2010-07-08" v_type="date" v_min="2010-06-01" v_max="2010-08-31" title="出生日期"/></td>
+                            	<td>身份证号码</td>
+            	<td><input type="text" id="sect_code" name="sect_code"   value="310911190801050837"  v_type="idcard" v_min=15 v_max=18 title="身份证号码"/></td>
+        </tr>
+    		<tr>
+        <td align="right">密码</td>
+            	<td><input type="password" id="password" name="passwd"   value="" v_empty="0"  v_min=0 v_max=10 title="密码"/></td>
+     					<td  align="center"></td>
+            	<td></td>
+        </tr>
+
+		</table>
+  <h2>&nbsp;</h2>
+        <h2>1、自动提交表单的示例</h2>
+  <p>表单验证，一般情况下无需初始化代码。</p>
+        <pre>
+&lt;script type="text/javascript"&gt; 
+$(document).ready(function(){	
+
+//一般情况下的表单验证，无需任何初始化调用
+	
+});		
+&lt;/script&gt; 
+        </pre>
+        <p>表单元素的html代码,要如下写法，缺省情况下，可以不指定v_type,采用默认值text        </p>
+        <pre>&lt;tr&gt;
+&lt;td   align=&quot;center&quot;&gt;操作编号&lt;/td&gt;
+&lt;td&gt;&lt;input class=&quot;zcs&quot; type=&quot;text&quot; id=&quot;batch_no&quot; name=&quot;batch_no&quot;   value=&quot;123456789012&quot;  
+    v_type=&quot;username&quot; v_min=&quot;1&quot; v_max=&quot;12&quot; v_onShowMsg=&quot;请输入申请编号&quot; title=&quot;操作编号&quot;/&gt;&lt;/td&gt;
+&lt;td&gt;信息名称 &lt;/td&gt;
+&lt;td&gt;&lt;input type='text' name='sect_name' id=&quot;sect_name&quot;  value =&quot;&quot; size='30' 
+      v_min=&quot;1&quot; v_max=&quot;40&quot;   title=&quot;信息名称&quot;  /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+</pre>
+  <h2>2、自定义函数，验证、提交表单的示例</h2>
+  <p>定义自己的Javascript函数</p>
+        <pre>
+&lt;script type="text/javascript"&gt;
+
+//..............
+
+function mySubmit(btn){<br>	//some process..........<br>	$.webUtil.submitOnBtn(&quot;../ok.html&quot;,$(btn));<br>	<br>}<br>
+&lt;/script&gt; 
+        </pre>
+        <p>写按钮的onclick属性，当按钮点击时，调用自定义的函数，如下：</p>
+        <pre>&lt;button align=&quot;center&quot; class=&quot;btn&quot; id ='btn_save' type=&quot;button&quot;   onclick=&quot;mySubmit(this);&quot;   &gt;自定义函数验证提交&lt;/button&gt;
+        </pre>
+  <br/>
+</form>
+<div id="supportType"></div>
+
+</body>
+</html>

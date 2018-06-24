@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+
+<script type="text/javascript">
+
+
+$(document).ready(function(){	
+var sum=0;
+
+	//alert(sum);
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条
+	var g=$('.grid1').datagrid();
+	$('#btn1').click(function(){
+		$(".grid1").setmask({msg:"遮罩表格了"});	
+		
+	});
+	$('#btn2').click(function(){
+		$(".grid1").unmask();	
+	});
+	$('#btn3').click(function(){
+		$("#code_div").setmask({msg:"遮罩表格了"});	
+	});
+	$('#btn4').click(function(){
+		$("#code_div").unmask();	
+	});
+	
+});		
+	
+</script>
+<style type="text/css">
+<!--
+.STYLE1 {
+	color: #0000CC;
+	font-weight: bold;
+	font-size: 14;
+}
+.STYLE2 {
+	color: #0000CC;
+	font-weight: bold;
+}
+.STYLE4 {color: #FF0000}
+.STYLE6 {color: #FF0000; font-weight: bold; }
+.STYLE7 {
+	color: #0000FF;
+	font-weight: bold;
+}
+.STYLE8 {
+	color: #CC6600;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body  >
+
+
+
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>
+  遮罩效果的示例
+</div>
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br />
+		<div></div>
+<div class="btn_toolbar" >
+	<button id="btn1" class="btn" type="button"   force > 对表格遮罩 </button>
+	<button id="btn2" class="btn" type="button"   force > 取消表格遮罩 </button>
+	<button id="btn3" class="btn" type="button"   force > 对代码片段遮罩 </button>
+	<button id="btn4" class="btn" type="button"   force > 取消代码片段遮罩 </button>
+	
+	<div class="btn_condition" >
+		<div id='condition_null'>新增,打印</div>
+		<div id='00'>新增,编辑,提交</div>
+		<div id='01'>新增,编辑,打印</div>
+		<div id='02'>新增,提交,打印</div>
+		<div id='03'>新增,提交</div>
+	</div> 
+</div>
+<div id="tb">
+		<table  class="grid1"  width="100%"    >
+    		<tr>
+            	<td   width="15%">序号</td>
+            	<td   width="20%" >操作编号</td>
+            	<td   width="25%" >信息名称</td>
+            	<td   width="20" >操作员</td>
+            	<td   width="20%" >状态</td>
+          	</tr>
+     		<tr>
+				<td   btn_condition='01' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+            	<td>编辑</td>
+   		 	</tr>
+    		<tr>
+				<td  btn_condition='02' align="center">2</td>
+            	<td>100309000300</td>
+            	<td>花果山谷1花果山谷1花果山谷1花果山谷1 </td>
+            	<td>2010-11-12</td>
+            	<td>提交审核</td>
+            </tr>
+    		<tr>
+				<td  btn_condition='02' align="center">3</td>
+            	<td>100309000301</td>
+            	<td>花果山谷2 </td>
+            	<td>2010-11-12</td>
+            	<td>提交审核</td>
+            </tr>
+    		<tr> 
+				<td  btn_condition='03' align="center">4</td>
+            	<td>100309000302</td>
+            	<td>花果山谷3 </td>
+            	<td>2010-11-12</td>
+            	<td>撤销</td>
+            </tr>
+    		<tr>
+				<td  btn_condition='05' align="center">5</td>
+            	<td>100309000303</td>
+            	<td>花果山谷4 </td>
+            	<td>2010-11-12</td>
+            	<td>交易完成</td>
+            </tr>
+		</table>
+</div>
+		<br>
+</form>
+
+
+
+<p><strong>二、javascript代码：对上述html加载组件效果</strong></p>
+<pre id="code_div">$(document).ready(function(){	<br><code>	$('.btn').PicButton();//美化图片按钮的效果<br>	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条<br>	var g=$('.grid1').datagrid({toolbar:bar});//建立表格与工具条的联动效果<br></code>});		
+&lt;/script&gt; 
+        </pre>
+<p><strong></strong></p>
+<p class="note">&nbsp;</p>
+<p class="note"><span>注释：</span>无</p>
+</body>
+</html>

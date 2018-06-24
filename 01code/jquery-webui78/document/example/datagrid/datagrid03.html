@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>datagrid</title>
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+	function onSelectRow(index,el){
+		var tr=$(el);
+		alert('您选择的行号index='+index+',第2列的内容=='+$('td:eq(1)',tr).html());
+		$("input[name='batch_no']",tr).val();//取选择行的申请编号,（如果您的行中有这样的标签<input type='hidden' name='batch_no' />）
+		$('td:eq(1)',tr).html();//取得第2列的html内容
+		$("input[name='sel_batch_no']").attr("value",$("input[name='batch_no']",tr).val());//选择时，将选择的数据给form的隐藏域。
+		//或这样写document.form1.sel_batch_no.value=$("input[name='batch_no']",tr).val();//选择时，将选择的数据给form的隐藏域。
+		//如果tr中不使用隐藏域时，下面这样也可以
+		//form1.sel_batch_no.value=$('td:eq(1)',tr).html();//选择时，将选择的数据给form的隐藏域。
+ }
+
+$(document).ready(function(){	
+	$('.btn').PicButton();
+	var bar=$('.btn_toolbar').BtnToolBar();//初始化按钮工具条(有一组button组成的div,见下面html实例，.btn_toolbar .btn .btn_condition 三个样式名称不能变之外其他都可以改变)
+
+	$('.grid_fixhead').datagrid({fixhead:true});//固定表头
+
+
+});		
+	
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>固定表头的例子，当使用表头固定时，行列合并请使用colspan:[xx,xxx],rowspan:[xx,xx]}</div>
+
+<div class="code">
+	
+</div>
+<form  name ="form1">
+	<input type="hidden" name="sel_batch_no" value=""/>
+<br />
+<div><strong>3、下面是可以固定表头的例子，当使用表头固定时，行列合并请使用colspan:[xx,xxx],rowspan:[xx,xx]} <br/>	
+</strong>
+</div>
+<table tabindex ="1" class="grid_fixhead" height="200" width="80%">
+    		<tr>
+            	<td width="100"  >序号</td>
+            	<td width="200"  >编号</td>
+            	<td width="300" >名称</td>
+            	<td width="200" >操作员</td>
+            	<td width="100" >列 55555</td>
+            	<td width="100" >列 666666</td>
+            </tr>
+     		
+    		<tr>
+     					<td  btn_condition='01' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷1 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5111</td>
+            	<td>数据61111</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">2</td>
+            	<td>100309000304</td>
+            	<td>花果山谷2 </td>
+            	<td>2011-01-07</td>
+             	<td>数据52222</td>
+            	<td>数据62222</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">3</td>
+            	<td>100309000304</td>
+            	<td>花果山谷3 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5333</td>
+            	<td>数据6333</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">4</td>
+            	<td>100309000304</td>
+            	<td>花果山谷4 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5444</td>
+            	<td>数据6444</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">5</td>
+            	<td>100309000304</td>
+            	<td>花果山谷5 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5555</td>
+            	<td>数据6555</td>
+            </tr>
+   		<tr>
+     					<td  btn_condition='01' align="center">6</td>
+            	<td>100309000304</td>
+            	<td>花果山谷6 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5666</td>
+            	<td>数据6666</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">7</td>
+            	<td>100309000304</td>
+            	<td>花果山谷7 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5777</td>
+            	<td>数据6777</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">8</td>
+            	<td>100309000304</td>
+            	<td>花果山谷8 </td>
+            	<td>2011-01-07</td>
+             	<td>数据58888</td>
+            	<td>数据68888</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">9</td>
+            	<td>100309000304</td>
+            	<td>花果山谷9 </td>
+            	<td>2011-01-07</td>
+             	<td>数据59</td>
+            	<td>数据69</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">10</td>
+            	<td>100309000304</td>
+            	<td>花果山谷10 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='01' align="center">11</td>
+            	<td>100309000304</td>
+            	<td>花果山谷11 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">12</td>
+            	<td>100309000304</td>
+            	<td>花果山谷12 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='01' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='01' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='04' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+      				<td  btn_condition='05' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+ 
+
+</table>
+<br/>
+<table  class="grid_fixhead" height="200" width="80%">
+    		<tr>
+            	<td width="100"  >序号</td>
+            	<td width="200"  >操作编号</td>
+            	<td width="300" >信息名称</td>
+            	<td width="200" >操作员</td>
+            	<td width="100" >列 55555</td>
+            	<td width="100" >列 666666</td>
+            </tr>
+     		
+    		<tr>
+     					<td  btn_condition='01' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr >
+      				<td  btn_condition='02' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+    		<tr>
+     					<td  btn_condition='03' align="center">1</td>
+            	<td>100309000304</td>
+            	<td>花果山谷 </td>
+            	<td>2011-01-07</td>
+             	<td>数据5</td>
+            	<td>数据6</td>
+            </tr>
+   
+
+</table>
+</form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+/* custom css for  datagrid*/
+
+.datagrid_gridtb  .gridheadclass2 
+{font-size:12px;font-weight: bold;font-family:tahoma;color:#FFFFFF;background-color:#CC9900;text-align:center;line-height:24px;padding-left:2px;
+	padding-right:2px;}
+ 
+.datagrid_gridtb  .gridheadclass3
+	{
+	font-size:12px;font-weight:bold;font-family:tahoma;color:#000000;
+	background: #fafafa url(./images/dgbg03.gif) ;
+	border: 1px solid #9BB3D3;
+	overflow: hidden;
+	height: 28px;
+	cursor: default;
+	text-align: center;	
+	}
+.datagrid_gridtb  .gridheadclass4
+	{
+	font-size:12px;font-weight:bold;font-family:tahoma;color:#000000;
+	background: #fafafa url(./images/dgbg04.gif) ;
+	border: 1px solid #9BB3D3;
+	overflow: hidden;
+	height: 28px;
+	cursor: default;
+	text-align: center;	
+	}
+.datagrid_gridtb  .print_class {border:0px;border-collapse:collapse; font-size:12px; font-family: "宋体", "System"; clip:rect(   );!important; }
+.datagrid_gridtb  .gridheadclassprint {font-size:12px;font-weight: bold;font-family:tahoma;text-align:center;line-height:24px;padding-left:2px;padding-right:2px;}
+.datagrid_gridtb  tr.print_tr_class {	border: 1px solid !important; margin-top:0.19cm;margin-bottom:0.19cm;font-size: 12px;line-height:22px; }
+.datagrid_gridtb  tr td.print_td_class {	line-height:24px; border: 0px #000000 !important;}
+ 

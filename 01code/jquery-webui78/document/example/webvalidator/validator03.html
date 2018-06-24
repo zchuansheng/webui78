@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html  >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>validator</title>
+<link rel="stylesheet" type="text/css" href="../../application_css/example.css" />
+<link rel="stylesheet" type="text/css" href="../../../build/webui78/skin/default/webui78.css" />
+ 
+
+<script type="text/javascript" src="../../../build/webui78/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../../build/webui78/js/webui78.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){	
+		
+	$('.grid_nohead').datagrid({hashead:false,trselect:false});////不需要表头，并且不需要行选择的设置
+	$('.btn').PicButton( );
+	$("#batch_no").setTipMessage("请输入您的申请编号");
+	$("#sect_remark").setTipMessage("在此输入描述信息，信息格式为：XXX的内容，施工工艺");
+	$("[name='sold']").setTipMessage("请选择出售情况");
+	$("#sect_type").setTipMessage("请选择一个信息类型");
+	$("[name='link_type']").setTipMessage("请选联系人的身份类型，注意可以选择多个");
+	
+
+	
+
+
+
+		
+		
+		
+});		
+function goto(btn){
+	//some process..........
+	$.webUtil.submitOnBtn("../ok.html",$(btn));
+	
+}
+
+</script>
+
+</head>
+
+<body  >
+<div class="headline"  ><div class="headarrow"> &nbsp; &nbsp; &nbsp;</div>设置鼠标移过时提示信息</div>
+<br/>
+<button align="center" class="btn" id ='btn_save' type="button" value="1"  btn_href="../ok.html"   >通过按钮自动验证提交</button>&nbsp;
+<button align="center" class="btn" id ='btn_save' type="button" value="1"  onclick="goto(this);"   >自定义函数验证提交</button>
+
+<form action="" method="post" name="form1" id="form1">
+  
+		<table  class="grid_nohead" width='80%'    >
+
+     		<tr><td   align="center">操作编号</td>
+            	<td><input class="zcs" type="text" id="batch_no" name="batch_no"   value=""  v_min="1" v_max="12"   title="操作编号"/></td>
+            	<td>信息名称 </td>
+            	<td><input type='text' name='sect_name' id="sect_name"    size='30' v_type="text"   v_min="1" v_max="40"   title="信息名称"  /></td>
+         		</tr>
+   		<tr>
+     					<td  align="center">是否出售</td>
+            	<td><input type="radio" id="sold" value="1" name="sold"  v_min="1"  title="是否出售" checked />已经出售&nbsp;&nbsp;&nbsp;&nbsp; 
+         					<input type="radio" id="sold" value="2" name="sold"  v_min="1" 	title="是否出售" />未出售
+         					<input type="radio" id="sold" value="3" name="sold"  v_min="1"  title="是否出售"/>不知道
+         			</td>
+            	<td>信息类型 </td>
+            	<td>
+            		<select name="sect_type" id="sect_type"  v_empty="0" title="信息类型"  >
+				          <option value="">－－请选择信息类型－－</option>
+				          <option value="1" selected>商品房</option>
+				          <option value="2">公房</option>
+				          <option value="3">小城镇</option>
+				          <option value="4">原有住房</option>
+				        </select> 
+        			</td>
+        </tr>
+     		<tr>
+     					<td  align="center">email地址</td>
+            	<td><input type="text" id="sect_code" name="sect_code"   value="zchuansheng@gmail.com"  v_type="email" v_min=3 v_max=50 title="email地址"/></td>
+            	<td>联系人身份 </td>
+            	<td> 
+            		<input type="checkbox" name="link_type" id="link_type" value="0" v_min="1" v_max=3 title="联系人身份" />党员 
+            		<input type="checkbox" name="link_type" id="link_type" value="1" checked />团员
+            		<input type="checkbox" name="link_type" id="link_type" value="2" />学生
+            		<input type="checkbox" name="link_type" id="link_type" value="3" />领导 
+            		<input type="checkbox" name="link_type" id="link_type" value="4" />主席 
+            	</td>
+        </tr>
+   		
+	      <tr> 
+		      <td align="right" >你的描述:</td>
+		      <td colspan="3" valign="top"> <textarea id="sect_remark" name="sect_remark" cols="50" rows="2"  
+              v_type="text" v_min=10 v_max="20"   title="你的描述" ></textarea> 
+		      </td>
+	    	</tr>
+
+
+
+		</table>
+  <h2>&nbsp;</h2>
+  <h2>示例</h2>
+        <p>当需要鼠标移过时提示信息，需要调用<strong>setTipMessage</strong>函数，例如：</p>
+        <pre>
+&lt;script type="text/javascript"&gt; 
+$(document).ready(function(){	
+
+<code><strong>$(&quot;#batch_no&quot;).setTipMessage(&quot;请输入您的申请编号&quot;);<br>$(&quot;#sect_remark&quot;).setTipMessage(&quot;在此输入描述信息，信息格式为：XXX的内容，施工工艺&quot;);
+$(&quot;[name='sold']&quot;).setTipMessage(&quot;请选择出售情况&quot;);
+$(&quot;#sect_type&quot;).setTipMessage(&quot;请选择一个信息类型&quot;);
+$(&quot;[name='link_type']&quot;).setTipMessage(&quot;请选联系人的身份类型，注意可以选择多个&quot;);</strong></code>
+
+});		
+&lt;/script&gt; 
+        </pre>
+        <p>表单元素的html代码</p>
+        <pre>&lt;table  class=&quot;grid_nohead&quot; width='80%'    &gt;<br>&lt;tr&gt;&lt;td   align=&quot;center&quot;&gt;操作编号&lt;/td&gt;<br>	&lt;td&gt;&lt;input class=&quot;zcs&quot; type=&quot;text&quot; id=&quot;batch_no&quot; name=&quot;batch_no&quot;   value=&quot;&quot;  v_min=&quot;1&quot; v_max=&quot;12&quot;   title=&quot;操作编号&quot;/&gt;&lt;/td&gt;<br>	&lt;td&gt;信息名称 &lt;/td&gt;<br>	&lt;td&gt;&lt;input type='text' name='sect_name' id=&quot;sect_name&quot;    size='30' v_type=&quot;text&quot;   v_min=&quot;1&quot; v_max=&quot;40&quot;   title=&quot;信息名称&quot;  /&gt;&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;tr&gt;<br>	&lt;td  align=&quot;center&quot;&gt;是否出售&lt;/td&gt;<br>	&lt;td&gt;&lt;input type=&quot;radio&quot; id=&quot;sold&quot; value=&quot;1&quot; name=&quot;sold&quot;  v_min=&quot;1&quot;  title=&quot;是否出售&quot; checked /&gt;已经出售&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; <br>	&lt;input type=&quot;radio&quot; id=&quot;sold&quot; value=&quot;2&quot; name=&quot;sold&quot;  v_min=&quot;1&quot; 	title=&quot;是否出售&quot; /&gt;未出售<br>	&lt;input type=&quot;radio&quot; id=&quot;sold&quot; value=&quot;3&quot; name=&quot;sold&quot;  v_min=&quot;1&quot;  title=&quot;是否出售&quot;/&gt;不知道&lt;/td&gt;<br>	&lt;td&gt;信息类型 &lt;/td&gt;<br>	&lt;td&gt;<br>		&lt;select name=&quot;sect_type&quot; id=&quot;sect_type&quot;  v_empty=&quot;0&quot; title=&quot;信息类型&quot;  &gt;<br>		&lt;option value=&quot;&quot;&gt;－－请选择信息类型－－&lt;/option&gt;<br>		&lt;option value=&quot;1&quot; selected&gt;商品房&lt;/option&gt;<br>		&lt;option value=&quot;2&quot;&gt;公房&lt;/option&gt;<br>		&lt;option value=&quot;3&quot;&gt;小城镇&lt;/option&gt;<br>		&lt;option value=&quot;4&quot;&gt;原有住房&lt;/option&gt;<br>		&lt;/select&gt; <br>	&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;tr&gt;<br>		&lt;td  align=&quot;center&quot;&gt;email地址&lt;/td&gt;<br>		&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;sect_code&quot; name=&quot;sect_code&quot;   value=&quot;zchuansheng@gmail.com&quot;  v_type=&quot;email&quot; v_min=3 v_max=50 title=&quot;email地址&quot;/&gt;&lt;/td&gt;<br>		&lt;td&gt;联系人身份 &lt;/td&gt;<br>		&lt;td&gt; <br>		&lt;input type=&quot;checkbox&quot; name=&quot;link_type&quot; id=&quot;link_type&quot; value=&quot;0&quot; v_min=&quot;1&quot; v_max=3 title=&quot;联系人身份&quot; /&gt;党员 <br>		&lt;input type=&quot;checkbox&quot; name=&quot;link_type&quot; id=&quot;link_type&quot; value=&quot;1&quot; checked /&gt;团员<br>		&lt;input type=&quot;checkbox&quot; name=&quot;link_type&quot; id=&quot;link_type&quot; value=&quot;2&quot; /&gt;学生<br>		&lt;input type=&quot;checkbox&quot; name=&quot;link_type&quot; id=&quot;link_type&quot; value=&quot;3&quot; /&gt;领导 <br>		&lt;input type=&quot;checkbox&quot; name=&quot;link_type&quot; id=&quot;link_type&quot; value=&quot;4&quot; /&gt;主席 <br>		&lt;/td&gt;<br>&lt;/tr&gt;   		<br>&lt;tr&gt; <br>		&lt;td align=&quot;right&quot; &gt;你的描述:&lt;/td&gt;<br>		&lt;td colspan=&quot;3&quot; valign=&quot;top&quot;&gt; &lt;textarea id=&quot;sect_remark&quot; name=&quot;sect_remark&quot; cols=&quot;50&quot; rows=&quot;2&quot;  <br>		v_type=&quot;text&quot; v_min=10 v_max=&quot;20&quot;   title=&quot;你的描述&quot; &gt;&lt;/textarea&gt; <br>		&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;/table&gt;
+
+        </pre>
+  <br/>
+</form>
+<div id="supportType"></div>
+
+</body>
+</html>
