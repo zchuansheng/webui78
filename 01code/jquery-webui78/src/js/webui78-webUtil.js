@@ -199,15 +199,13 @@
 		},
 		open:function (url,op){
 			op = $.extend({}, op);
-			var widths=op.widths, heights=op.heights;
+			var widths=op.widths, heights=op.heights,tops=op.tops,lefts=op.lefts;
 			var popup=op.popup;
-			if (widths==null ||""==widths){
-				widths = "800";
-			}
-			if ( heights==null||""==heights){
-				heights = "680";
-			}
-			var windowArgs = "height=" + heights + ", width=" +widths + ",toolbar=no, menubar=no, scrollbars=yes, resizable=yes, location=no, status=yes";
+			if (widths==null ||""==widths) widths = "800";
+			if (heights==null||""==heights) heights = "680"; 
+			if (tops==null ||""==tops) tops = (window.screen.availHeight - 30 - heights) / 2;
+			if (lefts==null||""==lefts) lefts = (window.screen.availWidth - 10 - widths) / 2;
+			var windowArgs = "height=" + heights + ", width=" +widths +",top=" + tops + ",left=" + lefts+",toolbar=no, menubar=no, scrollbars=yes, resizable=yes, location=no, status=yes";
 			if(op.option!=null) windowArgs=op.option;
 			window.open(url, (op.name==null)?"":op.name, windowArgs).focus();
 		},

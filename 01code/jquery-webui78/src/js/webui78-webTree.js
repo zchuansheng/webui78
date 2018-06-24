@@ -49,6 +49,8 @@
 		},
 		getNodeLevel:function(node,t_id){
 			var p=node;
+			var isS=(Object.prototype.toString.call(t_id) === "[object String]")
+			if(!isS) t_id=$(t_id).attr("id");
 			var l=0;
 			while( p.attr("id")!=t_id ) {   
     		p=p.parent();
@@ -273,6 +275,8 @@
  					op = $.extend({type:"POST",url:op.url||root.options.loadUrl,dataType:"json",cache:false,success:getfun}, op);
  					op.success=getfun;
  					op.isformdata=root.options.form_used;
+ 					//onPrePostLoad（请求选项，加载的节点，树的配置）
+ 					if(root.options.onPrePostLoad) op=root.options.onPrePostLoad(op,node,root.options);
 					$.webUtil.submitByAjax(op);
 				}catch(e){
 					alert("节点加载异常！"+e);
@@ -411,8 +415,9 @@
 	}
 	$.fn.loadNode=function(op,node){
 		if(node==null) node=this;
+		var root=$(this);
 		var tm=setTimeout (function(){
-			$.webTreeUtil.loadNode($(node),node,op);
+			$.webTreeUtil.loadNode(root,node,op);
 			tm=null;
 		},50);
 	}
@@ -427,6 +432,7 @@
 		 $.webTreeUtil.addNode($(this),newNode,posNode,ischild);
 		 return this;
 	}
+	$.fn.isRoot=function(){return  $(this).data("root")==null?false:true;}
 	$.fn.removeNode=function(node){
 		if(node==null) return ;
 		var parentNode=node.parent().parent();

@@ -14,7 +14,7 @@
 *   http://www.gnu.org/licenses/gpl.html
 */ 
 $.webUtil.setting.msgboxtype=null;//若设置$.webUtil.setting.msgboxtype='custom'表示启用自定义对话框
-$.webUtil.version='1.10.006';//version number
+$.webUtil.version='1.10.009';//version number
 $.webUtil.setting.navTitleParamName=null;//页面标题导航传递参数的名字（面包屑导航的效果）如果不为空，则自动生成一个名为navTitleParamName的隐藏域用于将页面标题成为下一个的标题的一部分
 //$.webUtil.setting.messageOnLoading="数据加载中，请等待.....";//数据加载时显示的消息信息
 $.webDataGrid.defConfig.thresPage=1000;//全局设置分页阀值

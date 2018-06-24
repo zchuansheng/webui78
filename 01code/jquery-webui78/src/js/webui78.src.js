@@ -450,15 +450,13 @@ $(document.body).ready(function(){
 		},
 		open:function (url,op){
 			op = $.extend({}, op);
-			var widths=op.widths, heights=op.heights;
+			var widths=op.widths, heights=op.heights,tops=op.tops,lefts=op.lefts;
 			var popup=op.popup;
-			if (widths==null ||""==widths){
-				widths = "800";
-			}
-			if ( heights==null||""==heights){
-				heights = "680";
-			}
-			var windowArgs = "height=" + heights + ", width=" +widths + ",toolbar=no, menubar=no, scrollbars=yes, resizable=yes, location=no, status=yes";
+			if (widths==null ||""==widths) widths = "800";
+			if (heights==null||""==heights) heights = "680"; 
+			if (tops==null ||""==tops) tops = (window.screen.availHeight - 30 - heights) / 2;
+			if (lefts==null||""==lefts) lefts = (window.screen.availWidth - 10 - widths) / 2;
+			var windowArgs = "height=" + heights + ", width=" +widths +",top=" + tops + ",left=" + lefts+",toolbar=no, menubar=no, scrollbars=yes, resizable=yes, location=no, status=yes";
 			if(op.option!=null) windowArgs=op.option;
 			window.open(url, (op.name==null)?"":op.name, windowArgs).focus();
 		},
@@ -3057,6 +3055,8 @@ $.webValidator.dataType =
 		},
 		getNodeLevel:function(node,t_id){
 			var p=node;
+			var isS=(Object.prototype.toString.call(t_id) === "[object String]")
+			if(!isS) t_id=$(t_id).attr("id");
 			var l=0;
 			while( p.attr("id")!=t_id ) {   
     		p=p.parent();
@@ -3281,6 +3281,8 @@ $.webValidator.dataType =
  					op = $.extend({type:"POST",url:op.url||root.options.loadUrl,dataType:"json",cache:false,success:getfun}, op);
  					op.success=getfun;
  					op.isformdata=root.options.form_used;
+ 					//onPrePostLoad（请求选项，加载的节点，树的配置）
+ 					if(root.options.onPrePostLoad) op=root.options.onPrePostLoad(op,node,root.options);
 					$.webUtil.submitByAjax(op);
 				}catch(e){
 					alert("节点加载异常！"+e);
@@ -3419,8 +3421,9 @@ $.webValidator.dataType =
 	}
 	$.fn.loadNode=function(op,node){
 		if(node==null) node=this;
+		var root=$(this);
 		var tm=setTimeout (function(){
-			$.webTreeUtil.loadNode($(node),node,op);
+			$.webTreeUtil.loadNode(root,node,op);
 			tm=null;
 		},50);
 	}
@@ -3435,6 +3438,7 @@ $.webValidator.dataType =
 		 $.webTreeUtil.addNode($(this),newNode,posNode,ischild);
 		 return this;
 	}
+	$.fn.isRoot=function(){return  $(this).data("root")==null?false:true;}
 	$.fn.removeNode=function(node){
 		if(node==null) return ;
 		var parentNode=node.parent().parent();
