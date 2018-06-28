@@ -212,31 +212,39 @@
 		openWindow:function (op){
 			$("body").webDialog(op);
 		},
-		alert:function (msg,funOK,btnName){
+		alert:function (msg,funOK,btn){
 			var alertOK=function(e){
 				$(".header .closer",e.data.target).trigger('click');
 				if(funOK!=null) funOK();
 			}
-			var msgdiv=$('<div class="webdialog_message"></div>').append(msg);
- 			$.webUtil.openWindow({title:"消息提示",width:300,height:150,content:msgdiv,ismodel:true,buttons:[
-				{btn:'<button>'+(btnName==null?'确定':btnName)+'</button>',onclick:alertOK}
-			]});
+			var msgdiv=$('<div  tabindex="-1" class="webdialog_message"></div>').append(msg);
+			
+			var btnName=null;
+			var btns=[{btn:'<button>'+(btnName==null?'确定':btnName)+'</button>',onclick:alertOK}	];
+			if(btn!=null  && btn.length>0) btns[0].btn=btn[0];
+ 			$.webUtil.openWindow({title:"消息提示",width:300,height:150,content:msgdiv,ismodel:true,buttons:btns});
+ 		 
+ 			msgdiv.focus();
 		},
-		confirm:function (msg,funOk,funNo){
+		confirm:function (msg,funOk,funNo,btns){
 			var confirmOK=function(e){
 				$(e.data.target).closeWebDialog();
-				if(funOk!=null) funOk();
+				if(typeof(funOk) === "function") funOk();
 			}
 			var confirmNo=function(e){
 				$(e.data.target).closeWebDialog();
-				if(funNo!=null)  funNo();
+				if(typeof(funNo) === "function")  funNo();
 			}
-			var msgdiv=$('<div class="webdialog_message"></div>').append(msg);
- 			$.webUtil.openWindow(
-			{title:"确认提示",width:300,height:170,content:msgdiv,ismodel:true,buttons:[
-				{btn:'<button>确认</button>',onclick:confirmOK},
-				{btn:'<button >取消</button>',onclick:confirmNo}
-			]});
+			var msgdiv=$('<div  tabindex="-1" class="webdialog_message"></div>').append(msg);
+			var vBtns=[{btn:'<button>确认</button>',onclick:confirmOK},{btn:'<button >取消</button>',onclick:confirmNo}	];
+			if(btns!=null  && btns.length>1) {
+				vBtns[0].btn=btns[0];
+				vBtns[1].btn=btns[1];
+			} 
+			$.webUtil.openWindow(
+			{title:"确认提示",width:300,height:170,content:msgdiv,ismodel:true,buttons:vBtns} );
+			msgdiv.focus();
+ 			
 		},
 		onKeyDownEnter:function(source,target,event){ //当source被点击时触发target的event事件
 			if(event==null) event="click";

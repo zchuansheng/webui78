@@ -190,9 +190,10 @@
 			//	}
 				c.append(maskDiv);
 				if(op.msg!=null) {
-					var msgDiv = $('<div class="ui-mask-msg" style="display:none;"><div>' +op. msg + '</div></div>');
+					var msgDiv = $('<div tabindex="-1" class="ui-mask-msg" style="display:none;"><div>' +op. msg + '</div></div>');
 					c.append(msgDiv);
 					msgDiv.show();
+					msgDiv.focus();
 					var y=op.caller!=null?$(op.caller).offset().top:maskDiv.height()/2-msgDiv.height()/2;
 					var x=op.caller!=null?$(op.caller).offset().left:maskDiv.width()/2-msgDiv.width()/2;
 					msgDiv.css({top:maskDiv.offset().top+y,left:maskDiv.offset().left+x,"z-index":op.zindex});
@@ -463,31 +464,39 @@ $(document.body).ready(function(){
 		openWindow:function (op){
 			$("body").webDialog(op);
 		},
-		alert:function (msg,funOK,btnName){
+		alert:function (msg,funOK,btn){
 			var alertOK=function(e){
 				$(".header .closer",e.data.target).trigger('click');
 				if(funOK!=null) funOK();
 			}
-			var msgdiv=$('<div class="webdialog_message"></div>').append(msg);
- 			$.webUtil.openWindow({title:"消息提示",width:300,height:150,content:msgdiv,ismodel:true,buttons:[
-				{btn:'<button>'+(btnName==null?'确定':btnName)+'</button>',onclick:alertOK}
-			]});
+			var msgdiv=$('<div  tabindex="-1" class="webdialog_message"></div>').append(msg);
+			
+			var btnName=null;
+			var btns=[{btn:'<button>'+(btnName==null?'确定':btnName)+'</button>',onclick:alertOK}	];
+			if(btn!=null  && btn.length>0) btns[0].btn=btn[0];
+ 			$.webUtil.openWindow({title:"消息提示",width:300,height:150,content:msgdiv,ismodel:true,buttons:btns});
+ 		 
+ 			msgdiv.focus();
 		},
-		confirm:function (msg,funOk,funNo){
+		confirm:function (msg,funOk,funNo,btns){
 			var confirmOK=function(e){
 				$(e.data.target).closeWebDialog();
-				if(funOk!=null) funOk();
+				if(typeof(funOk) === "function") funOk();
 			}
 			var confirmNo=function(e){
 				$(e.data.target).closeWebDialog();
-				if(funNo!=null)  funNo();
+				if(typeof(funNo) === "function")  funNo();
 			}
-			var msgdiv=$('<div class="webdialog_message"></div>').append(msg);
- 			$.webUtil.openWindow(
-			{title:"确认提示",width:300,height:170,content:msgdiv,ismodel:true,buttons:[
-				{btn:'<button>确认</button>',onclick:confirmOK},
-				{btn:'<button >取消</button>',onclick:confirmNo}
-			]});
+			var msgdiv=$('<div  tabindex="-1" class="webdialog_message"></div>').append(msg);
+			var vBtns=[{btn:'<button>确认</button>',onclick:confirmOK},{btn:'<button >取消</button>',onclick:confirmNo}	];
+			if(btns!=null  && btns.length>1) {
+				vBtns[0].btn=btns[0];
+				vBtns[1].btn=btns[1];
+			} 
+			$.webUtil.openWindow(
+			{title:"确认提示",width:300,height:170,content:msgdiv,ismodel:true,buttons:vBtns} );
+			msgdiv.focus();
+ 			
 		},
 		onKeyDownEnter:function(source,target,event){ //当source被点击时触发target的event事件
 			if(event==null) event="click";
@@ -2835,12 +2844,12 @@ $.webValidator.dataType =
 					applyTo:null,//将对话的内容对象
 					checkOnClose:false,//当关闭时是否执行窗口内表单元素的验证
 					content:null,//对话框内容
-					opacity:0.5,//拖动、改变大小时的透明度
+					opacity:1,//拖动、改变大小时的透明度
 					minWidth:50,//最小宽度
 					maxWidth:1024,
 					minHeight:50,
 					maxHeight:768,//最大高度
-					animate:300,//动画时间，如果<1则无动画效果
+					animate:0,//动画时间，如果<1则无动画效果
 					event:null,//触发打开窗口的事件对象
 					startPos:{x:0,y:0}//窗口动画的起始位置
 				},
@@ -2866,7 +2875,7 @@ $.webValidator.dataType =
 						for(var  i=0;i<op.buttons.length;i++){
 							if(op.buttons[i].btn!=null){//如果btn不为空
 								var btn=$(op.buttons[i].btn);
-								var picBtn=btn.webButton();//格式化按钮效果
+								var picBtn=op.isWebButton?btn.webButton():btn;//格式化按钮效果
 								//如果配置了onclick回调函数，则进行绑定
 								if(op.buttons[i].onclick!=null)	picBtn.bind("click",{target:dialog},op.buttons[i].onclick);
 								btnpanel.append(picBtn);

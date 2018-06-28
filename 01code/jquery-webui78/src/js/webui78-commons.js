@@ -190,9 +190,10 @@
 			//	}
 				c.append(maskDiv);
 				if(op.msg!=null) {
-					var msgDiv = $('<div class="ui-mask-msg" style="display:none;"><div>' +op. msg + '</div></div>');
+					var msgDiv = $('<div tabindex="-1" class="ui-mask-msg" style="display:none;"><div>' +op. msg + '</div></div>');
 					c.append(msgDiv);
 					msgDiv.show();
+					msgDiv.focus();
 					var y=op.caller!=null?$(op.caller).offset().top:maskDiv.height()/2-msgDiv.height()/2;
 					var x=op.caller!=null?$(op.caller).offset().left:maskDiv.width()/2-msgDiv.width()/2;
 					msgDiv.css({top:maskDiv.offset().top+y,left:maskDiv.offset().left+x,"z-index":op.zindex});

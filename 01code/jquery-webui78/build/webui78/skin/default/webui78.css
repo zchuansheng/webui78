@@ -504,6 +504,8 @@ div.headline .headarrow {display:inline;font-size:17px; width:30px;background: u
     padding: 10px;
     text-align: center;
     overflow: hidden;
+    text-decoration:none;
+    outline:none; 
 }
 /*********************************************************************/
 /*********************************************************************/

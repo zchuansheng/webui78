@@ -279,12 +279,12 @@
 					applyTo:null,//将对话的内容对象
 					checkOnClose:false,//当关闭时是否执行窗口内表单元素的验证
 					content:null,//对话框内容
-					opacity:0.5,//拖动、改变大小时的透明度
+					opacity:1,//拖动、改变大小时的透明度
 					minWidth:50,//最小宽度
 					maxWidth:1024,
 					minHeight:50,
 					maxHeight:768,//最大高度
-					animate:300,//动画时间，如果<1则无动画效果
+					animate:0,//动画时间，如果<1则无动画效果
 					event:null,//触发打开窗口的事件对象
 					startPos:{x:0,y:0}//窗口动画的起始位置
 				},
@@ -310,7 +310,7 @@
 						for(var  i=0;i<op.buttons.length;i++){
 							if(op.buttons[i].btn!=null){//如果btn不为空
 								var btn=$(op.buttons[i].btn);
-								var picBtn=btn.webButton();//格式化按钮效果
+								var picBtn=op.isWebButton?btn.webButton():btn;//格式化按钮效果
 								//如果配置了onclick回调函数，则进行绑定
 								if(op.buttons[i].onclick!=null)	picBtn.bind("click",{target:dialog},op.buttons[i].onclick);
 								btnpanel.append(picBtn);
