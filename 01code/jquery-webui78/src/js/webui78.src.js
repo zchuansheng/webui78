@@ -449,6 +449,9 @@ $(document.body).ready(function(){
 		gotoPage:function(url){
 			window.location.href=url;
 		},
+		defaultSuccess:function(r){
+			if(r.code != 0){ alert('缺省提示：'+r.msg);}
+		},
 		open:function (url,op){
 			op = $.extend({}, op);
 			var widths=op.widths, heights=op.heights,tops=op.tops,lefts=op.lefts;
@@ -3050,7 +3053,7 @@ $.webValidator.dataType =
 			itemClass:['item_def','item_1','item_2','item_3','item_4'],//设置每级item的样式['item_def','item_1','item_2','item_3'],
 			loadOnExpand:false,//0：展开不加载子节点,1每次展开都重新加载子节点,2仅在没有子节点时加载
 			loadUrl:null,
-			name_map:{id:"id",name:"name",isleaf:"isleaf",url:"url",parent_id:"parent_id",param:"param",check_status:"check_status"},//此参数仅用于存放默认值，初始化时设置无效
+			name_map:{id:"id",name:"name",isleaf:"isleaf",url:"url",parent_id:"parent_id",param:"param",check_status:"check_status",whereParentId:"whereParentId"},//此参数仅用于存放默认值，初始化时设置无效
 			resultName:null,
 			form_used:false,//动态加载节点时，是否提交表单数据
 			lockedOnLoad:false,//当动态加载节点时，是否遮罩整个树
@@ -3060,6 +3063,8 @@ $.webValidator.dataType =
 			onExpand: false,
 			onSelect: false,
 			onCheckClick: false,
+			isReload:false,
+			rootId:0,//rootId同data中的parentId，但优先于data中的parentId
 			check_status:{CHECK:'1',NOCHECK:'0',HALFCHECK:'2'}
 		},
 		getNodeLevel:function(node,t_id){
@@ -3245,11 +3250,17 @@ $.webValidator.dataType =
 		},
 		loadNode:function(tree,node,ops){
 		  var root=tree.data("root");
+ 
 			var exe=function (op){//为loadNode的自定义配置，不是树的options
 				try{
 					var ss=op.success;
+					 
 				 	var getfun=function(jsdata){
-						if (jQuery.isFunction(ss)){ ss.call($,jsdata); }
+						if (jQuery.isFunction(ss)){
+							ss.call($,jsdata); //如果设置了成功回调函数，则调用之
+						} else {
+							$.webUtil.defaultSuccess(jsdata);//否则调用缺省的提示;
+						}
 				 
 						if(root.options.onPreLoad!=null) root.options.onPreLoad(jsdata,ops);
 				 
@@ -3265,7 +3276,12 @@ $.webValidator.dataType =
 						var l_pnode=null;
 						var   lpnode;
 						$.each(dNode, function(key, val) {
-							if($("#"+val[mpName.id],tree).length>0) return;
+							var oNd=$("#"+val[mpName.id],tree);
+							if(oNd.length>0 ) {
+								if( op.isReload==true) tree.removeNode(oNd);
+								else return ;
+							}						
+							 
 							var $pid=val[mpName.parent_id];
 							if( $pid==0 || $pid==""||($pid==null)) $pid=tree.attr("id");
  							if(!op.isfull && (!isLoadRoot && $pid!=node_id )) return;//如果不是全部加载，则判断是否属于当前节点
@@ -3285,9 +3301,19 @@ $.webValidator.dataType =
 								}
 								$.webTreeUtil.addNode(tree,$(pgp[ap]),pnode,true);
 						});
- 		 				if(root.options.onLoadFinished) root.options.onLoadFinished(pnode||tree,jsdata);
+ 		 				if(root.options.onLoadFinished) root.options.onLoadFinished(jsdata,root.options,pnode||tree);
 					};
- 					op = $.extend({type:"POST",url:op.url||root.options.loadUrl,dataType:"json",cache:false,success:getfun}, op);
+					var pName=root.options.name_map.whereParentId;
+					if(node.isRoot()) {//如果加载的是根节点，则设置whereParentId为rootId
+						//设置查询的parentId为rootId
+						pName=pName||root.options.name_map.id;
+						var dt={};
+						dt[pName]=root.options.rootId||0;
+						op.data=$.extend(op.data||{},dt);
+					}else if(pName!=null){
+						op.data[pName]=op.data[root.options.name_map.id];
+					}
+ 					op = $.extend({type:"POST",url:op.url||root.options.loadUrl,dataType:"json",cache:false,success:getfun},root.options, op);
  					op.success=getfun;
  					op.isformdata=root.options.form_used;
  					//onPrePostLoad（请求选项，加载的节点，树的配置）
@@ -3447,6 +3473,11 @@ $.webValidator.dataType =
 		 $.webTreeUtil.addNode($(this),newNode,posNode,ischild);
 		 return this;
 	}
+	$.fn.setOption=function(ops){
+		var rd=$(this).data("root");
+		var newOp=$.extend(true,rd.options,ops);
+		rd.options=newOp;
+	}
 	$.fn.isRoot=function(){return  $(this).data("root")==null?false:true;}
 	$.fn.removeNode=function(node){
 		if(node==null) return ;
@@ -3460,7 +3491,7 @@ $.webValidator.dataType =
 			node.remove();
 			$.webTreeUtil.formatNode(prevNode,root);
 		}else {//移除后无子节点的情况
-			node.parent().remove();
+			node.remove();
 		}
 		$(this).trigger('onRemoveNode',{node:node,parent:parentNode});
 	}
