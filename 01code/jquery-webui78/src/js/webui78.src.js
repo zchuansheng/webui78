@@ -183,11 +183,15 @@
  				}
 				//
 				var c=$('body');
+				if(c.length==0){
+//					console.log("no body!");
+					return ;
+				}
 			//	alert(c.length);
-				//if(c.length<1){
-			//		document.write("<div class='ui-mask' ></div><div class='ui-mask-msg'  ><div style='z-index: 100;'>' +op. msg + '</div></div>");
-			//		return;
-			//	}
+//				if(c.length<1){
+//					document.write("<div tabindex='-1' class='ui-mask' ></div><div class='ui-mask-msg'  ><div style='z-index: 100;'>' +op. msg + '</div></div>");
+//					return;
+//				}
 				c.append(maskDiv);
 				if(op.msg!=null) {
 					var msgDiv = $('<div tabindex="-1" class="ui-mask-msg" style="display:none;"><div>' +op. msg + '</div></div>');

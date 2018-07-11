@@ -14,23 +14,9 @@
 *   http://www.gnu.org/licenses/gpl.html
 */ 
 $.webUtil.setting.msgboxtype=null;//若设置$.webUtil.setting.msgboxtype='custom'表示启用自定义对话框
-$.webUtil.version='1.10.015';//version number
+$.webUtil.version='1.10.017';//version number
 $.webUtil.setting.navTitleParamName=null;//页面标题导航传递参数的名字（面包屑导航的效果）如果不为空，则自动生成一个名为navTitleParamName的隐藏域用于将页面标题成为下一个的标题的一部分
 //$.webUtil.setting.messageOnLoading="数据加载中，请等待.....";//数据加载时显示的消息信息
-$.webUtil.setting.isShowPageLoading=false;//数据加载时显示的消息信息
-if($.webUtil.setting.isShowPageLoading)
-document.write("<div class='ui-mask' id='ui-mask_load' ></div><div class='ui-mask-msg' id='ui-mask-msg_load'  ><div style='z-index: 100;'>页面正在加载......</div></div>");
-//页面加载前等待效果
-$(window).bind("load",function(){
-$(document).unmask("load");
-})
-if($.browser==null) {
-$.browser={};
-$.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
-}
-if ($.browser.msie) {
-window.onbeforeprint=function(){$(document).unmask("load");};
-}
 $.webDataGrid.defConfig.thresPage=1000;//全局设置分页阀值
 $.webDataGrid.defConfig.defSizePage=20;//全局设置每页显示记录数
 //表格分页配置信息
@@ -49,6 +35,18 @@ $.fn.PicButton.defaults.enableIcon=true;
 $.fn.PicButton.defaults.enableActiveClass=true;
 //关闭webDailog的缺省的动画效果（非缺省的不起作用）
 $.webDialogUtil.defaults.animate=0;
+//页面加载前等待效果
+document.write("<div class='ui-mask' id='ui-mask_load' ></div><div class='ui-mask-msg' id='ui-mask-msg_load'  ><div style='z-index: 100;'>页面正在加载......</div></div>");
+$(window).bind("load",function(){
+$(document).unmask("load");
+})
+if($.browser==null) {
+$.browser={};
+$.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
+}
+if ($.browser.msie) {
+window.onbeforeprint=function(){$(document).unmask("load");};
+}
 ////在提交表单时进行全局检查session是否有效，需要提供检查的jquery对象名称
 //global_saved_sessionid的名称可以自定义，必须放置本js文件可以获取的页面中保存登录时的sessionid
 //例如：
