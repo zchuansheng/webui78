@@ -197,6 +197,31 @@
 		gotoPage:function(url){
 			window.location.href=url;
 		},
+		defaultSuccess:function(r){
+			if(r.code != 0){ alert('缺省提示：'+r.msg);}
+		},
+		appendCssFile:function(sHref,after,typ){
+			var hd=$("head");
+			$("link[href='"+sHref+"']",hd).remove();//先删除已有的css文件
+			
+			var af =hd.children("#autoAppend:last");
+			var css =$("<link>");
+			if(af.length>0) {//如果已经自动追加过
+				af.after(css);
+			}else {//第一次追加
+				var af=$("#"+after);
+				if(af.length>0){
+					af.after(css);
+				}else hd.append(css);
+				
+			}			
+			
+			css.attr({rel: typ=="image/x-icon" ? "shortcut icon":"stylesheet", id:"autoAppend",type: typ==null?"text/css":typ, href: sHref });
+		},
+		removeCssFile:function(sHref){
+			var hd=$("head");
+			$("link[href='"+sHref+"']",hd).remove();
+		},
 		open:function (url,op){
 			op = $.extend({}, op);
 			var widths=op.widths, heights=op.heights,tops=op.tops,lefts=op.lefts;

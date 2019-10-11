@@ -35,7 +35,7 @@
 			itemClass:['item_def','item_1','item_2','item_3','item_4'],//设置每级item的样式['item_def','item_1','item_2','item_3'],
 			loadOnExpand:false,//0：展开不加载子节点,1每次展开都重新加载子节点,2仅在没有子节点时加载
 			loadUrl:null,
-			name_map:{id:"id",name:"name",isleaf:"isleaf",url:"url",parent_id:"parent_id",param:"param",check_status:"check_status"},//此参数仅用于存放默认值，初始化时设置无效
+			name_map:{id:"id",name:"name",isleaf:"isleaf",url:"url",parent_id:"parent_id",param:"param",check_status:"check_status",whereParentId:"whereParentId"},//此参数仅用于存放默认值，初始化时设置无效
 			resultName:null,
 			form_used:false,//动态加载节点时，是否提交表单数据
 			lockedOnLoad:false,//当动态加载节点时，是否遮罩整个树
@@ -45,6 +45,8 @@
 			onExpand: false,
 			onSelect: false,
 			onCheckClick: false,
+			isReload:false,
+			rootId:0,//rootId同data中的parentId，但优先于data中的parentId
 			check_status:{CHECK:'1',NOCHECK:'0',HALFCHECK:'2'}
 		},
 		getNodeLevel:function(node,t_id){
@@ -153,8 +155,9 @@
 		},
 		getIcons:function(node_li,op,isopen){
 			var ic="";
+			var defico=(isopen==null)?"leaf":(isopen?"open":"closed");
 		 	if(op.icons.type==0){
- 				ic= op.icons[(isopen==null)?"leaf":(isopen?"open":"closed")];
+ 				ic= op.icons[defico];
  			}else if(op.icons.type==1||op.icons.type==4){
  				//var iCl=node_li.parents(":has(>div.nodeitem)").length;//获取节点所处的级别（树深度）
  	 				var iCl=$.webTreeUtil.getNodeLevel(node_li,op.root.attr("id"));////获取节点所处的级别（树深度） 				
@@ -162,8 +165,16 @@
  				if(isopen==null && op.icons.type==4)//如果 op.icons.type==4表示叶子节点图标不随树的层级改变
  					ic=op.icons["leaf"]; 					
  			}else if(op.icons.type==2){
- 				var iType=node_li.attr("icon_type");
- 				ic= (iType!==undefined)?iType:"";
+				var nd_json=node_li.data("node_data");
+				var iType=node_li.attr("icon_type");
+				if(nd_json!=null ){
+					var iconTypeName=op.name_map["icon_type"];
+					var tmp=nd_json[(iconTypeName!=null)?iconTypeName:"icon_type"]
+					//console.log("iconTypeName==",iconTypeName,",tmp======",tmp,nd_json)
+					if(tmp!=null ) iType=op.icons.type_map[tmp];
+				}
+				//console.log("itype======",iType)
+ 				ic= (iType!==undefined)?iType:op.icons[defico];
  				//alert("ic="+ic);
  			}
  			return ic;
@@ -230,11 +241,17 @@
 		},
 		loadNode:function(tree,node,ops){
 		  var root=tree.data("root");
+ 
 			var exe=function (op){//为loadNode的自定义配置，不是树的options
 				try{
 					var ss=op.success;
+					 
 				 	var getfun=function(jsdata){
-						if (jQuery.isFunction(ss)){ ss.call($,jsdata); }
+						if (jQuery.isFunction(ss)){
+							ss.call($,jsdata); //如果设置了成功回调函数，则调用之
+						} else {
+							$.webUtil.defaultSuccess(jsdata);//否则调用缺省的提示;
+						}
 				 
 						if(root.options.onPreLoad!=null) root.options.onPreLoad(jsdata,ops);
 				 
@@ -250,7 +267,12 @@
 						var l_pnode=null;
 						var   lpnode;
 						$.each(dNode, function(key, val) {
-							if($("#"+val[mpName.id],tree).length>0) return;
+							var oNd=$("#"+val[mpName.id],tree);
+							if(oNd.length>0 ) {
+								if( op.isReload==true) tree.removeNode(oNd);
+								else return ;
+							}						
+							 
 							var $pid=val[mpName.parent_id];
 							if( $pid==0 || $pid==""||($pid==null)) $pid=tree.attr("id");
  							if(!op.isfull && (!isLoadRoot && $pid!=node_id )) return;//如果不是全部加载，则判断是否属于当前节点
@@ -270,9 +292,19 @@
 								}
 								$.webTreeUtil.addNode(tree,$(pgp[ap]),pnode,true);
 						});
- 		 				if(root.options.onLoadFinished) root.options.onLoadFinished(pnode||tree,jsdata);
+ 		 				if(root.options.onLoadFinished) root.options.onLoadFinished(jsdata,root.options,pnode||tree);
 					};
- 					op = $.extend({type:"POST",url:op.url||root.options.loadUrl,dataType:"json",cache:false,success:getfun}, op);
+					var pName=root.options.name_map.whereParentId;
+					if(node.isRoot()) {//如果加载的是根节点，则设置whereParentId为rootId
+						//设置查询的parentId为rootId
+						pName=pName||root.options.name_map.id;
+						var dt={};
+						dt[pName]=op.rootId||root.options.rootId||0;
+						op.data=$.extend(dt,op.data||{});
+					}else if(pName!=null){
+						op.data[pName]=op.data[root.options.name_map.id];
+					}
+ 					op = $.extend({type:"POST",url:op.url||root.options.loadUrl,dataType:"json",cache:false,success:getfun},root.options, op);
  					op.success=getfun;
  					op.isformdata=root.options.form_used;
  					//onPrePostLoad（请求选项，加载的节点，树的配置）
@@ -432,6 +464,11 @@
 		 $.webTreeUtil.addNode($(this),newNode,posNode,ischild);
 		 return this;
 	}
+	$.fn.setOption=function(ops){
+		var rd=$(this).data("root");
+		var newOp=$.extend(true,rd.options,ops);
+		rd.options=newOp;
+	}
 	$.fn.isRoot=function(){return  $(this).data("root")==null?false:true;}
 	$.fn.removeNode=function(node){
 		if(node==null) return ;
@@ -445,7 +482,7 @@
 			node.remove();
 			$.webTreeUtil.formatNode(prevNode,root);
 		}else {//移除后无子节点的情况
-			node.parent().remove();
+			node.remove();
 		}
 		$(this).trigger('onRemoveNode',{node:node,parent:parentNode});
 	}

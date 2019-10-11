@@ -3188,8 +3188,9 @@ $.webValidator.dataType =
 		},
 		getIcons:function(node_li,op,isopen){
 			var ic="";
+			var defico=(isopen==null)?"leaf":(isopen?"open":"closed");
 		 	if(op.icons.type==0){
- 				ic= op.icons[(isopen==null)?"leaf":(isopen?"open":"closed")];
+ 				ic= op.icons[defico];
  			}else if(op.icons.type==1||op.icons.type==4){
  				//var iCl=node_li.parents(":has(>div.nodeitem)").length;//获取节点所处的级别（树深度）
  	 				var iCl=$.webTreeUtil.getNodeLevel(node_li,op.root.attr("id"));////获取节点所处的级别（树深度） 				
@@ -3197,8 +3198,16 @@ $.webValidator.dataType =
  				if(isopen==null && op.icons.type==4)//如果 op.icons.type==4表示叶子节点图标不随树的层级改变
  					ic=op.icons["leaf"]; 					
  			}else if(op.icons.type==2){
- 				var iType=node_li.attr("icon_type");
- 				ic= (iType!==undefined)?iType:"";
+				var nd_json=node_li.data("node_data");
+				var iType=node_li.attr("icon_type");
+				if(nd_json!=null ){
+					var iconTypeName=op.name_map["icon_type"];
+					var tmp=nd_json[(iconTypeName!=null)?iconTypeName:"icon_type"]
+					//console.log("iconTypeName==",iconTypeName,",tmp======",tmp,nd_json)
+					if(tmp!=null ) iType=op.icons.type_map[tmp];
+				}
+				//console.log("itype======",iType)
+ 				ic= (iType!==undefined)?iType:op.icons[defico];
  				//alert("ic="+ic);
  			}
  			return ic;

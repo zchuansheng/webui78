@@ -183,11 +183,15 @@
  				}
 				//
 				var c=$('body');
+				if(c.length==0){
+//					console.log("no body!");
+					return ;
+				}
 			//	alert(c.length);
-				//if(c.length<1){
-			//		document.write("<div class='ui-mask' ></div><div class='ui-mask-msg'  ><div style='z-index: 100;'>' +op. msg + '</div></div>");
-			//		return;
-			//	}
+//				if(c.length<1){
+//					document.write("<div tabindex='-1' class='ui-mask' ></div><div class='ui-mask-msg'  ><div style='z-index: 100;'>' +op. msg + '</div></div>");
+//					return;
+//				}
 				c.append(maskDiv);
 				if(op.msg!=null) {
 					var msgDiv = $('<div tabindex="-1" class="ui-mask-msg" style="display:none;"><div>' +op. msg + '</div></div>');
@@ -227,18 +231,7 @@
 
 })(jQuery);
 ////////////////////////////////////////////////////////////////////////////////
-//页面加载前等待效果
-document.write("<div class='ui-mask' id='ui-mask_load' ></div><div class='ui-mask-msg' id='ui-mask-msg_load'  ><div style='z-index: 100;'>页面正在加载......</div></div>");
-$(window).bind("load",function(){
-	$(document).unmask("load");
-	})
-if($.browser==null) {
-	$.browser={};
-	$.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
-}
-if ($.browser.msie) {
-	window.onbeforeprint=function(){$(document).unmask("load");};
-}
+
 /*增加自动传递表单标题功能*/
 $(document.body).ready(function(){
 	if($.webUtil.setting.navTitleParamName!=null){
