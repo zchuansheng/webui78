@@ -492,7 +492,7 @@ div.headline .headarrow {display:inline;font-size:17px; width:30px;background: u
 	background: none repeat scroll 0 0 #FAFAFA;
     border-top: 1px solid #EEEEEE;
     padding: 2px;
-	left;0;bottom:0;
+	left:0;bottom:0;
     position: absolute;
     text-align: center;
     white-space:nowrap;
