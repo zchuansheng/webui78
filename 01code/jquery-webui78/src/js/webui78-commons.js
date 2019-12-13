@@ -54,7 +54,7 @@
 		setTipMessage: function(tipmsg,iclass){
 			var tipTool=this.getTipTool();
 			var c=tipmsg;
-			if(iclass!==undefined) {
+			if(iclass!==undefined && ($.trim(iclass)!="")) {
 				c='<div class="'+iclass+'">&nbsp;&nbsp;&nbsp;&nbsp;</div>&nbsp;&nbsp;'+c;
 			}
 			$("."+this.s.tip_top,tipTool).html(c);
@@ -63,12 +63,12 @@
 			var tipTool=this.getTipTool();
 			tipTool.css({"top":(posY+2)+"px","left":(posX-40)+"px"});
 		},
-		bindShowMessage:function(obj,msg){
+		bindShowMessage:function(obj,msg,classType){
 				var t=$.webTipTool;
 				obj.bind({
 				mouseover : function(e){
 					t.getTipTool().show();
-					t.setTipMessage(msg,"icon_warning");
+					t.setTipMessage(msg,classType?classType:"icon_warning");
 					var pos=$.webValidator.getMousePosition(e);
 					t.moveTipTool(pos.x,pos.y);
 				},
@@ -78,7 +78,7 @@
 				mousemove: function(e){
 					var t=$.webTipTool;
 					t.getTipTool().show();
-					t.setTipMessage(msg,"icon_warning");
+					t.setTipMessage(msg,classType?classType:"icon_warning");
 					var pos=$.webValidator.getMousePosition(e);
 					t.moveTipTool(pos.x,pos.y);
 				}
@@ -143,13 +143,13 @@
 	
 		}
 	}
-	$.fn.setTipMessage = function(msg)
+	$.fn.setTipMessage = function(msg,classType)
 	{
 		return this.each(function()
 		{
 			var jqobj = $(this);
 			this.tipmsg=msg;
-			$.webTipTool.bindShowMessage(jqobj,this.tipmsg);
+			$.webTipTool.bindShowMessage(jqobj,this.tipmsg,classType);
 		});
 	}
  

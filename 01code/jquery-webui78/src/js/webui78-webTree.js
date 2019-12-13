@@ -35,7 +35,11 @@
 			itemClass:['item_def','item_1','item_2','item_3','item_4'],//设置每级item的样式['item_def','item_1','item_2','item_3'],
 			loadOnExpand:false,//0：展开不加载子节点,1每次展开都重新加载子节点,2仅在没有子节点时加载
 			loadUrl:null,
-			name_map:{id:"id",name:"name",isleaf:"isleaf",url:"url",parent_id:"parent_id",param:"param",check_status:"check_status",whereParentId:"whereParentId"},//此参数仅用于存放默认值，初始化时设置无效
+			name_map:{id:"id",name:"name",isleaf:"isleaf",url:"url",parent_id:"parent_id",param:"param",check_status:"check_status",
+				//whereParentIdName用于请求后台使用的参数名称,
+				//whereParentIdValue用于传递给后台查询使用的节点ID取值,
+				whereParentIdValue:"id"	,whereParentIdName:"whereParentId"
+			},//此参数仅用于存放默认值，初始化时设置无效
 			resultName:null,
 			form_used:false,//动态加载节点时，是否提交表单数据
 			lockedOnLoad:false,//当动态加载节点时，是否遮罩整个树
@@ -294,15 +298,15 @@
 						});
  		 				if(root.options.onLoadFinished) root.options.onLoadFinished(jsdata,root.options,pnode||tree);
 					};
-					var pName=root.options.name_map.whereParentId;
-					if(node.isRoot()) {//如果加载的是根节点，则设置whereParentId为rootId
+					var pName=root.options.name_map.whereParentIdName;
+					if(node.isRoot()) {//如果加载的是根节点，则设置whereParentIdValue为rootId
 						//设置查询的parentId为rootId
-						pName=pName||root.options.name_map.id;
+						pName=pName||root.options.name_map.whereParentIdValue;
 						var dt={};
 						dt[pName]=op.rootId||root.options.rootId||0;
 						op.data=$.extend(dt,op.data||{});
 					}else if(pName!=null){
-						op.data[pName]=op.data[root.options.name_map.id];
+						op.data[pName]=op.data[root.options.name_map.whereParentIdValue];
 					}
  					op = $.extend({type:"POST",url:op.url||root.options.loadUrl,dataType:"json",cache:false,success:getfun},root.options, op);
  					op.success=getfun;
